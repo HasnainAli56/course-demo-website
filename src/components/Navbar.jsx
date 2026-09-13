@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
-import { Search, Phone, Mail, MapPin, ArrowRight, Menu, X, GraduationCap } from 'lucide-react';
+import { Search, Phone, Mail, MapPin, ArrowRight, Menu, X, Sparkles, ExternalLink } from 'lucide-react';
+import { TOP_NAV_LINKS } from '../data/courses';
 
 export default function Navbar({ onOpenEnquire, onSearchClick }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { label: 'Home', href: '#home', active: true },
-    { label: 'Courses', href: '#courses' },
-    { label: 'Placements', href: '#placements' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Contact', href: '#contact' },
-  ];
-
   return (
     <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
-      {/* Top Notification / Contact Bar */}
+      {/* Top Notification Bar */}
       <div className="bg-brand-teal text-white py-1.5 px-4 text-xs font-medium border-b border-brand-teal-dark hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
@@ -24,35 +15,35 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
               <MapPin className="w-3.5 h-3.5 text-brand-peach" /> No. 123, Anna Salai, Chennai – 600 002
             </span>
             <a href="tel:+919876543210" className="flex items-center gap-1.5 text-teal-100 hover:text-white transition-colors">
-              <Phone className="w-3.5 h-3.5 text-brand-peach" /> +91 98765 43210
+              <Phone className="w-3.5 h-3.5 text-brand-peach" /> Online Enquiry: +91 76691 00251
             </a>
-            <a href="mailto:info@iclptech.com" className="flex items-center gap-1.5 text-teal-100 hover:text-white transition-colors">
-              <Mail className="w-3.5 h-3.5 text-brand-peach" /> info@iclptech.com
+            <a href="tel:+919953306008" className="flex items-center gap-1.5 text-teal-100 hover:text-white transition-colors">
+              <Phone className="w-3.5 h-3.5 text-brand-peach" /> Chennai: +91 99533 06008
             </a>
           </div>
           <div className="flex items-center space-x-4">
             <span className="bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full text-[11px] font-semibold border border-emerald-400/30 animate-pulse">
-              ⚡ New Batches Starting This Monday!
+              ⚡ Land a ₹5-15 LPA IT Job in 90 Days!
             </span>
-            <a href="#courses" className="text-brand-peach hover:underline text-xs">
-              View Schedule
-            </a>
+            <button onClick={onOpenEnquire} className="text-brand-peach hover:underline text-xs font-bold">
+              Grab Offer →
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Brand & Main Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
           {/* Logo Brand */}
           <a href="#" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-xl bg-brand-teal flex items-center justify-center text-white shadow-md shadow-brand-teal/20 group-hover:scale-105 transition-transform">
-              <span className="font-extrabold text-2xl tracking-tighter text-white">iCLP</span>
+              <span className="font-extrabold text-2xl tracking-tighter text-white">ACTE</span>
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-xl md:text-2xl text-brand-navy tracking-tight leading-none group-hover:text-brand-teal transition-colors">
-                iCLP <span className="text-brand-teal">Technologies</span>
+                ACTE <span className="text-brand-teal">Technologies</span>
               </span>
               <span className="text-[11px] font-semibold text-brand-muted tracking-wider uppercase mt-1">
                 Learn • Grow • Build Your Future
@@ -60,26 +51,28 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-7">
-            {navLinks.map((link) => (
+          {/* Top Nav Links (Matching Acte.in Screenshot 1) */}
+          <nav className="hidden xl:flex items-center space-x-5">
+            {TOP_NAV_LINKS.map((link, idx) => (
               <a
-                key={link.label}
+                key={idx}
                 href={link.href}
-                className={`text-sm font-semibold transition-all relative py-1 ${
-                  link.active
-                    ? 'text-brand-teal font-bold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-teal'
-                    : 'text-slate-600 hover:text-brand-teal'
+                className={`text-xs font-extrabold transition-all relative py-1 flex items-center gap-1 ${
+                  link.highlight
+                    ? 'text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 hover:bg-emerald-100'
+                    : link.badge
+                    ? 'text-white bg-amber-500 hover:bg-amber-600 px-3 py-1.5 rounded-full font-bold shadow-sm'
+                    : 'text-slate-700 hover:text-brand-teal'
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.external && <ExternalLink className="w-3 h-3" />}
               </a>
             ))}
           </nav>
 
           {/* Right Action Controls */}
           <div className="hidden sm:flex items-center gap-4">
-            {/* Search Trigger */}
             <button
               onClick={onSearchClick}
               className="p-2.5 rounded-full text-slate-500 hover:text-brand-teal hover:bg-brand-mint/50 transition-colors focus:outline-none"
@@ -88,10 +81,9 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
               <Search className="w-5 h-5" />
             </button>
 
-            {/* Enquire Now CTA Button */}
             <button
               onClick={onOpenEnquire}
-              className="bg-brand-teal hover:bg-brand-teal-dark text-white font-bold text-sm px-6 py-3 rounded-full shadow-md shadow-brand-teal/20 hover:shadow-lg transition-all flex items-center gap-2 group transform active:scale-95"
+              className="bg-brand-teal hover:bg-brand-teal-dark text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md shadow-brand-teal/20 hover:shadow-lg transition-all flex items-center gap-2 group transform active:scale-95"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -99,7 +91,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
           </div>
 
           {/* Mobile Hamburger Toggle */}
-          <div className="flex items-center gap-2 sm:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <button
               onClick={onSearchClick}
               className="p-2 text-slate-600"
@@ -119,16 +111,17 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+        <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
           <div className="flex flex-col space-y-2 pt-2">
-            {navLinks.map((link) => (
+            {TOP_NAV_LINKS.map((link, idx) => (
               <a
-                key={link.label}
+                key={idx}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-slate-700 hover:text-brand-teal py-2 border-b border-slate-100"
+                className="text-sm font-bold text-slate-700 hover:text-brand-teal py-2 border-b border-slate-100 flex items-center justify-between"
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.highlight && <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">100% Placement</span>}
               </a>
             ))}
           </div>
@@ -139,7 +132,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
                 setMobileMenuOpen(false);
                 onOpenEnquire();
               }}
-              className="w-full bg-brand-teal text-white font-bold text-center py-3 rounded-xl flex items-center justify-center gap-2 shadow-md"
+              className="w-full bg-brand-teal text-white font-bold text-center py-3 rounded-xl flex items-center justify-center gap-2 shadow-md text-sm"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-4 h-4" />
