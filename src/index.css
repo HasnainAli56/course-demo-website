@@ -32,3 +32,15 @@
 .gradient-teal-glow {
   background: radial-gradient(circle at 50% 50%, rgba(3, 77, 84, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

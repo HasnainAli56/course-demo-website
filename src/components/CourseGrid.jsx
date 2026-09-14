@@ -32,17 +32,17 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
   });
 
   return (
-    <section id="courses" className="py-12 lg:py-20 bg-slate-50 border-t border-slate-200">
+    <section id="courses" className="py-12 lg:py-20 bg-slate-50 border-t border-slate-200 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 bg-brand-mint text-brand-teal text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>EXPLORE OUR PROGRAMS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy tracking-tight">
               Techmaster <span className="text-brand-teal">All Certified Courses</span>
             </h2>
           </div>
@@ -54,13 +54,46 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
           </div>
         </div>
 
-        {/* Dual Layout: Left Sidebar Categories + Right Cards Grid */}
+        {/* Mobile Horizontal Category Scroller (Phone View Only) */}
+        <div className="lg:hidden mb-6">
+          <div className="flex items-center justify-between mb-2.5 px-0.5">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+              Select Category
+            </span>
+            <span className="text-xs font-bold text-brand-teal bg-brand-mint px-2.5 py-0.5 rounded-full">
+              {filteredCourses.length} Courses
+            </span>
+          </div>
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
+            {CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`shrink-0 px-4 py-2.5 rounded-xl text-xs font-extrabold transition-all whitespace-nowrap flex items-center gap-1.5 shadow-sm active:scale-95 ${
+                    isActive
+                      ? 'bg-brand-teal text-white shadow-brand-teal/20'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-brand-mint/50 hover:text-brand-teal'
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Dual Layout: Left Sidebar Categories (Desktop) + Right Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* LEFT SIDEBAR (Category Explorer) */}
-          <div className="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm p-3 sticky top-24 space-y-1">
-            <div className="px-4 py-2 border-b border-slate-100 text-xs font-extrabold uppercase tracking-wider text-slate-400">
-              Browse Categories
+          {/* LEFT SIDEBAR (Category Explorer - Desktop Only, Sticky) */}
+          <div className="hidden lg:block lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm p-3 lg:sticky lg:top-24 space-y-1">
+            <div className="px-4 py-2 border-b border-slate-100 text-xs font-extrabold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+              <span>Browse Categories</span>
+              <span className="text-[11px] font-bold text-brand-teal">
+                {filteredCourses.length}
+              </span>
             </div>
 
             <div className="space-y-1 max-h-[70vh] overflow-y-auto no-scrollbar">
@@ -85,7 +118,7 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
           </div>
 
           {/* RIGHT CARDS GRID */}
-          <div className="lg:col-span-9">
+          <div className="lg:col-span-9 w-full">
             {filteredCourses.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-slate-200">
                 <p className="text-slate-500 font-medium">No courses found matching this category.</p>
@@ -97,7 +130,7 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                 {filteredCourses.map((course) => {
                   const IconComponent = ICON_MAP[course.iconName] || Code2;
 
@@ -109,12 +142,12 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
                     >
                       {/* Top Bar Badges */}
                       <div className="flex items-center justify-between mb-3">
-                        <div className={`w-11 h-11 rounded-xl flex items-center justify-center shadow-inner ${course.iconBg}`}>
+                        <div className={`w-11 h-11 rounded-xl flex items-center justify-center shadow-inner shrink-0 ${course.iconBg}`}>
                           <IconComponent className="w-5 h-5" />
                         </div>
 
                         {course.jobGuarantee && (
-                          <span className="bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                          <span className="bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1 shrink-0">
                             <CheckCircle2 className="w-3 h-3" /> Job Guarantee
                           </span>
                         )}
@@ -122,7 +155,7 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
 
                       {/* Course Title & Tech Badges */}
                       <div>
-                        <h3 className="text-lg font-extrabold text-brand-navy group-hover:text-brand-teal transition-colors leading-snug mb-1">
+                        <h3 className="text-base sm:text-lg font-extrabold text-brand-navy group-hover:text-brand-teal transition-colors leading-snug mb-1">
                           {course.title}
                         </h3>
 
@@ -146,11 +179,11 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
                       </div>
 
                       {/* Card Footer Actions */}
-                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div className="flex flex-col text-xs font-semibold text-slate-500">
+                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div className="flex flex-col text-xs font-semibold text-slate-500 shrink-0">
                           <span className="flex items-center gap-1 text-slate-700">
-                            <Clock className="w-3.5 h-3.5 text-brand-teal" />
-                            {course.duration}
+                            <Clock className="w-3.5 h-3.5 text-brand-teal shrink-0" />
+                            <span>{course.duration}</span>
                           </span>
                           <span className="text-[11px] text-emerald-600 font-bold mt-0.5">
                             EMI @ {course.emi}
@@ -158,13 +191,13 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
                         </div>
 
                         {/* Action Link Buttons */}
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 shrink-0">
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
                               onSelectCourse(course);
                             }}
-                            className="bg-brand-mint text-brand-teal hover:bg-brand-teal hover:text-white font-bold text-xs px-3 py-2 rounded-xl transition-colors"
+                            className="bg-brand-mint text-brand-teal hover:bg-brand-teal hover:text-white font-bold text-xs px-3.5 py-2 rounded-xl transition-colors shrink-0"
                           >
                             Know More
                           </button>
