@@ -26,12 +26,12 @@ export default function Footer() {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white text-brand-teal font-extrabold text-xl flex items-center justify-center shadow">
-                iCLP
+              <div className="w-10 h-10 rounded-xl bg-white text-brand-teal font-extrabold text-lg flex items-center justify-center shadow">
+                TM
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-xl text-white tracking-tight leading-none">
-                  iCLP <span className="text-brand-peach">Technologies</span>
+                  Tech<span className="text-brand-peach">master</span>
                 </span>
                 <span className="text-[10px] font-bold text-teal-200 uppercase tracking-widest mt-0.5">
                   Learn • Grow • Build Your Future
@@ -108,7 +108,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-brand-peach shrink-0" />
-                <a href="mailto:info@iclptech.com" className="hover:text-white">info@iclptech.com</a>
+                <a href="mailto:info@techmaster.in" className="hover:text-white">info@techmaster.in</a>
               </div>
             </div>
 
@@ -151,7 +151,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-teal-200/70 gap-4">
-          <p>© 2026 iCLP Technologies. All rights reserved.</p>
+          <p>© 2026 Techmaster. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span>|</span>

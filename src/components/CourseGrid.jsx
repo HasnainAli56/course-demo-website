@@ -43,7 +43,7 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
               <span>EXPLORE OUR PROGRAMS</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
-              Acte.in <span className="text-brand-teal">All Certified Courses</span>
+              Techmaster <span className="text-brand-teal">All Certified Courses</span>
             </h2>
           </div>
 
@@ -57,7 +57,7 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
         {/* Dual Layout: Left Sidebar Categories + Right Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* LEFT SIDEBAR (Matching Acte.in Screenshot 2 Layout) */}
+          {/* LEFT SIDEBAR (Category Explorer) */}
           <div className="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm p-3 sticky top-24 space-y-1">
             <div className="px-4 py-2 border-b border-slate-100 text-xs font-extrabold uppercase tracking-wider text-slate-400">
               Browse Categories
@@ -84,7 +84,7 @@ export default function CourseGrid({ onSelectCourse, searchTerm = '' }) {
             </div>
           </div>
 
-          {/* RIGHT CARDS GRID (Matching Acte.in Course Cards) */}
+          {/* RIGHT CARDS GRID */}
           <div className="lg:col-span-9">
             {filteredCourses.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-slate-200">

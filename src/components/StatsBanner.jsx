@@ -29,7 +29,7 @@ export default function StatsBanner() {
               <span className="text-brand-peach">Get Hired.</span>
             </h2>
             <p className="text-sm sm:text-base text-teal-100 max-w-2xl">
-              Join thousands of successful learners who transformed their careers with iCLP Technologies.
+              Join thousands of successful learners who transformed their careers with Techmaster.
             </p>
           </div>
 

@@ -37,7 +37,7 @@ export default function WhyChooseUs({ onOpenEnquire }) {
           {/* Left Content Side */}
           <div className="lg:col-span-6 space-y-6">
             <span className="text-xs font-extrabold uppercase tracking-widest text-brand-teal">
-              WHY CHOOSE ICLP
+              WHY CHOOSE TECHMASTER
             </span>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-tight">

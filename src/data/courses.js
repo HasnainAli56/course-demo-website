@@ -3947,7 +3947,7 @@ export const TOP_NAV_LINKS = [
   { label: 'Jobs & Internship', href: '#placements' },
   { label: 'Resources', href: '#blog' },
   { label: 'Branches', href: '#contact' },
-  { label: 'LMS Portal', href: 'https://lms.acte.in', external: true, badge: 'AI LMS' },
+  { label: 'LMS Portal', href: '#', external: true, badge: 'AI LMS' },
 ];
 
 export const HIRING_PARTNERS = [
@@ -3986,7 +3986,7 @@ export const BRANCH_LOCATIONS = [
 ];
 
 export const TESTIMONIALS = [
-  { id: 't1', name: 'Priya S', role: 'Data Analyst', company: 'Leading MNC, Chennai', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop', comment: 'iCLP gave me the right guidance and very practical training. I am now working as a Data Analyst at ₹7.2 LPA!', rating: 5, course: 'Data Analytics Mastery' },
+  { id: 't1', name: 'Priya S', role: 'Data Analyst', company: 'Leading MNC, Chennai', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop', comment: 'Techmaster gave me the right guidance and very practical training. I am now working as a Data Analyst at ₹7.2 LPA!', rating: 5, course: 'Data Analytics Mastery' },
   { id: 't2', name: 'Arun K', role: 'SAP Consultant', company: 'Tech Mahindra, Bangalore', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop', comment: 'The trainers are knowledgeable and very supportive. The placement support really helped me land my dream SAP role.', rating: 5, course: 'SAP Functional & Technical' },
   { id: 't3', name: 'Divya R', role: 'Software Tester', company: 'Cognizant, Chennai', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop', comment: 'Great learning experience with practical exposure. Highly recommended for anyone starting their career in IT!', rating: 5, course: 'Testing Tools (Selenium)' }
 ];

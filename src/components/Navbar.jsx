@@ -39,11 +39,11 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
           {/* Logo Brand */}
           <a href="#" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-xl bg-brand-teal flex items-center justify-center text-white shadow-md shadow-brand-teal/20 group-hover:scale-105 transition-transform">
-              <span className="font-extrabold text-2xl tracking-tighter text-white">ACTE</span>
+              <span className="font-extrabold text-xl tracking-tight text-white">TM</span>
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-xl md:text-2xl text-brand-navy tracking-tight leading-none group-hover:text-brand-teal transition-colors">
-                ACTE <span className="text-brand-teal">Technologies</span>
+                Tech<span className="text-brand-teal">master</span>
               </span>
               <span className="text-[11px] font-semibold text-brand-muted tracking-wider uppercase mt-1">
                 Learn • Grow • Build Your Future
@@ -51,7 +51,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
             </div>
           </a>
 
-          {/* Top Nav Links (Matching Acte.in Screenshot 1) */}
+          {/* Top Nav Links */}
           <nav className="hidden xl:flex items-center space-x-5">
             {TOP_NAV_LINKS.map((link, idx) => (
               <a
