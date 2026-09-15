@@ -1,9 +1,29 @@
 import React, { useState } from 'react';
 import { Search, Phone, Mail, MapPin, ArrowRight, Menu, X, Sparkles, ExternalLink } from 'lucide-react';
-import { TOP_NAV_LINKS } from '../data/courses';
 
-export default function Navbar({ onOpenEnquire, onSearchClick }) {
+const NAV_ITEMS = [
+  { label: 'Job Guarantee Courses', view: 'home', targetId: 'courses', highlight: true },
+  { label: 'All Courses', view: 'home', targetId: 'courses' },
+  { label: 'Corporate Training', view: 'corporate' },
+  { label: 'Placed Students List', view: 'placed-students' },
+  { label: 'Jobs & Internship', view: 'jobs-internships' },
+  { label: 'Resources', view: 'resources' },
+  { label: 'Branches', view: 'branches' },
+  { label: 'LMS Portal', view: 'lms', badge: 'AI LMS' }
+];
+
+export default function Navbar({ onOpenEnquire, onSearchClick, currentPage, onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleItemClick = (item, e) => {
+    e.preventDefault();
+    if (item.view === 'lms') {
+      onOpenEnquire('LMS Portal Access Request');
+      return;
+    }
+
+    onNavigate(item.view, item.targetId);
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
@@ -14,7 +34,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
             <span className="flex items-center gap-1.5 text-teal-100">
               <MapPin className="w-3.5 h-3.5 text-brand-peach" /> No. 123, Anna Salai, Chennai – 600 002
             </span>
-            <a href="tel:+919876543210" className="flex items-center gap-1.5 text-teal-100 hover:text-white transition-colors">
+            <a href="tel:+917669100251" className="flex items-center gap-1.5 text-teal-100 hover:text-white transition-colors">
               <Phone className="w-3.5 h-3.5 text-brand-peach" /> Online Enquiry: +91 76691 00251
             </a>
             <a href="tel:+919953306008" className="flex items-center gap-1.5 text-teal-100 hover:text-white transition-colors">
@@ -25,7 +45,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
             <span className="bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full text-[11px] font-semibold border border-emerald-400/30 animate-pulse">
               ⚡ Land a ₹5-15 LPA IT Job in 90 Days!
             </span>
-            <button onClick={onOpenEnquire} className="text-brand-peach hover:underline text-xs font-bold">
+            <button onClick={() => onOpenEnquire('Limited Scholarship Offer')} className="text-brand-peach hover:underline text-xs font-bold">
               Grab Offer →
             </button>
           </div>
@@ -37,7 +57,10 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
         <div className="flex justify-between items-center h-20">
           
           {/* Logo Brand */}
-          <a href="#" className="flex items-center gap-3 group">
+          <button 
+            onClick={() => onNavigate('home')} 
+            className="flex items-center gap-3 group text-left focus:outline-none"
+          >
             <div className="w-12 h-12 rounded-xl bg-brand-teal flex items-center justify-center text-white shadow-md shadow-brand-teal/20 group-hover:scale-105 transition-transform">
               <span className="font-extrabold text-xl tracking-tight text-white">TM</span>
             </div>
@@ -49,26 +72,32 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
                 Learn • Grow • Build Your Future
               </span>
             </div>
-          </a>
+          </button>
 
           {/* Top Nav Links */}
-          <nav className="hidden xl:flex items-center space-x-5">
-            {TOP_NAV_LINKS.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.href}
-                className={`text-xs font-extrabold transition-all relative py-1 flex items-center gap-1 ${
-                  link.highlight
-                    ? 'text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 hover:bg-emerald-100'
-                    : link.badge
-                    ? 'text-white bg-amber-500 hover:bg-amber-600 px-3 py-1.5 rounded-full font-bold shadow-sm'
-                    : 'text-slate-700 hover:text-brand-teal'
-                }`}
-              >
-                <span>{link.label}</span>
-                {link.external && <ExternalLink className="w-3 h-3" />}
-              </a>
-            ))}
+          <nav className="hidden xl:flex items-center space-x-3.5">
+            {NAV_ITEMS.map((item, idx) => {
+              const isActive = currentPage === item.view && !item.targetId;
+
+              return (
+                <button
+                  key={idx}
+                  onClick={(e) => handleItemClick(item, e)}
+                  className={`text-xs font-extrabold transition-all relative py-1 flex items-center gap-1 rounded-xl px-2.5 ${
+                    item.highlight
+                      ? 'text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 py-1.5'
+                      : item.badge
+                      ? 'text-white bg-amber-500 hover:bg-amber-600 px-3 py-1.5 rounded-full font-bold shadow-sm'
+                      : isActive
+                      ? 'text-brand-teal bg-brand-mint/60'
+                      : 'text-slate-700 hover:text-brand-teal hover:bg-slate-100'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  {item.badge && <span className="text-[9px] bg-white/20 px-1.5 rounded">{item.badge}</span>}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Right Action Controls */}
@@ -82,8 +111,8 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
             </button>
 
             <button
-              onClick={onOpenEnquire}
-              className="bg-brand-teal hover:bg-brand-teal-dark text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md shadow-brand-teal/20 hover:shadow-lg transition-all flex items-center gap-2 group transform active:scale-95"
+              onClick={() => onOpenEnquire('General Enquiry')}
+              className="bg-brand-teal hover:bg-teal-800 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md shadow-brand-teal/20 hover:shadow-lg transition-all flex items-center gap-2 group transform active:scale-95"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -111,18 +140,22 @@ export default function Navbar({ onOpenEnquire, onSearchClick }) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+        <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-xl">
           <div className="flex flex-col space-y-2 pt-2">
-            {TOP_NAV_LINKS.map((link, idx) => (
-              <a
+            {NAV_ITEMS.map((item, idx) => (
+              <button
                 key={idx}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-bold text-slate-700 hover:text-brand-teal py-2 border-b border-slate-100 flex items-center justify-between"
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleItemClick(item, e);
+                }}
+                className={`text-sm font-bold py-2.5 border-b border-slate-100 flex items-center justify-between text-left ${
+                  currentPage === item.view ? 'text-brand-teal font-extrabold' : 'text-slate-700 hover:text-brand-teal'
+                }`}
               >
-                <span>{link.label}</span>
-                {link.highlight && <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">100% Placement</span>}
-              </a>
+                <span>{item.label}</span>
+                {item.highlight && <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">100% Placement</span>}
+              </button>
             ))}
           </div>
 
