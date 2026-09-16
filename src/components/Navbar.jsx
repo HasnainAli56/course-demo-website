@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { label: 'Corporate Training', view: 'corporate' },
   { label: 'Placed Students List', view: 'placed-students' },
   { label: 'Jobs & Internship', view: 'jobs-internships' },
-  { label: 'Resources', view: 'resources' },
+  { label: 'Blogs', view: 'resources' },
   { label: 'Branches', view: 'branches' },
   { label: 'LMS Portal', view: 'lms', badge: 'AI LMS' }
 ];
@@ -75,7 +75,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick, currentPage, onNa
           </button>
 
           {/* Top Nav Links */}
-          <nav className="hidden xl:flex items-center space-x-3.5">
+          <nav className="hidden xl:flex items-center space-x-3">
             {NAV_ITEMS.map((item, idx) => {
               const isActive = currentPage === item.view && !item.targetId;
 
@@ -83,28 +83,28 @@ export default function Navbar({ onOpenEnquire, onSearchClick, currentPage, onNa
                 <button
                   key={idx}
                   onClick={(e) => handleItemClick(item, e)}
-                  className={`text-xs font-extrabold transition-all relative py-1 flex items-center gap-1 rounded-xl px-2.5 ${
+                  className={`text-xs font-extrabold transition-all relative flex items-center gap-1.5 px-2.5 py-1.5 whitespace-nowrap ${
                     item.highlight
-                      ? 'text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 py-1.5'
+                      ? 'text-emerald-700 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 rounded-lg'
                       : item.badge
-                      ? 'text-white bg-amber-500 hover:bg-amber-600 px-3 py-1.5 rounded-full font-bold shadow-sm'
+                      ? 'text-white bg-amber-500 hover:bg-amber-600 px-3 py-1 rounded-md font-bold shadow-xs'
                       : isActive
-                      ? 'text-brand-teal bg-brand-mint/60'
-                      : 'text-slate-700 hover:text-brand-teal hover:bg-slate-100'
+                      ? 'text-brand-teal bg-brand-mint/60 rounded-lg'
+                      : 'text-slate-700 hover:text-brand-teal hover:bg-slate-100 rounded-lg'
                   }`}
                 >
                   <span>{item.label}</span>
-                  {item.badge && <span className="text-[9px] bg-white/20 px-1.5 rounded">{item.badge}</span>}
+                  {item.badge && <span className="text-[9px] bg-white/25 px-1.5 py-0.5 rounded font-bold">{item.badge}</span>}
                 </button>
               );
             })}
           </nav>
 
           {/* Right Action Controls */}
-          <div className="hidden sm:flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <button
               onClick={onSearchClick}
-              className="p-2.5 rounded-full text-slate-500 hover:text-brand-teal hover:bg-brand-mint/50 transition-colors focus:outline-none"
+              className="p-2 rounded-lg text-slate-500 hover:text-brand-teal hover:bg-brand-mint/50 transition-colors focus:outline-none"
               title="Search Courses"
             >
               <Search className="w-5 h-5" />
@@ -112,10 +112,10 @@ export default function Navbar({ onOpenEnquire, onSearchClick, currentPage, onNa
 
             <button
               onClick={() => onOpenEnquire('General Enquiry')}
-              className="bg-brand-teal hover:bg-teal-800 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md shadow-brand-teal/20 hover:shadow-lg transition-all flex items-center gap-2 group transform active:scale-95"
+              className="bg-brand-teal hover:bg-teal-800 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-md whitespace-nowrap shadow-xs hover:shadow transition-all flex items-center gap-1 shrink-0 group transform active:scale-95"
             >
               <span>Enquire Now</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
 
@@ -165,7 +165,7 @@ export default function Navbar({ onOpenEnquire, onSearchClick, currentPage, onNa
                 setMobileMenuOpen(false);
                 onOpenEnquire();
               }}
-              className="w-full bg-brand-teal text-white font-bold text-center py-3 rounded-xl flex items-center justify-center gap-2 shadow-md text-sm"
+              className="w-full bg-brand-teal text-white font-extrabold text-center py-2 rounded-md flex items-center justify-center gap-2 shadow-md text-xs whitespace-nowrap"
             >
               <span>Enquire Now</span>
               <ArrowRight className="w-4 h-4" />
