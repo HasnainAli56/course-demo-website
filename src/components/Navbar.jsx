@@ -5,7 +5,6 @@ const NAV_ITEMS = [
   { label: 'Job Guarantee Courses', view: 'home', targetId: 'courses', highlight: true },
   { label: 'All Courses', view: 'home', targetId: 'courses' },
   { label: 'Corporate Training', view: 'corporate' },
-  { label: 'Placed Students List', view: 'placed-students' },
   { label: 'Jobs & Internship', view: 'jobs-internships' },
   { label: 'Blogs', view: 'resources' },
   { label: 'Branches', view: 'branches' },

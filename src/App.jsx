@@ -18,7 +18,6 @@ import ChatbotWidget from './components/ChatbotWidget';
 // Dedicated Pages
 import CourseDetailPage from './pages/CourseDetailPage';
 import CorporateTrainingPage from './pages/CorporateTrainingPage';
-import PlacedStudentsPage from './pages/PlacedStudentsPage';
 import JobsInternshipsPage from './pages/JobsInternshipsPage';
 import ResourcesPage from './pages/ResourcesPage';
 import BranchesPage from './pages/BranchesPage';
@@ -61,8 +60,6 @@ export default function App() {
     // Check page views in hash
     if (hash.includes('#corporate')) {
       setCurrentPage('corporate');
-    } else if (hash.includes('#placed-students')) {
-      setCurrentPage('placed-students');
     } else if (hash.includes('#jobs-internships')) {
       setCurrentPage('jobs-internships');
     } else if (hash.includes('#resources')) {
@@ -176,12 +173,6 @@ export default function App() {
 
         {currentPage === 'corporate' && (
           <CorporateTrainingPage
-            onOpenEnquire={(title) => handleOpenEnquire(title)}
-          />
-        )}
-
-        {currentPage === 'placed-students' && (
-          <PlacedStudentsPage
             onOpenEnquire={(title) => handleOpenEnquire(title)}
           />
         )}
