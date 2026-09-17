@@ -82,6 +82,8 @@ const WEEKLY_OPENINGS = [
   }
 ];
 
+import { sendEmailNotification } from '../utils/sendEmail';
+
 export default function JobsInternshipsPage({ onOpenEnquire }) {
   const [jobForm, setJobForm] = useState({
     name: '',
@@ -95,9 +97,23 @@ export default function JobsInternshipsPage({ onOpenEnquire }) {
   const [submitted, setSubmitted] = useState(false);
   const [selectedJobTitle, setSelectedJobTitle] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+
+    await sendEmailNotification({
+      formType: 'Jobs & Internships Placement Form',
+      subject: `Job Seeker Application from ${jobForm.name}`,
+      name: jobForm.name,
+      email: jobForm.email,
+      phone: jobForm.phone,
+      location: jobForm.location,
+      message: jobForm.message,
+      extraDetails: {
+        'Experience Level': jobForm.experience,
+        'Key Skills / Tech': jobForm.skills
+      }
+    });
   };
 
   return (

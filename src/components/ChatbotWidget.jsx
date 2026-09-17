@@ -21,6 +21,7 @@ import {
   Leaf
 } from 'lucide-react';
 import { COURSES, CATEGORIES } from '../data/courses';
+import { sendEmailNotification } from '../utils/sendEmail';
 
 export default function ChatbotWidget({ onSelectCourse, onOpenEnquire }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,10 +59,26 @@ export default function ChatbotWidget({ onSelectCourse, onOpenEnquire }) {
     }
   }, [messages, isOpen, isSaved]);
 
-  const handleSaveIntroForm = (e) => {
+  const handleSaveIntroForm = async (e) => {
     e.preventDefault();
     setIsSaved(true);
     setIsIntroduced(true);
+
+    // Send formatted lead details to enquiry.iclp@gmail.com
+    sendEmailNotification({
+      formType: 'Chatbot Pre-Chat Intro Form',
+      subject: `Live Chat Inquiry from ${introForm.fullName}`,
+      name: introForm.fullName,
+      email: introForm.email,
+      phone: `${introForm.countryCode} ${introForm.phone}`,
+      course: introForm.courseName,
+      location: introForm.location,
+      message: introForm.message,
+      extraDetails: {
+        'Preferred Call Time': introForm.callTime || 'Not specified',
+        'Referral Source': introForm.source || 'Direct Website'
+      }
+    });
 
     // Initial confirmation bot messages as shown in reference screenshots
     const confirmationMessages = [
@@ -156,6 +173,17 @@ export default function ChatbotWidget({ onSelectCourse, onOpenEnquire }) {
     setMessages(prev => [...prev, userMsg]);
     if (!textToSend) setInput('');
     setIsTyping(true);
+
+    // Also dispatch message follow-up to enquiry.iclp@gmail.com
+    sendEmailNotification({
+      formType: 'Chatbot Live Message Followup',
+      subject: `Live Chat Message from ${introForm.fullName || 'User'}`,
+      name: introForm.fullName || 'Anonymous User',
+      email: introForm.email || '',
+      phone: introForm.phone || '',
+      course: introForm.courseName || '',
+      message: messageText
+    });
 
     setTimeout(() => {
       const aiReply = generateAIResponse(messageText);
@@ -392,7 +420,7 @@ export default function ChatbotWidget({ onSelectCourse, onOpenEnquire }) {
                   className="w-full bg-white border-2 border-emerald-500 hover:bg-emerald-50 text-emerald-600 font-extrabold text-xs py-2.5 rounded-full transition-all flex items-center justify-center gap-1.5 shadow-xs"
                 >
                   <Check className="w-4 h-4 text-emerald-600" />
-                  <span>Saved & Continue</span>
+                  <span>Saved & Send to Email</span>
                 </button>
               </form>
             ) : (
@@ -400,7 +428,7 @@ export default function ChatbotWidget({ onSelectCourse, onOpenEnquire }) {
               <div className="bg-white border border-slate-200 rounded-2xl p-3.5 shadow-xs space-y-1 text-xs">
                 <div className="flex items-center justify-between text-emerald-600 font-bold border-b border-slate-100 pb-1.5">
                   <span className="flex items-center gap-1">
-                    <Check className="w-4 h-4" /> Saved Introduction
+                    <Check className="w-4 h-4" /> Saved & Sent to enquiry.iclp@gmail.com
                   </span>
                   <button 
                     onClick={() => setIsSaved(false)}

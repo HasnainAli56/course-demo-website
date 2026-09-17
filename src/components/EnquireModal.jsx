@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Send, Phone, Mail, User, BookOpen, Monitor } from 'lucide-react';
+import { X, CheckCircle2, Send, Phone, Mail, User, BookOpen, Monitor, Loader2 } from 'lucide-react';
 import { COURSES } from '../data/courses';
+import { sendEmailNotification } from '../utils/sendEmail';
 
 export default function EnquireModal({ isOpen, onClose, defaultCourse = '' }) {
   const [formData, setFormData] = useState({
@@ -13,11 +14,26 @@ export default function EnquireModal({ isOpen, onClose, defaultCourse = '' }) {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSending(true);
+
+    await sendEmailNotification({
+      formType: 'Enquire Now Modal',
+      subject: `New Inquiry for ${formData.course || 'General Course'}`,
+      name: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      course: formData.course,
+      mode: formData.mode,
+      message: formData.comments
+    });
+
+    setIsSending(false);
     setSubmitted(true);
   };
 
@@ -99,8 +115,23 @@ export default function EnquireModal({ isOpen, onClose, defaultCourse = '' }) {
                 </div>
               </div>
 
-              {/* Phone & Email Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Email & Phone grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+                  <div className="relative">
+                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="email"
+                      required
+                      placeholder="name@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
                   <div className="relative">
@@ -111,97 +142,86 @@ export default function EnquireModal({ isOpen, onClose, defaultCourse = '' }) {
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all"
+                      className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all"
                     />
+                  </div>
+                </div>
+              </div>
+
+              {/* Select Course & Training Mode */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Select Course</label>
+                  <div className="relative">
+                    <BookOpen className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <select
+                      value={formData.course}
+                      onChange={(e) => setFormData({ ...formData, course: e.target.value })}
+                      className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all bg-white"
+                    >
+                      {COURSES.map((c) => (
+                        <option key={c.id} value={c.title}>
+                          {c.title}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Training Mode</label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@email.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all"
-                    />
+                    <Monitor className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <select
+                      value={formData.mode}
+                      onChange={(e) => setFormData({ ...formData, mode: e.target.value })}
+                      className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all bg-white"
+                    >
+                      <option value="Classroom">Classroom Training</option>
+                      <option value="Online Live">Online Live Interactive</option>
+                      <option value="Corporate">Corporate Group</option>
+                    </select>
                   </div>
                 </div>
               </div>
 
-              {/* Course Selection */}
+              {/* Comments / Questions */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Select Interested Course *</label>
-                <div className="relative">
-                  <BookOpen className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                  <select
-                    value={formData.course}
-                    onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none bg-white transition-all"
-                  >
-                    {COURSES.map((c) => (
-                      <option key={c.id} value={c.title}>
-                        {c.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Training Mode Radio Pills */}
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5">Training Mode</label>
-                <div className="grid grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, mode: 'Classroom' })}
-                    className={`py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border transition-all ${
-                      formData.mode === 'Classroom'
-                        ? 'bg-brand-mint text-brand-teal border-brand-teal/40 ring-2 ring-brand-teal/20'
-                        : 'bg-slate-50 text-slate-600 border-slate-200'
-                    }`}
-                  >
-                    <User className="w-3.5 h-3.5" />
-                    <span>Classroom (Chennai)</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setFormData({ ...formData, mode: 'Online' })}
-                    className={`py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border transition-all ${
-                      formData.mode === 'Online'
-                        ? 'bg-brand-mint text-brand-teal border-brand-teal/40 ring-2 ring-brand-teal/20'
-                        : 'bg-slate-50 text-slate-600 border-slate-200'
-                    }`}
-                  >
-                    <Monitor className="w-3.5 h-3.5" />
-                    <span>Live Online Training</span>
-                  </button>
-                </div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Comments / Questions (Optional)</label>
+                <textarea
+                  rows={3}
+                  placeholder="Any specific requirements or questions?"
+                  value={formData.comments}
+                  onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
+                  className="w-full p-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none transition-all resize-none"
+                />
               </div>
 
               {/* Submit Button */}
-              <div className="pt-3">
-                <button
-                  type="submit"
-                  className="w-full bg-brand-teal hover:bg-brand-teal-dark text-white font-extrabold text-base py-3.5 rounded-xl shadow-lg shadow-brand-teal/25 hover:shadow-xl transition-all flex items-center justify-center gap-2"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Submit Lead Inquiry</span>
-                </button>
-              </div>
+              <button
+                type="submit"
+                disabled={isSending}
+                className="w-full bg-brand-teal hover:bg-brand-teal-dark disabled:opacity-50 text-white font-extrabold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 group text-sm uppercase tracking-wider"
+              >
+                {isSending ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <span>Sending Inquiry to Email...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Submit Inquiry</span>
+                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
+              </button>
 
-              <p className="text-[11px] text-center text-slate-400">
-                🔒 We respect your privacy. No spam guaranteed.
+              <p className="text-[11px] text-slate-400 text-center font-medium">
+                🔒 Your info is sent directly to <strong>enquiry.iclp@gmail.com</strong> for instant counseling.
               </p>
-
             </form>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ import {
   Check
 } from 'lucide-react';
 import { HIRING_PARTNERS } from '../data/courses';
+import { sendEmailNotification } from '../utils/sendEmail';
 
 export default function CorporateTrainingPage({ onOpenEnquire }) {
   const [activeTalentTab, setActiveTalentTab] = useState('hire');
@@ -33,9 +34,23 @@ export default function CorporateTrainingPage({ onOpenEnquire }) {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+
+    await sendEmailNotification({
+      formType: 'Corporate Training Proposal',
+      subject: `Corporate Training Request from ${formData.companyName}`,
+      name: formData.contactPerson,
+      company: formData.companyName,
+      email: formData.email,
+      phone: formData.phone,
+      course: formData.trainingDomain,
+      message: formData.message,
+      extraDetails: {
+        'Team / Employee Size': formData.teamSize
+      }
+    });
   };
 
   return (

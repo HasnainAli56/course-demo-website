@@ -15,6 +15,7 @@ import {
   FileText,
   X
 } from 'lucide-react';
+import { sendEmailNotification } from '../utils/sendEmail';
 
 const CATEGORY_PILLS = [
   'Artificial Intelligence', 'Automation', 'Big Data', 'Blockchain',
@@ -141,14 +142,24 @@ export default function ResourcesPage({ onOpenEnquire }) {
     setStoryIndex((prev) => (prev - 1 + SUCCESS_STORIES.length) % SUCCESS_STORIES.length);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: '', email: '', mobile: '', mode: 'Training Mode', course: '', message: '' });
-      alert('Thank you! Your request has been submitted successfully.');
-    }, 1000);
+
+    await sendEmailNotification({
+      formType: 'Blogs / Resources Lead Form',
+      subject: `Engage & Inspire Quote Request from ${formData.name}`,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.mobile,
+      course: formData.course,
+      mode: formData.mode,
+      message: formData.message
+    });
+
+    setFormSubmitted(false);
+    setFormData({ name: '', email: '', mobile: '', mode: 'Training Mode', course: '', message: '' });
+    alert('Thank you! Your request has been submitted successfully.');
   };
 
   const currentStory = SUCCESS_STORIES[storyIndex];
