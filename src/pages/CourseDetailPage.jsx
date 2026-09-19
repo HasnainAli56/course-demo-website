@@ -26,7 +26,8 @@ import {
   TrendingUp,
   GraduationCap,
   Calendar,
-  Check
+  Check,
+  Target
 } from 'lucide-react';
 import { generateCoursePDF } from '../utils/generatePdf';
 import { COURSES, CATEGORIES } from '../data/courses';
@@ -68,7 +69,7 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
   // Related courses in same category or featured
   const relatedCourses = COURSES.filter(c => c.id !== activeCourse.id && (c.category === activeCourse.category || c.featured)).slice(0, 4);
 
-  const courseFaqs = [
+  const courseFaqs = activeCourse.pdfFaqs || [
     {
       q: `What are the prerequisites for learning ${activeCourse.title}?`,
       a: `No prior coding background is strictly required for freshers. Our syllabus starts from foundational basics and progresses to advanced industry level hands-on projects.`
@@ -306,6 +307,97 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             </div>
           </section>
 
+          {/* What Is Pega Section */}
+          {activeCourse.whatIsPegaDetails && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Sparkles className="w-6 h-6 text-brand-teal" />
+                <span>{activeCourse.whatIsPegaDetails.heading}</span>
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                {activeCourse.whatIsPegaDetails.description}
+              </p>
+
+              {activeCourse.whatIsPegaDetails.keyComponents && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                  {activeCourse.whatIsPegaDetails.keyComponents.map((item, idx) => (
+                    <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1.5">
+                      <h4 className="font-black text-sm text-brand-navy flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-brand-teal"></span>
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Why Learn Pega & Key Areas */}
+          {activeCourse.whyLearnPega && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <TrendingUp className="w-6 h-6 text-brand-teal" />
+                <span>{activeCourse.whyLearnPega.heading}</span>
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                {activeCourse.whyLearnPega.description}
+              </p>
+
+              {activeCourse.whyLearnPega.keyAreas && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                  {activeCourse.whyLearnPega.keyAreas.map((item, idx) => (
+                    <div key={idx} className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 space-y-1">
+                      <h4 className="font-extrabold text-xs text-blue-950 uppercase tracking-wider">{item.title}</h4>
+                      <p className="text-xs text-slate-600 font-medium">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Learning Methodology & Course Highlights */}
+          {(activeCourse.learningMethodology || activeCourse.courseHighlights) && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+              {activeCourse.learningMethodology && (
+                <div className="space-y-4">
+                  <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                    <BookOpen className="w-6 h-6 text-brand-teal" />
+                    <span>5-Stage Learning Methodology</span>
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {activeCourse.learningMethodology.map((m, idx) => (
+                      <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
+                        <span className="text-[10px] font-black uppercase text-brand-teal tracking-wider">{m.stage}</span>
+                        <h4 className="font-extrabold text-sm text-brand-navy">{m.title}</h4>
+                        <p className="text-xs text-slate-500 font-medium leading-relaxed">{m.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activeCourse.courseHighlights && (
+                <div className="pt-4 border-t border-slate-100 space-y-3">
+                  <h3 className="font-black text-sm text-brand-navy uppercase tracking-wider">Key Course Highlights</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {activeCourse.courseHighlights.map((h, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <div>
+                          <span className="font-extrabold text-xs text-slate-900 block">{h.title}</span>
+                          <span className="text-xs text-slate-500 font-medium">{h.desc}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
+
           {/* Tools & Technologies Covered */}
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
             <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
@@ -439,6 +531,133 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
               </button>
             </div>
           </section>
+
+          {/* Real-World Project Scenarios */}
+          {activeCourse.projectScenarios && activeCourse.projectScenarios.length > 0 && (
+            <section className="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+              <div className="space-y-1 border-b border-white/10 pb-4">
+                <span className="text-xs font-black text-amber-300 uppercase tracking-wider">HANDS-ON PORTFOLIO</span>
+                <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                  <Briefcase className="w-6 h-6 text-amber-400" />
+                  <span>Real-World Project Scenarios</span>
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 font-medium">
+                  Work on end-to-end practical application design scenarios modeled on real enterprise business processes:
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4">
+                {activeCourse.projectScenarios.map((proj, idx) => (
+                  <div key={idx} className="bg-white/10 border border-white/15 rounded-2xl p-4 sm:p-5 space-y-2 backdrop-blur-md">
+                    <div className="flex items-center gap-3">
+                      <span className="w-7 h-7 bg-amber-400 text-slate-950 rounded-lg flex items-center justify-center font-black text-xs shrink-0">
+                        P{idx + 1}
+                      </span>
+                      <h4 className="font-extrabold text-sm text-white">{proj.title}</h4>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed font-medium pl-10">{proj.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Structured Learning & Career Roadmap */}
+          {activeCourse.learningRoadmap && activeCourse.learningRoadmap.length > 0 && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Calendar className="w-6 h-6 text-brand-teal" />
+                <span>Complete Career Learning Roadmap</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">
+                Step-by-step progression path designed to build complete technical expertise from foundations to advanced architecture:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {activeCourse.learningRoadmap.map((step, idx) => (
+                  <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-full bg-brand-teal/10 text-brand-teal font-black text-xs flex items-center justify-center shrink-0">
+                      {idx + 1}
+                    </span>
+                    <span className="text-xs font-extrabold text-slate-800 leading-tight">{step}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Who Can Learn & Prerequisites */}
+          {(activeCourse.whoCanLearn || activeCourse.prerequisites) && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Users className="w-6 h-6 text-brand-teal" />
+                <span>Target Audience & Prerequisites</span>
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                {activeCourse.whoCanLearn && (
+                  <div className="md:col-span-7 space-y-3">
+                    <h3 className="font-extrabold text-sm text-brand-navy uppercase tracking-wider">Who Can Learn This Course?</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {activeCourse.whoCanLearn.map((person, idx) => (
+                        <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 space-y-1">
+                          <span className="font-extrabold text-xs text-brand-navy block">{person.title}</span>
+                          <span className="text-[11px] text-slate-500 font-medium block">{person.desc}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {activeCourse.prerequisites && (
+                  <div className="md:col-span-5 bg-teal-50/60 border border-teal-100 rounded-2xl p-5 space-y-3">
+                    <h3 className="font-extrabold text-sm text-teal-950 uppercase tracking-wider flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-brand-teal" />
+                      <span>Course Prerequisites</span>
+                    </h3>
+                    <ul className="space-y-2">
+                      {activeCourse.prerequisites.map((pre, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0 mt-1.5"></span>
+                          <span>{pre}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+
+          {/* Certification Guidance & Potential Roles */}
+          {(activeCourse.certificationGuidance || activeCourse.potentialRoles) && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+              {activeCourse.certificationGuidance && (
+                <div className="bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-transparent border border-amber-200/80 rounded-2xl p-5 space-y-2">
+                  <span className="bg-amber-400 text-slate-900 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">
+                    OFFICIAL CERTIFICATION PATHWAY
+                  </span>
+                  <h3 className="text-lg font-black text-slate-900">{activeCourse.certificationGuidance.pathway}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                    {activeCourse.certificationGuidance.description}
+                  </p>
+                </div>
+              )}
+
+              {activeCourse.potentialRoles && activeCourse.potentialRoles.length > 0 && (
+                <div className="space-y-3">
+                  <h3 className="font-extrabold text-sm text-brand-navy uppercase tracking-wider">Potential Career Roles</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activeCourse.potentialRoles.map((role, idx) => (
+                      <span key={idx} className="bg-slate-100 text-slate-800 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-200/60">
+                        {role}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
 
           {/* Certificate & ISO Accreditation */}
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">

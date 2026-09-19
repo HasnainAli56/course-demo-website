@@ -181,50 +181,798 @@ export const COURSES = [
   {
     "id": "fullstack-python",
     "category": "dev",
-    "title": "Full Stack With Python Course",
-    "subtitle": "Python 3 | Django | Flask | REST APIs | React.js",
+    "title": "Full Stack Development with Python Training",
+    "subtitle": "Learn Full Stack Web Development with Python Through Practical, Project-Based Training",
     "iconName": "Code2",
     "iconBg": "bg-cyan-50 text-cyan-600",
-    "description": "Complete Python web development: build REST APIs with Django Framework and interactive React frontend UIs.",
+    "description": "Build modern, responsive, and scalable web applications with Full Stack Development with Python Training designed to help learners develop skills across both frontend and backend technologies. This comprehensive course covers the complete web development lifecycle, starting from programming fundamentals and frontend development to Python backend development, databases, APIs, authentication, deployment, Git, testing, and real-world application development. Instead of focusing only on theoretical concepts, the course emphasizes hands-on coding, practical exercises, real-world projects, debugging, API development, database integration, and application deployment. Whether you are a beginner starting your programming journey, a graduate preparing for a software development career, or an aspiring developer looking to upgrade your technical skills, learning full stack development with Python can provide a structured pathway toward building complete web applications.",
     "techBadges": [
-      "Python 3",
-      "Django",
-      "REST API",
-      "React"
+        "Python 3",
+        "HTML5 & CSS3",
+        "JavaScript (ES6+)",
+        "Django Framework",
+        "Flask Framework",
+        "REST APIs",
+        "SQL & Databases",
+        "Git & GitHub",
+        "Deployment & Hosting"
     ],
-    "duration": "8 Months",
+    "duration": "6-8 Months",
     "rating": 4.95,
     "reviewsCount": 1890,
     "studentsEnrolled": "5,600+",
-    "avgSalary": "\u20b96.5 - \u20b916 LPA",
-    "batchType": "Next Cohort: 07th Sep - 13th Sep 2026",
+    "avgSalary": "₹6.5 - ₹16 LPA",
+    "batchType": "Next Cohort: Live Interactive Batches",
     "level": "Beginner Friendly",
-    "emi": "\u20b94,499/mo",
+    "emi": "₹4,499/mo",
     "featured": true,
     "jobGuarantee": true,
+    "whatIsPegaDetails": {
+        "heading": "What Is Full Stack Development with Python?",
+        "description": "Full Stack Development refers to the development of both the frontend and backend components of a web application. The frontend is the part of an application that users interact with, while the backend manages application logic, databases, authentication, APIs, server-side processing, and communication between different components. Python is widely used for backend and web application development because of its readable syntax, extensive libraries, developer ecosystem, and frameworks such as Django and Flask. By learning these technologies together, students can understand how different layers of a web application work together.",
+        "keyComponents": [
+            {
+                "title": "Frontend Technologies",
+                "desc": "HTML, CSS, JavaScript, Responsive Web Design, and Frontend development concepts."
+            },
+            {
+                "title": "Python Core & OOP",
+                "desc": "Python programming and Object-Oriented Programming (OOP) fundamentals."
+            },
+            {
+                "title": "Backend Frameworks",
+                "desc": "Django and Flask frameworks for building robust, scalable server-side web applications."
+            },
+            {
+                "title": "Databases & APIs",
+                "desc": "SQL, Database Management, and REST API development for seamless data communication."
+            },
+            {
+                "title": "Version Control & Security",
+                "desc": "Git and GitHub workflows, Authentication, Authorization, and web security concepts."
+            },
+            {
+                "title": "Testing & Deployment",
+                "desc": "Testing and Debugging techniques, Application Deployment, and real-world project portfolios."
+            }
+        ]
+    },
+    "whyLearnPega": {
+        "heading": "Why Learn Full Stack Development with Python?",
+        "description": "Modern software applications require developers who understand more than a single technology. A frontend developer may build the user interface, while a backend developer may create APIs and database logic. A full stack developer understands how these components connect to create a complete application. Learning Python along with frontend technologies gives learners the opportunity to understand the complete development process.",
+        "keyAreas": [
+            {
+                "title": "1. Learn Frontend and Backend Development",
+                "desc": "You can develop skills across the complete application stack instead of limiting your learning to a single layer."
+            },
+            {
+                "title": "2. Python Is Beginner-Friendly",
+                "desc": "Python has a relatively simple and readable syntax, making it suitable for people who are new to programming."
+            },
+            {
+                "title": "3. Build Complete Applications",
+                "desc": "The course enables learners to move from creating simple webpages to developing applications with frontend interfaces, backend logic, databases, APIs, authentication, and deployment."
+            },
+            {
+                "title": "4. Develop Practical Coding Skills",
+                "desc": "Hands-on exercises help learners understand how programming concepts are applied in actual software projects."
+            },
+            {
+                "title": "5. Work With Popular Web Technologies",
+                "desc": "The curriculum introduces learners to technologies commonly used in modern web development environments."
+            },
+            {
+                "title": "6. Create a Professional Portfolio",
+                "desc": "Real-world projects can demonstrate practical development skills when applying for internships, freelance opportunities, or software development positions."
+            }
+        ]
+    },
+    "courseHighlights": [
+        {
+            "title": "Complete Full Stack Curriculum",
+            "desc": "Covers end-to-end web development from frontend to backend and deployment."
+        },
+        {
+            "title": "Python Core to Advanced",
+            "desc": "Master Python programming fundamentals, data structures, OOP, and decorators."
+        },
+        {
+            "title": "HTML, CSS & JavaScript",
+            "desc": "Build responsive web pages and interactive UI features with modern JS (ES6+)."
+        },
+        {
+            "title": "Django & Flask Frameworks",
+            "desc": "Learn both full-featured (Django) and lightweight (Flask) web frameworks."
+        },
+        {
+            "title": "Databases & SQL Programming",
+            "desc": "Manage relational databases, write SQL queries, and integrate Django ORM."
+        },
+        {
+            "title": "REST API Development",
+            "desc": "Build CRUD REST APIs, handle JSON payloads, HTTP status codes, and authentication."
+        },
+        {
+            "title": "Authentication & Security",
+            "desc": "Implement user registration, login, role-based access, sessions, and web security."
+        },
+        {
+            "title": "Git, GitHub & Deployment",
+            "desc": "Master version control workflows and deploy applications to production servers."
+        },
+        {
+            "title": "Real-World Projects & Portfolio",
+            "desc": "Build 5 capstone applications and develop a professional project portfolio."
+        },
+        {
+            "title": "Interview & Career Support",
+            "desc": "Career-oriented learning with coding practice, mock interviews, and resume guidance."
+        }
+    ],
     "syllabus": [
-      {
-        "module": "Module 1",
-        "title": "Full Stack With Python Course - Fundamentals & Environment Setup"
-      },
-      {
-        "module": "Module 2",
-        "title": "Full Stack With Python Course - Core Concepts & Architecture Breakdown"
-      },
-      {
-        "module": "Module 3",
-        "title": "Full Stack With Python Course - Hands-On Lab Work & Real-Time Implementation"
-      },
-      {
-        "module": "Module 4",
-        "title": "Full Stack With Python Course - Advanced Workflows, Security & Optimization"
-      },
-      {
-        "module": "Module 5",
-        "title": "Full Stack With Python Course - Live Enterprise Capstone Project & Certification Prep"
-      }
+        {
+            "module": "Module 1",
+            "title": "Introduction to Web Development",
+            "topics": [
+                "What is web development?",
+                "Frontend vs backend development",
+                "Full stack development architecture",
+                "Client-server architecture",
+                "How websites and web applications work",
+                "Web browsers and web servers",
+                "HTTP and HTTPS",
+                "Request and response cycle",
+                "Static vs dynamic websites",
+                "Introduction to web application architecture",
+                "Development environments",
+                "Code editors and developer tools"
+            ]
+        },
+        {
+            "module": "Module 2",
+            "title": "HTML – Building Web Pages",
+            "topics": [
+                "HTML fundamentals",
+                "HTML document structure",
+                "Headings and paragraphs",
+                "Links",
+                "Images",
+                "Lists",
+                "Tables",
+                "Forms",
+                "Input elements",
+                "Buttons",
+                "Semantic HTML",
+                "HTML5 elements",
+                "Audio and video",
+                "iframe",
+                "Form validation",
+                "Accessibility basics"
+            ]
+        },
+        {
+            "module": "Module 3",
+            "title": "CSS – Styling and Responsive Web Design",
+            "topics": [
+                "CSS fundamentals",
+                "Selectors",
+                "Properties and values",
+                "Colors",
+                "Fonts",
+                "Text styling",
+                "Box model",
+                "Margins and padding",
+                "Borders",
+                "Display properties",
+                "Positioning",
+                "Flexbox",
+                "CSS Grid",
+                "Responsive design",
+                "Media queries",
+                "Navigation bars",
+                "Cards",
+                "Forms",
+                "Buttons",
+                "Website layouts",
+                "Responsive webpages"
+            ]
+        },
+        {
+            "module": "Module 4",
+            "title": "JavaScript Fundamentals",
+            "topics": [
+                "JavaScript introduction",
+                "Variables",
+                "Data types",
+                "Operators",
+                "Conditional statements",
+                "Loops",
+                "Functions",
+                "Arrays",
+                "Objects",
+                "Strings",
+                "Scope",
+                "Events",
+                "DOM manipulation",
+                "Form handling",
+                "Browser APIs",
+                "Error handling",
+                "JavaScript debugging",
+                "Modern JavaScript concepts"
+            ]
+        },
+        {
+            "module": "Module 5",
+            "title": "Advanced JavaScript and Frontend Concepts",
+            "topics": [
+                "ES6+ features",
+                "Arrow functions",
+                "Destructuring",
+                "Spread and rest operators",
+                "Modules",
+                "Promises",
+                "Async and await",
+                "Fetch API",
+                "JSON",
+                "API integration",
+                "Local storage",
+                "Session storage",
+                "Dynamic interfaces",
+                "Client-side validation",
+                "Error handling",
+                "Frontend application structure"
+            ]
+        },
+        {
+            "module": "Module 6",
+            "title": "Introduction to Python Programming",
+            "topics": [
+                "Python installation",
+                "Python syntax",
+                "Variables",
+                "Data types",
+                "Operators",
+                "Strings",
+                "Lists",
+                "Tuples",
+                "Sets",
+                "Dictionaries",
+                "Conditional statements",
+                "Loops",
+                "Functions",
+                "Modules",
+                "Packages",
+                "Exception handling",
+                "File handling",
+                "Input and output",
+                "Python coding practices"
+            ]
+        },
+        {
+            "module": "Module 7",
+            "title": "Advanced Python Programming",
+            "topics": [
+                "Object-Oriented Programming",
+                "Classes and objects",
+                "Constructors",
+                "Inheritance",
+                "Polymorphism",
+                "Encapsulation",
+                "Abstraction",
+                "Iterators",
+                "Generators",
+                "Decorators",
+                "Lambda functions",
+                "List comprehensions",
+                "Dictionary comprehensions",
+                "Regular expressions",
+                "Exception handling",
+                "Working with files",
+                "Virtual environments",
+                "Python modules and packages"
+            ]
+        },
+        {
+            "module": "Module 8",
+            "title": "Python for Web Development",
+            "topics": [
+                "Python web development concepts",
+                "Server-side programming",
+                "Routing",
+                "Request handling",
+                "Response handling",
+                "Templates",
+                "Forms",
+                "Sessions",
+                "Cookies",
+                "Application structure",
+                "Configuration",
+                "Environment variables",
+                "Backend validation",
+                "Error handling"
+            ]
+        },
+        {
+            "module": "Module 9",
+            "title": "Django Framework",
+            "topics": [
+                "Introduction to Django",
+                "Django installation",
+                "Project creation",
+                "Application creation",
+                "Django project structure",
+                "URL routing",
+                "Views",
+                "Templates",
+                "Template inheritance",
+                "Static files",
+                "Forms",
+                "Models",
+                "Django ORM",
+                "Migrations",
+                "Admin panel",
+                "Authentication",
+                "Authorization",
+                "Sessions",
+                "Middleware",
+                "Application configuration",
+                "Error handling"
+            ]
+        },
+        {
+            "module": "Module 10",
+            "title": "Django ORM and Database Integration",
+            "topics": [
+                "Database fundamentals",
+                "Relational databases",
+                "Tables",
+                "Records",
+                "Primary keys",
+                "Foreign keys",
+                "Relationships",
+                "SQL fundamentals",
+                "CRUD operations",
+                "Django ORM",
+                "QuerySets",
+                "Model relationships",
+                "Database migrations",
+                "Data validation",
+                "Database optimization concepts"
+            ]
+        },
+        {
+            "module": "Module 11",
+            "title": "SQL and Database Management",
+            "topics": [
+                "SQL fundamentals",
+                "Creating databases",
+                "Creating tables",
+                "INSERT",
+                "SELECT",
+                "UPDATE",
+                "DELETE",
+                "WHERE conditions",
+                "Sorting",
+                "Filtering",
+                "Aggregate functions",
+                "GROUP BY",
+                "HAVING",
+                "Joins",
+                "Subqueries",
+                "Constraints",
+                "Indexes",
+                "Database relationships",
+                "Transactions",
+                "Basic database optimization"
+            ]
+        },
+        {
+            "module": "Module 12",
+            "title": "Flask Framework",
+            "topics": [
+                "Introduction to Flask",
+                "Flask installation",
+                "Application structure",
+                "Routing",
+                "Views",
+                "Templates",
+                "Forms",
+                "Request handling",
+                "Response handling",
+                "Sessions",
+                "Cookies",
+                "Database integration",
+                "REST APIs",
+                "Error handling",
+                "Configuration",
+                "Application deployment concepts"
+            ]
+        },
+        {
+            "module": "Module 13",
+            "title": "REST API Development",
+            "topics": [
+                "What is an API?",
+                "REST architecture",
+                "HTTP methods (GET, POST, PUT, PATCH, DELETE)",
+                "HTTP status codes",
+                "JSON",
+                "Request parameters",
+                "Request bodies",
+                "Authentication",
+                "API validation",
+                "API error handling",
+                "CRUD APIs",
+                "API testing",
+                "Frontend and backend communication"
+            ]
+        },
+        {
+            "module": "Module 14",
+            "title": "Authentication and Authorization",
+            "topics": [
+                "User registration",
+                "Login systems",
+                "Logout",
+                "Password handling",
+                "Sessions",
+                "Cookies",
+                "Authentication",
+                "Authorization",
+                "Role-based access",
+                "Protected routes",
+                "Form validation",
+                "Basic web security concepts",
+                "API authentication concepts"
+            ]
+        },
+        {
+            "module": "Module 15",
+            "title": "Git and GitHub",
+            "topics": [
+                "Introduction to Git",
+                "Git installation",
+                "Git repositories",
+                "git init",
+                "git clone",
+                "git add",
+                "git commit",
+                "git status",
+                "git log",
+                "Branches",
+                "Merging",
+                "Conflict resolution",
+                "Remote repositories",
+                "GitHub",
+                "Pull and push operations",
+                "Repository management",
+                "Collaboration workflows"
+            ]
+        },
+        {
+            "module": "Module 16",
+            "title": "Testing and Debugging",
+            "topics": [
+                "Debugging fundamentals",
+                "Common programming errors",
+                "Python debugging",
+                "Browser developer tools",
+                "Backend debugging",
+                "Logging",
+                "Unit testing concepts",
+                "Test cases",
+                "API testing",
+                "Validation",
+                "Error handling",
+                "Application troubleshooting"
+            ]
+        },
+        {
+            "module": "Module 17",
+            "title": "Deployment and Application Hosting",
+            "topics": [
+                "Deployment fundamentals",
+                "Production environments",
+                "Environment variables",
+                "Application configuration",
+                "Static files",
+                "Database configuration",
+                "Domain concepts",
+                "Server concepts",
+                "Deployment workflows",
+                "Application monitoring basics",
+                "Production debugging concepts",
+                "Deployment best practices"
+            ]
+        },
+        {
+            "module": "Module 18",
+            "title": "Real-World Full Stack Projects",
+            "topics": [
+                "1. E-Commerce Application (User registration, Login, Product catalog, Product search, Product details, Shopping cart, Order management, Database integration, Admin functionality)",
+                "2. Employee Management System (Employee registration, Employee profiles, Department management, Search, Update & delete, Authentication, Database integration, Admin access)",
+                "3. Learning Management System (User registration, Login, Course listing, Course details, User dashboard, Content management, Progress tracking, Database integration)",
+                "4. Job Portal (User registration, Employer accounts, Job posting, Job search, Job applications, Candidate profiles, Database management, Authentication)",
+                "5. Expense Management Application (User accounts, Expense categories, Expense records, Income tracking, Reports, Filtering, Database integration, Dashboard)"
+            ]
+        }
+    ],
+    "handsOnTraining": [
+        "Writing Python programs",
+        "Building webpages",
+        "Creating responsive layouts",
+        "Developing JavaScript functionality",
+        "Creating Django applications",
+        "Developing Flask applications",
+        "Designing databases",
+        "Writing SQL queries",
+        "Creating REST APIs",
+        "Connecting APIs with frontend applications",
+        "Implementing authentication",
+        "Debugging applications",
+        "Using Git and GitHub",
+        "Building complete projects",
+        "Preparing applications for deployment"
+    ],
+    "learningRoadmap": [
+        {
+            "step": "Step 1",
+            "title": "Learn Programming Fundamentals",
+            "desc": "Start with Python fundamentals and develop logical thinking through coding exercises."
+        },
+        {
+            "step": "Step 2",
+            "title": "Learn HTML and CSS",
+            "desc": "Understand webpage structure, styling, layouts, and responsive design."
+        },
+        {
+            "step": "Step 3",
+            "title": "Learn JavaScript",
+            "desc": "Add interactivity and understand browser-side programming."
+        },
+        {
+            "step": "Step 4",
+            "title": "Learn Databases and SQL",
+            "desc": "Understand how applications store, retrieve, update, and manage information."
+        },
+        {
+            "step": "Step 5",
+            "title": "Learn Python Web Frameworks",
+            "desc": "Move into Django and Flask to understand server-side application development."
+        },
+        {
+            "step": "Step 6",
+            "title": "Learn REST APIs",
+            "desc": "Understand communication between frontend and backend applications."
+        },
+        {
+            "step": "Step 7",
+            "title": "Learn Authentication",
+            "desc": "Build secure user registration and login functionality."
+        },
+        {
+            "step": "Step 8",
+            "title": "Learn Git and GitHub",
+            "desc": "Practice version control and project management."
+        },
+        {
+            "step": "Step 9",
+            "title": "Build Real-World Projects",
+            "desc": "Combine frontend, backend, database, and API technologies."
+        },
+        {
+            "step": "Step 10",
+            "title": "Learn Deployment Concepts",
+            "desc": "Understand how applications are prepared and deployed to production environments."
+        },
+        {
+            "step": "Step 11",
+            "title": "Build a Portfolio",
+            "desc": "Document your projects and technical skills."
+        },
+        {
+            "step": "Step 12",
+            "title": "Prepare for Developer Interviews",
+            "desc": "Practice coding, technical concepts, project discussions, and common interview questions."
+        }
+    ],
+    "targetAudience": [
+        {
+            "title": "Students",
+            "desc": "Students who want to develop software development skills through a structured curriculum."
+        },
+        {
+            "title": "Fresh Graduates",
+            "desc": "Graduates looking to build projects and develop a strong technical portfolio."
+        },
+        {
+            "title": "Beginners",
+            "desc": "People without prior programming experience starting with Python fundamentals."
+        },
+        {
+            "title": "Working Professionals",
+            "desc": "Professionals expanding their knowledge into frontend, backend, databases, and APIs."
+        },
+        {
+            "title": "Career Switchers",
+            "desc": "Learners transitioning from non-programming fields into software engineering."
+        },
+        {
+            "title": "Freelancers & Entrepreneurs",
+            "desc": "Aspiring builders who want to build end-to-end web applications independently."
+        }
+    ],
+    "prerequisites": [
+        "Basic computer knowledge",
+        "Basic understanding of internet usage",
+        "Logical thinking",
+        "Willingness to learn programming",
+        "Interest in software development"
+    ],
+    "skillsDeveloped": [
+        "Python programming",
+        "Web development",
+        "HTML & CSS",
+        "JavaScript (ES6+)",
+        "Responsive design",
+        "Django Framework",
+        "Flask Framework",
+        "REST APIs",
+        "SQL & Database management",
+        "CRUD operations",
+        "Authentication & Authorization",
+        "Backend development",
+        "Frontend development",
+        "Git & GitHub",
+        "Debugging & Testing",
+        "Application deployment concepts",
+        "Project development"
+    ],
+    "careerOpportunities": [
+        {
+            "role": "Python Developer",
+            "desc": "Work with Python applications, backend systems, APIs, and web frameworks."
+        },
+        {
+            "role": "Full Stack Developer",
+            "desc": "Work across both frontend and backend components of web applications."
+        },
+        {
+            "role": "Backend Developer",
+            "desc": "Focus on server-side logic, database management, APIs, and integrations."
+        },
+        {
+            "role": "Python Django Developer",
+            "desc": "Specialize in developing web applications using the Django framework."
+        },
+        {
+            "role": "Flask Developer",
+            "desc": "Build lightweight Python web applications and microservices."
+        },
+        {
+            "role": "Web Developer",
+            "desc": "Develop responsive websites and applications using HTML, CSS, JS, and Python."
+        },
+        {
+            "role": "Software Developer",
+            "desc": "Apply full stack concepts across general software engineering roles."
+        },
+        {
+            "role": "Junior Python Developer",
+            "desc": "Entry-level positions for freshers building their software career."
+        }
+    ],
+    "interviewPrep": [
+        "Python programming questions & OOP concepts",
+        "HTML, CSS & JavaScript frontend questions",
+        "SQL queries & database optimization concepts",
+        "Django & Flask architecture & routing questions",
+        "REST API design & HTTP method status codes",
+        "Authentication, security & session handling",
+        "Git branching, merging & version control scenarios",
+        "Debugging, logging & troubleshooting exercises",
+        "Project architecture walk-throughs & problem solving"
+    ],
+    "completeStack": {
+        "frontend": "HTML, CSS, JavaScript (Responsible for User Interface & browser interactivity)",
+        "backend": "Python with Django & Flask (Handles server-side logic, routing & processing)",
+        "database": "Relational Databases & SQL (Stores, updates & manages persistent data)",
+        "apiLayer": "REST APIs (Provides communication between frontend & backend systems)"
+    },
+    "pdfFaqs": [
+        {
+            "q": "What is Full Stack Development with Python?",
+            "a": "Full Stack Development with Python is a learning program that combines frontend technologies such as HTML, CSS, and JavaScript with Python-based backend development, databases, APIs, authentication, testing, Git, and deployment concepts."
+        },
+        {
+            "q": "Is Full Stack Development with Python suitable for beginners?",
+            "a": "Yes. Beginners can start with programming fundamentals and progressively learn frontend, backend, database, and project development concepts."
+        },
+        {
+            "q": "Do I need programming experience before learning Python full stack development?",
+            "a": "Professional programming experience is not required for a beginner-oriented course. Basic computer knowledge, logical thinking, and consistent coding practice are helpful."
+        },
+        {
+            "q": "What programming language is used in this course?",
+            "a": "Python is the primary backend programming language. Frontend development also involves HTML, CSS, and JavaScript."
+        },
+        {
+            "q": "Which Python frameworks are covered?",
+            "a": "The curriculum includes Django and Flask, allowing learners to understand different approaches to Python web development."
+        },
+        {
+            "q": "Will I learn frontend development?",
+            "a": "Yes. The curriculum covers HTML, CSS, JavaScript, responsive design, DOM concepts, frontend functionality, and communication with backend APIs."
+        },
+        {
+            "q": "Will I learn database management?",
+            "a": "Yes. Database concepts and SQL are included, along with database integration using Python web frameworks."
+        },
+        {
+            "q": "Will I learn REST API development?",
+            "a": "Yes. The curriculum covers REST concepts, HTTP methods, JSON, CRUD APIs, API validation, authentication concepts, and frontend-backend communication."
+        },
+        {
+            "q": "Is Git and GitHub included?",
+            "a": "Yes. Git and GitHub concepts are included to introduce version control and project management workflows."
+        },
+        {
+            "q": "Will I work on real-world projects?",
+            "a": "The learning path emphasizes project-based development. Projects can combine frontend, backend, database, APIs, authentication, and other full stack concepts."
+        },
+        {
+            "q": "Can I become a Full Stack Developer after completing the course?",
+            "a": "The course can provide a foundation in the technologies and concepts used in full stack development. Professional readiness also depends on continued practice, project experience, problem-solving ability, interview preparation, and the requirements of individual employers."
+        },
+        {
+            "q": "Is Python good for web development?",
+            "a": "Python is widely used for backend and web development. Frameworks such as Django and Flask provide tools for building web applications and APIs."
+        },
+        {
+            "q": "What is the difference between frontend and backend development?",
+            "a": "Frontend development focuses primarily on the user interface and browser-side functionality. Backend development focuses on server-side logic, databases, APIs, authentication, and application processing."
+        },
+        {
+            "q": "What is Django?",
+            "a": "Django is a Python web framework designed to help developers build web applications using Python."
+        },
+        {
+            "q": "What is Flask?",
+            "a": "Flask is a lightweight Python web framework commonly used for web applications and APIs."
+        },
+        {
+            "q": "What database skills should a Full Stack Developer know?",
+            "a": "A developer should understand fundamental database concepts, SQL, tables, relationships, CRUD operations, queries, and application-database integration."
+        },
+        {
+            "q": "How long does it take to learn full stack development?",
+            "a": "The learning duration depends on the curriculum, prior programming knowledge, study time, practice frequency, and project complexity. Consistent hands-on practice is important because full stack development covers multiple technologies."
+        }
+    ],
+    "seoData": {
+        "metaTitle": "Full Stack Development with Python Course | Training & Projects",
+        "metaDescription": "Learn Full Stack Development with Python through practical training covering HTML, CSS, JavaScript, Python, Django, Flask, SQL, APIs, Git, databases, and real-world projects.",
+        "h1": "Full Stack Development with Python Training",
+        "seoPageTitle": "Full Stack Development with Python Course – Learn Python, Django, Flask, JavaScript & Web Development",
+        "url": "/full-stack-development-with-python"
+    },
+    "internalLinks": [
+        "Python Training",
+        "Python Developer Course",
+        "Django Training",
+        "Flask Training",
+        "Web Development Course",
+        "JavaScript Training",
+        "HTML and CSS Course",
+        "SQL Training",
+        "Database Training",
+        "REST API Training",
+        "Software Development Course",
+        "Git and GitHub Training",
+        "Software Testing Course",
+        "UI Development Course"
     ]
-  },
+},
   {
     "id": "mern-stack",
     "category": "dev",
@@ -972,141 +1720,2092 @@ export const COURSES = [
   {
     "id": "mobile-app-testing",
     "category": "testing",
-    "title": "Mobile Application Testing Course",
-    "subtitle": "iOS & Android Manual | ADB Commands | Charles Proxy",
+    "title": "Mobile Application Testing Training",
+    "subtitle": "Mobile Application Testing Course – Online & Classroom Training",
     "iconName": "CheckSquare",
     "iconBg": "bg-sky-50 text-sky-600",
-    "description": "Comprehensive manual and automated mobile app testing across Android and iOS real devices, ADB debugging, and network throttling.",
+    "description": "Build practical mobile testing skills with TECHMASTER Mobile Application Testing Training, designed for freshers, manual testers, QA engineers, software testers, automation testers, and working IT professionals. Our Mobile Application Testing Course focuses on mobile testing fundamentals, Android testing, iOS testing, functional testing, UI testing, compatibility testing, mobile automation testing, Appium fundamentals, defect management, real-time testing scenarios, and interview preparation. Whether you are starting your career in software testing or looking to expand your existing QA skills, TECHMASTER provides a structured learning path to help you understand mobile application testing concepts and practice real-world testing scenarios.",
     "techBadges": [
-      "Mobile Testing",
-      "ADB Debugging",
-      "Charles Proxy"
+        "Android Application Testing",
+        "iOS Application Testing",
+        "Functional & UI Testing",
+        "Compatibility & Usability",
+        "Installation & Upgrade",
+        "Interruption & Network Testing",
+        "ADB & Logcat Debugging",
+        "Xcode Simulator",
+        "Defect Management",
+        "Appium Fundamentals",
+        "Mobile API Testing",
+        "Performance & Security Concepts"
     ],
-    "duration": "8 Months",
-    "rating": 4.93,
-    "reviewsCount": 1100,
-    "studentsEnrolled": "3,300+",
-    "avgSalary": "\u20b96.0 - \u20b914 LPA",
-    "batchType": "Next Cohort: 07th Sep - 13th Sep 2026",
-    "level": "Beginner Friendly",
-    "emi": "\u20b93,499/mo",
-    "featured": false,
+    "duration": "3-4 Months",
+    "rating": 4.92,
+    "reviewsCount": 1420,
+    "studentsEnrolled": "4,800+",
+    "avgSalary": "₹4.5 - ₹12 LPA",
+    "batchType": "Next Cohort: Online & Classroom Batches",
+    "level": "Beginner to Advanced",
+    "emi": "₹3,499/mo",
+    "featured": true,
     "jobGuarantee": true,
+    "whatIsPegaDetails": {
+        "heading": "What Is Mobile Application Testing?",
+        "description": "Mobile Application Testing is the process of evaluating mobile applications to verify their functionality, usability, compatibility, and reliability across supported devices and operating systems. It helps identify defects that may affect application performance, user experience, navigation, or expected functionality.",
+        "keyComponents": [
+            {
+                "title": "Target Mobile Devices",
+                "desc": "Android smartphones & tablets, iPhones, and iPads."
+            },
+            {
+                "title": "OS & Resolution Matrix",
+                "desc": "Different operating system versions, screen sizes, and display resolutions."
+            },
+            {
+                "title": "Device Environment",
+                "desc": "Physical real devices, Android Emulators, and iOS Simulators."
+            },
+            {
+                "title": "Connectivity Conditions",
+                "desc": "Testing under Wi-Fi, 4G/5G, network switching, weak network, and offline modes."
+            },
+            {
+                "title": "Core Testing Types",
+                "desc": "Functional testing, UI testing, compatibility testing, installation & upgrade testing, and interruption testing."
+            },
+            {
+                "title": "Automation & Regression",
+                "desc": "Regression testing and Mobile Automation Testing using Appium fundamentals."
+            }
+        ]
+    },
+    "whyLearnPega": {
+        "heading": "Why Learn Mobile Application Testing?",
+        "description": "Mobile applications are widely used across industries such as banking, e-commerce, healthcare, education, transportation, and entertainment. Testing these applications requires an understanding of different devices, operating systems, screen sizes, connectivity conditions, and user interactions. By learning mobile application testing with TECHMASTER, you can develop practical knowledge of mobile quality assurance.",
+        "keyAreas": [
+            {
+                "title": "Android Application Testing",
+                "desc": "Master testing approaches for Android apps, ADB debugging, Logcat, permissions, and background behavior."
+            },
+            {
+                "title": "iOS Application Testing",
+                "desc": "Learn iOS testing considerations, Xcode simulator, permissions, gestures, and updates."
+            },
+            {
+                "title": "Functional & Regression Testing",
+                "desc": "Validate workflows, form inputs, transaction flows, and ensure application stability."
+            },
+            {
+                "title": "UI & Usability Testing",
+                "desc": "Evaluate screen layouts, navigation, orientation, touch targets, and user experience."
+            },
+            {
+                "title": "Compatibility & Interruption Testing",
+                "desc": "Test across device matrix, screen sizes, OS versions, incoming calls, SMS, and notification interruptions."
+            },
+            {
+                "title": "Network & Defect Management",
+                "desc": "Validate Wi-Fi to mobile data switching, offline mode, defect lifecycle, bug logging, and evidence collection."
+            },
+            {
+                "title": "Appium Automation Fundamentals",
+                "desc": "Understand mobile automation architecture, locators, element interactions, and test execution."
+            }
+        ]
+    },
+    "courseHighlights": [
+        {
+            "title": "Practical Mobile Testing Training",
+            "desc": "Learn mobile testing concepts through demonstrations, hands-on exercises, and application-based testing scenarios."
+        },
+        {
+            "title": "Android & iOS Application Testing",
+            "desc": "Understand testing approaches for Android and iOS applications, including device compatibility and OS versions."
+        },
+        {
+            "title": "Functional Testing",
+            "desc": "Learn how to validate mobile application features, workflows, inputs, outputs, and expected results."
+        },
+        {
+            "title": "UI & Usability Testing",
+            "desc": "Understand how to evaluate application layouts, navigation, screen orientation, touch targets, and usability."
+        },
+        {
+            "title": "Compatibility Testing",
+            "desc": "Learn how to test mobile applications across different devices, screen sizes, resolutions, and OS versions."
+        },
+        {
+            "title": "Mobile Automation Testing",
+            "desc": "Understand mobile automation fundamentals and how automated testing supports repeatable QA activities."
+        },
+        {
+            "title": "Appium Fundamentals",
+            "desc": "Explore Appium architecture, mobile automation workflows, element identification, and test execution concepts."
+        },
+        {
+            "title": "Defect Management",
+            "desc": "Learn how to identify, document, report, track, and retest defects found during mobile application testing."
+        },
+        {
+            "title": "Real-World Project Training",
+            "desc": "Practice mobile testing scenarios based on common business applications and user workflows."
+        },
+        {
+            "title": "Interview Preparation",
+            "desc": "Prepare for mobile application testing, manual testing, QA, and mobile automation testing interviews."
+        }
+    ],
     "syllabus": [
-      {
-        "module": "Module 1",
-        "title": "Mobile Application Testing Course - Fundamentals & Environment Setup"
-      },
-      {
-        "module": "Module 2",
-        "title": "Mobile Application Testing Course - Core Concepts & Architecture Breakdown"
-      },
-      {
-        "module": "Module 3",
-        "title": "Mobile Application Testing Course - Hands-On Lab Work & Real-Time Implementation"
-      },
-      {
-        "module": "Module 4",
-        "title": "Mobile Application Testing Course - Advanced Workflows, Security & Optimization"
-      },
-      {
-        "module": "Module 5",
-        "title": "Mobile Application Testing Course - Live Enterprise Capstone Project & Certification Prep"
-      }
+        {
+            "module": "Module 1",
+            "title": "Introduction to Mobile Application Testing",
+            "topics": [
+                "Introduction to software testing",
+                "What is mobile application testing?",
+                "Importance and objectives of mobile testing",
+                "Mobile application testing lifecycle",
+                "Mobile application testing challenges",
+                "Mobile application architecture overview",
+                "Types of mobile applications",
+                "Native, web, and hybrid applications",
+                "Android vs iOS testing",
+                "Mobile testing vs web application testing",
+                "Mobile testing terminology",
+                "Introduction to mobile testing tools"
+            ]
+        },
+        {
+            "module": "Module 2",
+            "title": "Mobile Testing Environment & Setup",
+            "topics": [
+                "Introduction to the mobile testing environment",
+                "Understanding Android and iOS devices",
+                "Physical devices vs emulators and simulators",
+                "Android emulator fundamentals",
+                "iOS simulator fundamentals",
+                "Device configuration",
+                "Operating system versions",
+                "Screen sizes and resolutions",
+                "Device connectivity",
+                "Application installation and launch",
+                "Application permissions",
+                "Test environment preparation",
+                "Managing test devices",
+                "Mobile testing environment challenges"
+            ]
+        },
+        {
+            "module": "Module 3",
+            "title": "Mobile Application Testing Types",
+            "topics": [
+                "Functional testing",
+                "UI testing",
+                "Usability testing",
+                "Compatibility testing",
+                "Installation testing",
+                "Upgrade testing",
+                "Regression testing",
+                "Smoke testing",
+                "Sanity testing",
+                "Exploratory testing",
+                "Localization testing",
+                "Accessibility testing fundamentals",
+                "Interruption testing",
+                "Network testing",
+                "Performance testing concepts",
+                "Security testing fundamentals",
+                "Positive and negative testing",
+                "End-to-end mobile application testing"
+            ]
+        },
+        {
+            "module": "Module 4",
+            "title": "Android Application Testing",
+            "topics": [
+                "Introduction to Android application testing",
+                "Android application architecture overview",
+                "Android operating system versions",
+                "Android device compatibility",
+                "Application installation and uninstallation",
+                "Application launch and background behavior",
+                "Android UI validation",
+                "Screen orientation testing",
+                "Touch gestures and navigation",
+                "Android permissions testing",
+                "Notifications testing",
+                "Incoming calls and message interruptions",
+                "Network connectivity testing",
+                "Android application upgrade testing",
+                "Android regression testing",
+                "Common Android testing challenges"
+            ]
+        },
+        {
+            "module": "Module 5",
+            "title": "iOS Application Testing",
+            "topics": [
+                "Introduction to iOS application testing",
+                "iOS application architecture overview",
+                "iOS devices and operating system versions",
+                "iPhone and iPad testing considerations",
+                "Application installation and launch",
+                "UI and navigation testing",
+                "Screen orientation testing",
+                "Touch gestures and user interactions",
+                "Permissions and notifications testing",
+                "Background and foreground behavior",
+                "Network connectivity testing",
+                "Interruption testing",
+                "Application update testing",
+                "Device compatibility testing",
+                "iOS regression testing",
+                "Common iOS testing challenges"
+            ]
+        },
+        {
+            "module": "Module 6",
+            "title": "Mobile Functional Testing",
+            "topics": [
+                "Functional testing fundamentals",
+                "Understanding mobile application requirements",
+                "Requirement analysis",
+                "Identifying test scenarios",
+                "Writing mobile test cases",
+                "Test data preparation",
+                "Positive and negative test scenarios",
+                "Input field validation",
+                "Form validation",
+                "Login and authentication testing",
+                "Registration workflow testing",
+                "Search functionality testing",
+                "Navigation and menu testing",
+                "Data validation",
+                "Transaction workflow testing",
+                "Error message validation",
+                "Session management testing",
+                "End-to-end functional testing",
+                "Test execution and result documentation"
+            ]
+        },
+        {
+            "module": "Module 7",
+            "title": "Mobile UI, Usability & Compatibility Testing",
+            "topics": [
+                "Mobile UI testing fundamentals",
+                "Layout and alignment validation",
+                "Screen size and resolution testing",
+                "Screen orientation testing",
+                "Font and text visibility",
+                "Button and touch target validation",
+                "Navigation and gesture testing",
+                "Scrolling behavior",
+                "Responsive layout testing",
+                "Usability testing fundamentals",
+                "Accessibility testing concepts",
+                "Device compatibility testing",
+                "Operating system compatibility",
+                "Browser and WebView testing concepts",
+                "Different device configurations",
+                "Identifying UI inconsistencies",
+                "Documenting usability and compatibility defects"
+            ]
+        },
+        {
+            "module": "Module 8",
+            "title": "Mobile Installation, Upgrade & Interruption Testing",
+            "topics": [
+                "Application installation testing",
+                "Fresh installation testing",
+                "Application uninstallation",
+                "Application upgrade testing",
+                "Data retention after upgrades",
+                "Application launch and closure",
+                "Background and foreground transitions",
+                "Incoming call interruptions",
+                "SMS and notification interruptions",
+                "Battery and charging interruptions",
+                "Network disconnection scenarios",
+                "Wi-Fi to mobile data switching",
+                "Application recovery after interruption",
+                "Session recovery testing",
+                "Data consistency validation",
+                "Crash and restart behavior"
+            ]
+        },
+        {
+            "module": "Module 9",
+            "title": "Mobile Network & Connectivity Testing",
+            "topics": [
+                "Introduction to mobile network testing",
+                "Wi-Fi connectivity testing",
+                "Mobile data testing",
+                "Network switching scenarios",
+                "Offline mode testing",
+                "Airplane mode testing",
+                "Weak network conditions",
+                "Network disconnection and reconnection",
+                "Application behavior during connectivity loss",
+                "Request timeout validation",
+                "Data synchronization testing",
+                "Network-dependent functionality",
+                "Error handling during network failures",
+                "Recovery after connectivity restoration",
+                "Network-related defect reporting"
+            ]
+        },
+        {
+            "module": "Module 10",
+            "title": "Mobile Defect Management & Test Documentation",
+            "topics": [
+                "Introduction to defect management",
+                "Identifying mobile application defects",
+                "Defect lifecycle",
+                "Defect severity and priority",
+                "Writing effective bug reports",
+                "Steps to reproduce defects",
+                "Expected vs actual results",
+                "Capturing screenshots and recordings",
+                "Device and OS information in defect reports",
+                "Logs and supporting evidence",
+                "Defect tracking",
+                "Retesting and regression testing",
+                "Test execution reports",
+                "Test summary reports",
+                "Test case documentation",
+                "Test scenario documentation",
+                "Mobile testing deliverables",
+                "Communicating defects with development teams"
+            ]
+        },
+        {
+            "module": "Module 11",
+            "title": "Mobile Testing Tools & Debugging Fundamentals",
+            "topics": [
+                "Introduction to mobile testing tools",
+                "Overview of Android testing tools",
+                "Android Debug Bridge (ADB) fundamentals",
+                "Device connection and identification",
+                "Installing and launching applications",
+                "Understanding application logs",
+                "Logcat fundamentals",
+                "Introduction to Xcode and iOS Simulator",
+                "Device and simulator testing considerations",
+                "Capturing screenshots and recordings",
+                "Basic mobile application debugging concepts",
+                "Understanding crash information",
+                "Identifying common application issues",
+                "Test execution and evidence collection"
+            ]
+        },
+        {
+            "module": "Module 12",
+            "title": "Mobile Automation Testing Fundamentals",
+            "topics": [
+                "Introduction to mobile automation testing",
+                "Manual testing vs automation testing",
+                "Benefits and limitations of mobile automation",
+                "Identifying automation test candidates",
+                "Mobile automation testing lifecycle",
+                "Introduction to mobile automation tools",
+                "Mobile automation architecture",
+                "Understanding automation test scripts",
+                "Locators and element identification",
+                "UI element interactions",
+                "Handling mobile gestures",
+                "Synchronization concepts",
+                "Test data management",
+                "Automation execution",
+                "Automation reporting",
+                "Debugging automation failures",
+                "Mobile automation maintenance"
+            ]
+        },
+        {
+            "module": "Module 13",
+            "title": "Appium Mobile Automation Testing",
+            "topics": [
+                "Introduction to Appium",
+                "Appium architecture",
+                "Appium components and terminology",
+                "Appium setup concepts",
+                "Client-server architecture",
+                "Appium automation workflow",
+                "Desired capabilities and session configuration concepts",
+                "Understanding mobile application elements",
+                "Locators and element identification",
+                "Finding UI elements",
+                "Performing click and input actions",
+                "Handling mobile gestures",
+                "Working with Android applications",
+                "iOS automation concepts",
+                "Synchronization and wait strategies",
+                "Test script execution",
+                "Automation test validation",
+                "Debugging automation failures",
+                "Appium test reporting concepts",
+                "Maintaining mobile automation scripts",
+                "Appium limitations and considerations"
+            ]
+        },
+        {
+            "module": "Module 14",
+            "title": "Mobile API Testing Fundamentals",
+            "topics": [
+                "Introduction to API testing",
+                "Role of APIs in mobile applications",
+                "Client-server communication fundamentals",
+                "Understanding HTTP requests and responses",
+                "GET, POST, PUT, PATCH, and DELETE methods",
+                "HTTP status codes",
+                "Request headers and parameters",
+                "JSON response validation",
+                "Authentication concepts",
+                "Positive and negative API scenarios",
+                "API testing for mobile application workflows",
+                "Validating data exchanged between applications and servers",
+                "Error response validation",
+                "API and mobile UI testing relationship",
+                "Introduction to API testing tools"
+            ]
+        },
+        {
+            "module": "Module 15",
+            "title": "Mobile Performance & Security Testing Fundamentals",
+            "topics": [
+                "Introduction to mobile performance testing",
+                "Mobile application response time",
+                "Application launch time",
+                "Resource utilization concepts",
+                "CPU and memory usage fundamentals",
+                "Battery consumption considerations",
+                "Network performance considerations",
+                "Performance testing scenarios",
+                "Understanding performance bottlenecks",
+                "Introduction to mobile security testing",
+                "Authentication and authorization testing concepts",
+                "Session handling",
+                "Permission validation",
+                "Sensitive data handling fundamentals",
+                "Secure communication concepts",
+                "Input validation",
+                "Security-related defect identification",
+                "Mobile performance and security testing limitations"
+            ]
+        },
+        {
+            "module": "Module 16",
+            "title": "Real-Time Mobile Application Testing Project",
+            "topics": [
+                "Application understanding & requirement analysis",
+                "Preparing a test plan & identifying functional requirements",
+                "Identifying test scenarios & writing mobile test cases",
+                "Preparing test data & setting up test environment",
+                "Android & iOS testing execution",
+                "Functional, UI, usability & compatibility testing",
+                "Installation, upgrade, interruption & network testing",
+                "Defect identification, logging & reporting",
+                "Retesting & regression testing",
+                "Mobile automation testing concepts & Appium exercises",
+                "Test result analysis & project documentation",
+                "Project explanation & interview presentation"
+            ]
+        }
+    ],
+    "handsOnTraining": [
+        "Understanding mobile application requirements",
+        "Preparing mobile test scenarios",
+        "Creating and executing test cases",
+        "Testing Android applications",
+        "Understanding iOS testing workflows",
+        "Performing functional testing",
+        "Validating mobile application UI",
+        "Testing different devices and screen sizes",
+        "Performing installation and upgrade testing",
+        "Testing interruptions and recovery",
+        "Validating network-dependent functionality",
+        "Identifying and reporting defects",
+        "Capturing screenshots and test evidence",
+        "Performing regression testing",
+        "Understanding mobile automation testing",
+        "Practicing Appium fundamentals",
+        "Executing test scenarios",
+        "Analyzing test results",
+        "Preparing project documentation"
+    ],
+    "projectScenarios": [
+        {
+            "title": "Login & Authentication",
+            "desc": "Valid/invalid login, empty credentials, password validation, forgot password, session timeout, logout, and network interruption behavior."
+        },
+        {
+            "title": "E-Commerce Mobile Application",
+            "desc": "Registration, product search & filtering, selection, cart management, checkout, address & payment validation, order confirmation, and order history."
+        },
+        {
+            "title": "Banking & Financial Application",
+            "desc": "User authentication, balance display, transaction history, fund transfer, beneficiary management, input validation, session timeout, and error handling."
+        },
+        {
+            "title": "Food Delivery Application",
+            "desc": "Location permissions, restaurant search, menu browsing, cart management, address selection, order placement, payment, live order tracking, push notifications, and cancellation."
+        },
+        {
+            "title": "Business & Enterprise Application",
+            "desc": "Employee profiles, data entry, search/filtering, record updates, workflow validation, data sync, offline functionality, notification testing, and role-based access."
+        }
+    ],
+    "learningRoadmap": [
+        {
+            "step": "Step 1",
+            "title": "Learn Software Testing Fundamentals",
+            "desc": "Understand testing principles, test cases, test scenarios, defect management, and test execution."
+        },
+        {
+            "step": "Step 2",
+            "title": "Understand Mobile Applications",
+            "desc": "Learn about native, web, and hybrid applications and understand Android vs iOS environments."
+        },
+        {
+            "step": "Step 3",
+            "title": "Learn Mobile Testing Fundamentals",
+            "desc": "Understand mobile testing types, challenges, device configurations, and mobile testing workflows."
+        },
+        {
+            "step": "Step 4",
+            "title": "Develop Manual Mobile Testing Skills",
+            "desc": "Practice functional testing, UI testing, compatibility testing, installation testing, and interruption testing."
+        },
+        {
+            "step": "Step 5",
+            "title": "Learn Mobile Test Documentation",
+            "desc": "Develop skills in test case creation, defect reporting, test execution, retesting, and regression testing."
+        },
+        {
+            "step": "Step 6",
+            "title": "Explore Mobile Testing Tools",
+            "desc": "Understand mobile testing environments, emulators, simulators, ADB, Logcat, and debugging tools."
+        },
+        {
+            "step": "Step 7",
+            "title": "Learn Mobile Automation Fundamentals",
+            "desc": "Understand automation testing concepts, candidates, element locators, synchronization, and execution."
+        },
+        {
+            "step": "Step 8",
+            "title": "Develop Appium Skills",
+            "desc": "Learn Appium architecture, automation workflows, locators, mobile interactions, and script execution."
+        },
+        {
+            "step": "Step 9",
+            "title": "Work on Practical Projects",
+            "desc": "Apply mobile testing concepts to real-world application workflows and document testing activities."
+        },
+        {
+            "step": "Step 10",
+            "title": "Prepare for Mobile Testing Interviews",
+            "desc": "Practice mobile testing questions, scenario-based discussions, defect analysis, and project explanations."
+        }
+    ],
+    "targetAudience": [
+        {
+            "title": "Freshers",
+            "desc": "Beginners entering software testing with a structured path into mobile QA."
+        },
+        {
+            "title": "Manual Testers",
+            "desc": "Testers expanding their QA knowledge into Android and iOS mobile app environments."
+        },
+        {
+            "title": "Software Testers & QA Engineers",
+            "desc": "QA professionals strengthening mobile functional, UI, compatibility, and automation skills."
+        },
+        {
+            "title": "Automation Testers & Analysts",
+            "desc": "Testers transitioning from web automation into Appium mobile automation testing."
+        },
+        {
+            "title": "IT Professionals & Career Switchers",
+            "desc": "Professionals moving into high-demand mobile application quality assurance roles."
+        }
+    ],
+    "prerequisites": [
+        "Basic knowledge of software testing",
+        "Manual testing concepts",
+        "Test cases and test scenarios",
+        "Defect management",
+        "Basic understanding of web or mobile applications",
+        "Basic computer operations"
+    ],
+    "skillsDeveloped": [
+        "Mobile Application Testing",
+        "Android Application Testing",
+        "iOS Application Testing",
+        "Manual Testing",
+        "Functional Testing",
+        "UI Testing",
+        "Usability Testing",
+        "Compatibility Testing",
+        "Installation Testing",
+        "Upgrade Testing",
+        "Interruption Testing",
+        "Network Testing",
+        "Regression Testing",
+        "Test Case Design",
+        "Test Scenario Preparation",
+        "Defect Management",
+        "Test Documentation",
+        "Mobile Testing Tools",
+        "Android Debugging Fundamentals (ADB & Logcat)",
+        "Mobile Automation Testing",
+        "Appium Fundamentals",
+        "Mobile API Testing Fundamentals",
+        "Performance Testing Concepts",
+        "Security Testing Fundamentals",
+        "Test Execution and Reporting"
+    ],
+    "careerOpportunities": [
+        {
+            "role": "Mobile Application Tester",
+            "desc": "Perform manual and functional quality testing across Android and iOS apps."
+        },
+        {
+            "role": "Mobile QA Engineer",
+            "desc": "Ensure application quality, compatibility, performance, and defect management."
+        },
+        {
+            "role": "Software Test Engineer",
+            "desc": "Execute test cases, analyze requirements, and validate cross-platform applications."
+        },
+        {
+            "role": "Manual Test Engineer",
+            "desc": "Design test scenarios, execute test suites, and manage defect lifecycles."
+        },
+        {
+            "role": "Android Application Tester",
+            "desc": "Specialize in Android OS, ADB commands, Logcat debugging, and device compatibility."
+        },
+        {
+            "role": "iOS Application Tester",
+            "desc": "Focus on iOS devices, Xcode simulators, UI guidelines, and Apple ecosystem testing."
+        },
+        {
+            "role": "Mobile Automation Tester / Appium Engineer",
+            "desc": "Automate mobile app regression suites using Appium framework."
+        }
+    ],
+    "interviewPrep": [
+        "Mobile application testing fundamentals & terminology",
+        "Native vs Mobile Web vs Hybrid application architectures",
+        "Android vs iOS testing differences & platform considerations",
+        "Emulators vs Simulators vs Physical Device testing",
+        "Functional, UI, compatibility, installation & upgrade testing scenarios",
+        "Interruption testing (calls, SMS, battery, notifications)",
+        "Network testing (Wi-Fi, 4G/5G, offline mode, weak connectivity)",
+        "Android Debug Bridge (ADB) commands & Logcat log analysis",
+        "Appium architecture, desired capabilities, locators & element interactions",
+        "Defect lifecycle, severity vs priority, writing bug reports with evidence",
+        "Real-world mobile project walk-throughs & scenario discussions"
+    ],
+    "pdfFaqs": [
+        {
+            "q": "What is Mobile Application Testing Training?",
+            "a": "Mobile Application Testing Training is a structured program focused on testing mobile applications across different devices and operating systems. It covers functional testing, UI testing, compatibility testing, defect management, mobile testing tools, automation fundamentals, and practical projects."
+        },
+        {
+            "q": "What is mobile application testing?",
+            "a": "Mobile application testing is the process of evaluating mobile applications to verify their functionality, usability, compatibility, and reliability across supported devices and operating systems."
+        },
+        {
+            "q": "What are the different types of mobile applications?",
+            "a": "The three commonly discussed categories are Native applications, Mobile web applications, and Hybrid applications. Each category has different testing considerations depending on its architecture and supported platforms."
+        },
+        {
+            "q": "What is the difference between Android and iOS testing?",
+            "a": "Android and iOS testing involve validating application functionality and user experience within their respective operating systems. Testing considerations may include device availability, OS versions, application permissions, navigation behavior, and platform-specific interactions."
+        },
+        {
+            "q": "Do I need programming knowledge to learn mobile application testing?",
+            "a": "Advanced programming knowledge is not mandatory to begin learning manual mobile application testing. Programming and scripting knowledge can be beneficial when progressing into mobile automation testing."
+        },
+        {
+            "q": "Is this a Mobile Application Testing Course Online?",
+            "a": "Yes. TECHMASTER offers a structured mobile application testing learning path that can be delivered online, covering mobile testing fundamentals, Android and iOS testing concepts, functional testing, compatibility testing, testing tools, automation fundamentals, and practical projects."
+        },
+        {
+            "q": "Can freshers learn mobile application testing?",
+            "a": "Yes. Freshers can begin with software testing fundamentals before progressing into mobile application testing, test case preparation, defect reporting, and practical testing exercises."
+        },
+        {
+            "q": "Can manual testers learn mobile application testing?",
+            "a": "Yes. Manual testers can build on their existing testing knowledge by learning mobile-specific testing scenarios, device compatibility, interruptions, connectivity testing, and mobile application workflows."
+        },
+        {
+            "q": "What is Appium in mobile testing?",
+            "a": "Appium is a mobile application automation tool used to automate supported mobile application interactions. Learning Appium fundamentals can help testers understand mobile automation workflows and automated test execution."
+        },
+        {
+            "q": "Will I learn Android and iOS testing?",
+            "a": "The curriculum covers Android application testing and iOS testing concepts, including functional testing, UI validation, compatibility considerations, and platform-specific testing workflows."
+        },
+        {
+            "q": "Will I work on a mobile testing project?",
+            "a": "The course curriculum includes practical mobile application testing project scenarios covering requirement analysis, test case preparation, functional testing, compatibility testing, defect reporting, regression testing, and project documentation."
+        },
+        {
+            "q": "What skills will I learn?",
+            "a": "You can develop skills in mobile application testing, Android testing, iOS testing, functional testing, UI testing, compatibility testing, test case design, defect management, mobile testing tools, automation fundamentals, and Appium concepts."
+        },
+        {
+            "q": "What career opportunities are available after mobile testing training?",
+            "a": "Relevant job roles may include Mobile Application Tester, Mobile QA Engineer, Software Test Engineer, QA Analyst, Mobile Automation Tester, and Appium Automation Tester. Actual opportunities depend on experience, technical skills, employer requirements, and available openings."
+        }
     ]
-  },
+},
   {
     "id": "selenium-certification",
     "category": "testing",
     "title": "Best Selenium Certification Course",
-    "subtitle": "Selenium WebDriver | Java | Grid | TestNG | Page Object Model",
+    "subtitle": "Selenium Certification Course – Online & Classroom Training",
     "iconName": "CheckSquare",
     "iconBg": "bg-emerald-50 text-emerald-600",
-    "description": "Industry-leading Selenium WebDriver automation testing with Java, Page Object Model, Data-Driven & Keyword-Driven Frameworks.",
+    "description": "Upgrade your software testing skills with the TECHMASTER Selenium Certification Course, designed for freshers, manual testers, QA engineers, automation testers, and working IT professionals who want to develop practical automation testing skills. Our Selenium Automation Testing Training covers Selenium WebDriver, Java programming fundamentals, automation framework development, TestNG, Maven, XPath, web element handling, test execution, debugging, and real-time automation testing projects. Whether you are beginning your automation testing journey or looking to enhance your existing QA skills, TECHMASTER provides a structured learning path covering Selenium fundamentals, practical exercises, automation frameworks, and project-based learning.",
     "techBadges": [
-      "Selenium WebDriver",
-      "TestNG",
-      "Page Object Model"
+        "Selenium WebDriver",
+        "Java Programming",
+        "TestNG Framework",
+        "Maven Integration",
+        "XPath & CSS Selectors",
+        "Page Object Model (POM)",
+        "Data-Driven Framework",
+        "Hybrid Automation Framework",
+        "Extent Reports & Logging",
+        "Git & GitHub",
+        "Jenkins CI/CD",
+        "Selenium Grid"
     ],
-    "duration": "8 Months",
-    "rating": 4.98,
-    "reviewsCount": 2890,
-    "studentsEnrolled": "8,500+",
-    "avgSalary": "\u20b96.5 - \u20b917 LPA",
-    "batchType": "Next Cohort: 07th Sep - 13th Sep 2026",
+    "duration": "3-4 Months",
+    "rating": 4.96,
+    "reviewsCount": 2450,
+    "studentsEnrolled": "7,200+",
+    "avgSalary": "₹5.5 - ₹15 LPA",
+    "batchType": "Next Cohort: Online & Classroom Batches",
     "level": "Beginner to Advanced",
-    "emi": "\u20b94,199/mo",
+    "emi": "₹3,999/mo",
     "featured": true,
     "jobGuarantee": true,
+    "whatIsPegaDetails": {
+        "heading": "What Is Selenium Automation Testing?",
+        "description": "Selenium is an open-source suite of tools used to automate web browsers. Selenium WebDriver enables testers and developers to interact with web applications programmatically and automate browser-based testing activities. Selenium automation testing helps validate web application functionality by executing automated test scripts against supported browsers. It is commonly used for automating repetitive test scenarios, supporting regression testing, and validating web application workflows.",
+        "keyComponents": [
+            {
+                "title": "Browser Automation",
+                "desc": "Programmatic interaction with Chrome, Firefox, Edge, and Safari browsers."
+            },
+            {
+                "title": "Web Element Identification",
+                "desc": "Locating web elements using ID, Name, Class Name, XPath, and CSS Selectors."
+            },
+            {
+                "title": "Form & Workflow Testing",
+                "desc": "Automating form submissions, login/authentication, dropdowns, checkboxes, and navigation."
+            },
+            {
+                "title": "Complex Control Interactions",
+                "desc": "Handling JavaScript alerts, iFrames, popups, and multi-window browser handles."
+            },
+            {
+                "title": "Dynamic Elements & Synchronization",
+                "desc": "Handling AJAX dynamic content using Implicit, Explicit, and Fluent Waits."
+            },
+            {
+                "title": "Framework & Regression Testing",
+                "desc": "TestNG test execution, Page Object Model (POM), Maven build integration, and automated regression suites."
+            }
+        ]
+    },
+    "whyLearnPega": {
+        "heading": "Why Learn Selenium Automation Testing?",
+        "description": "Selenium is widely used in web application testing, and automation skills can complement manual testing and broader quality assurance knowledge. Learning Selenium can help you understand how to automate repetitive browser-based test cases and build maintainable automated testing solutions.",
+        "keyAreas": [
+            {
+                "title": "Selenium WebDriver",
+                "desc": "Master WebDriver commands, browser navigation, window management, and session control."
+            },
+            {
+                "title": "Java for Test Automation",
+                "desc": "Learn core Java programming, OOPs, Collections framework, and Exception handling needed for automation scripts."
+            },
+            {
+                "title": "Locators & Dynamic Elements",
+                "desc": "Write advanced XPath axes, CSS selectors, and handle dynamic DOM changes without flaky tests."
+            },
+            {
+                "title": "Synchronization & Waits",
+                "desc": "Master implicit, explicit, and fluent waits to handle dynamic web elements and timing challenges."
+            },
+            {
+                "title": "TestNG & Maven Integration",
+                "desc": "Structure test suites with TestNG annotations, assertions, parallel execution, and dependency management via Maven."
+            },
+            {
+                "title": "Page Object Model (POM)",
+                "desc": "Design modular, maintainable automation frameworks separating test logic from page element locators."
+            },
+            {
+                "title": "Data-Driven Testing & Reporting",
+                "desc": "Separate test data using DataProviders/Excel files and generate Extent Reports with screenshots for failed tests."
+            }
+        ]
+    },
+    "courseHighlights": [
+        {
+            "title": "Practical Selenium WebDriver Training",
+            "desc": "Learn Selenium WebDriver concepts through demonstrations, hands-on exercises, and browser automation scenarios."
+        },
+        {
+            "title": "Java for Selenium Automation",
+            "desc": "Understand the Java programming fundamentals needed to create, execute, and maintain Selenium automation scripts."
+        },
+        {
+            "title": "Web Element Identification",
+            "desc": "Learn to locate web elements using ID, name, class name, tag name, link text, partial link text, XPath, and CSS selectors."
+        },
+        {
+            "title": "Advanced WebDriver Interactions",
+            "desc": "Practice handling dropdowns, alerts, frames, windows, browser navigation, web tables, and dynamic elements."
+        },
+        {
+            "title": "TestNG Framework",
+            "desc": "Understand how to organize, execute, and manage automated test cases using TestNG."
+        },
+        {
+            "title": "Automation Framework Development",
+            "desc": "Learn framework concepts such as reusable methods, page objects, configuration management, test data handling, and reporting."
+        },
+        {
+            "title": "Maven Integration",
+            "desc": "Understand project dependencies, build configuration, and test execution using Maven."
+        },
+        {
+            "title": "Data-Driven Testing",
+            "desc": "Learn how to separate test data from automation scripts and understand data-driven testing approaches."
+        },
+        {
+            "title": "Real-World Project Training",
+            "desc": "Apply Selenium concepts to practical web application testing workflows and automation project scenarios."
+        },
+        {
+            "title": "Interview Preparation",
+            "desc": "Prepare for Selenium WebDriver, Java, TestNG, automation framework, and QA interview discussions."
+        }
+    ],
     "syllabus": [
-      {
-        "module": "Module 1",
-        "title": "Best Selenium Certification Course - Fundamentals & Environment Setup"
-      },
-      {
-        "module": "Module 2",
-        "title": "Best Selenium Certification Course - Core Concepts & Architecture Breakdown"
-      },
-      {
-        "module": "Module 3",
-        "title": "Best Selenium Certification Course - Hands-On Lab Work & Real-Time Implementation"
-      },
-      {
-        "module": "Module 4",
-        "title": "Best Selenium Certification Course - Advanced Workflows, Security & Optimization"
-      },
-      {
-        "module": "Module 5",
-        "title": "Best Selenium Certification Course - Live Enterprise Capstone Project & Certification Prep"
-      }
+        {
+            "module": "Module 1",
+            "title": "Introduction to Software Testing & Automation",
+            "topics": [
+                "Introduction to software testing",
+                "Objectives of software testing",
+                "Software testing lifecycle",
+                "Software development lifecycle",
+                "Manual testing fundamentals",
+                "Automation testing fundamentals",
+                "Manual testing vs automation testing",
+                "Benefits and limitations of automation testing",
+                "Identifying suitable automation test cases",
+                "Automation testing challenges",
+                "Introduction to Selenium",
+                "Selenium history and evolution",
+                "Selenium components and tools",
+                "Selenium WebDriver overview",
+                "Selenium use cases",
+                "Selenium limitations and considerations"
+            ]
+        },
+        {
+            "module": "Module 2",
+            "title": "Java Programming Fundamentals for Selenium",
+            "topics": [
+                "Introduction to Java",
+                "Java development environment setup",
+                "Java syntax and structure",
+                "Variables and data types",
+                "Operators and expressions",
+                "Conditional statements",
+                "Loops and iteration",
+                "Arrays",
+                "Strings and string manipulation",
+                "Methods and method parameters",
+                "Classes and objects",
+                "Constructors",
+                "Inheritance",
+                "Polymorphism",
+                "Encapsulation",
+                "Abstraction",
+                "Interfaces",
+                "Exception handling",
+                "Collections framework fundamentals",
+                "Lists, sets, and maps",
+                "Static and non-static members",
+                "Packages and access modifiers",
+                "Java concepts used in Selenium automation"
+            ]
+        },
+        {
+            "module": "Module 3",
+            "title": "Selenium WebDriver Fundamentals",
+            "topics": [
+                "Introduction to Selenium WebDriver",
+                "Selenium WebDriver architecture",
+                "Selenium components",
+                "WebDriver communication concepts",
+                "Browser drivers and browser configuration",
+                "Setting up Selenium WebDriver",
+                "Creating a Selenium automation project",
+                "Launching supported browsers",
+                "Opening web applications",
+                "Browser navigation commands",
+                "Browser window management",
+                "Maximizing and minimizing browser windows",
+                "Getting page titles and URLs",
+                "Refreshing browser pages",
+                "Browser session management",
+                "Closing and quitting browsers",
+                "Writing and executing basic Selenium scripts"
+            ]
+        },
+        {
+            "module": "Module 4",
+            "title": "Locators & Web Element Identification",
+            "topics": [
+                "Introduction to web elements",
+                "Understanding the DOM",
+                "Locating elements using ID",
+                "Locating elements using name",
+                "Locating elements using class name",
+                "Locating elements using tag name",
+                "Locating elements using link text",
+                "Locating elements using partial link text",
+                "Understanding XPath",
+                "Absolute XPath",
+                "Relative XPath",
+                "XPath functions",
+                "XPath axes",
+                "Dynamic XPath creation",
+                "CSS selectors",
+                "CSS selector syntax",
+                "Identifying elements using attributes",
+                "Handling multiple matching elements",
+                "Finding elements using findElement",
+                "Finding multiple elements using findElements",
+                "Common locator errors",
+                "Locator debugging techniques",
+                "Choosing suitable locator strategies"
+            ]
+        },
+        {
+            "module": "Module 5",
+            "title": "Web Element Interactions",
+            "topics": [
+                "Understanding WebElement",
+                "Clicking buttons and links",
+                "Entering text into input fields",
+                "Clearing input fields",
+                "Retrieving text from elements",
+                "Retrieving element attributes",
+                "Checking element visibility",
+                "Checking whether elements are enabled",
+                "Checking checkbox and radio button selection",
+                "Selecting and deselecting checkboxes",
+                "Handling buttons and input controls",
+                "Working with text areas",
+                "Validating web element properties",
+                "Handling common interaction exceptions",
+                "Implementing reusable interaction methods"
+            ]
+        },
+        {
+            "module": "Module 6",
+            "title": "Handling Dropdowns, Alerts, Frames & Windows",
+            "topics": [
+                "Understanding dropdown elements",
+                "Handling standard HTML dropdowns",
+                "Using the Selenium Select class",
+                "Selecting options by visible text",
+                "Selecting options by value",
+                "Selecting options by index",
+                "Handling multi-select dropdowns",
+                "Handling JavaScript alerts",
+                "Accepting and dismissing alerts",
+                "Retrieving alert text",
+                "Handling confirmation alerts",
+                "Handling prompt alerts",
+                "Understanding frames and iframes",
+                "Switching between frames",
+                "Switching back to the parent frame",
+                "Switching to the default content",
+                "Handling multiple browser windows",
+                "Working with window handles",
+                "Switching between tabs and windows",
+                "Handling browser pop-ups where supported",
+                "Common challenges in window and frame handling"
+            ]
+        },
+        {
+            "module": "Module 7",
+            "title": "Synchronization & Wait Strategies",
+            "topics": [
+                "Introduction to synchronization in Selenium",
+                "Why synchronization is required",
+                "Understanding page loading behavior",
+                "Implicit waits",
+                "Explicit waits",
+                "Fluent waits",
+                "Expected Conditions",
+                "Waiting for element visibility",
+                "Waiting for element clickability",
+                "Waiting for elements to become available",
+                "Handling dynamic web elements",
+                "Managing AJAX-related timing challenges",
+                "Avoiding unnecessary hard-coded delays",
+                "Understanding stale element reference exceptions",
+                "Handling timeout exceptions",
+                "Synchronization best practices"
+            ]
+        },
+        {
+            "module": "Module 8",
+            "title": "Advanced Selenium WebDriver Concepts",
+            "topics": [
+                "Handling dynamic web elements",
+                "Working with dynamic attributes",
+                "Handling frequently changing DOM structures",
+                "Web table automation",
+                "Extracting data from web tables",
+                "Handling pagination",
+                "Mouse actions",
+                "Keyboard actions",
+                "Using the Actions class",
+                "Double-click operations",
+                "Right-click operations",
+                "Mouse hover",
+                "Drag-and-drop interactions",
+                "Keyboard event handling",
+                "Scrolling web pages",
+                "JavaScript execution fundamentals",
+                "Taking screenshots",
+                "Uploading files",
+                "Download handling considerations",
+                "Handling browser navigation scenarios",
+                "Working with cookies",
+                "Handling common WebDriver exceptions",
+                "Debugging failed interactions"
+            ]
+        },
+        {
+            "module": "Module 9",
+            "title": "TestNG Framework",
+            "topics": [
+                "Introduction to TestNG",
+                "TestNG architecture and features",
+                "Installing and configuring TestNG",
+                "Creating TestNG test classes",
+                "Understanding TestNG annotations",
+                "@Test annotation",
+                "@BeforeMethod and @AfterMethod",
+                "@BeforeClass and @AfterClass",
+                "@BeforeSuite and @AfterSuite",
+                "Test execution sequence",
+                "Test priorities",
+                "Test dependencies",
+                "Grouping test cases",
+                "Assertions in TestNG",
+                "Hard assertions and soft assertions",
+                "Parameterization",
+                "Data providers",
+                "TestNG XML configuration",
+                "Test suite execution",
+                "Parallel execution concepts",
+                "Test execution reports",
+                "Handling test failures",
+                "Rerunning failed test cases"
+            ]
+        },
+        {
+            "module": "Module 10",
+            "title": "Maven Integration with Selenium",
+            "topics": [
+                "Introduction to Apache Maven",
+                "Maven project structure",
+                "Understanding the Project Object Model",
+                "Creating a Maven project",
+                "Understanding the pom.xml file",
+                "Adding Selenium dependencies",
+                "Adding TestNG dependencies",
+                "Managing project dependencies",
+                "Maven lifecycle fundamentals",
+                "Maven build commands",
+                "Executing Selenium tests through Maven",
+                "Integrating TestNG with Maven",
+                "Managing dependency versions",
+                "Understanding build failures",
+                "Maven project troubleshooting",
+                "Organizing automation project files"
+            ]
+        },
+        {
+            "module": "Module 11",
+            "title": "Data-Driven Testing",
+            "topics": [
+                "Introduction to data-driven testing",
+                "Benefits of separating test data from scripts",
+                "Test data management fundamentals",
+                "Parameterization in TestNG",
+                "Using TestNG DataProviders",
+                "Reading data from external sources",
+                "Excel-based test data concepts",
+                "CSV-based test data concepts",
+                "Properties files",
+                "Configuration management",
+                "Handling multiple test data sets",
+                "Positive and negative data scenarios",
+                "Reusable test data utilities",
+                "Data-driven test execution",
+                "Managing test data dependencies"
+            ]
+        },
+        {
+            "module": "Module 12",
+            "title": "Selenium Automation Framework Development",
+            "topics": [
+                "Introduction to automation frameworks",
+                "Why automation frameworks are required",
+                "Types of automation frameworks",
+                "Linear scripting framework",
+                "Modular framework",
+                "Data-driven framework",
+                "Keyword-driven framework",
+                "Hybrid framework concepts",
+                "Framework architecture",
+                "Project folder structure",
+                "Reusable methods and utilities",
+                "Browser configuration management",
+                "Test data management",
+                "Configuration file handling",
+                "Common utility classes",
+                "Base test class concepts",
+                "Test execution management",
+                "Exception handling in frameworks",
+                "Logging fundamentals",
+                "Framework maintenance considerations"
+            ]
+        },
+        {
+            "module": "Module 13",
+            "title": "Page Object Model (POM)",
+            "topics": [
+                "Introduction to Page Object Model",
+                "Importance of maintainable automation scripts",
+                "POM design principles",
+                "Creating page classes",
+                "Identifying page elements",
+                "Creating reusable page methods",
+                "Separating test logic from page logic",
+                "Page Factory fundamentals",
+                "Understanding @FindBy",
+                "Initializing page elements",
+                "Managing page objects",
+                "Implementing page navigation",
+                "Reusing page components",
+                "Integrating POM with TestNG",
+                "POM framework structure",
+                "Maintaining page objects when applications change",
+                "POM best practices"
+            ]
+        },
+        {
+            "module": "Module 14",
+            "title": "Automation Reporting & Logging",
+            "topics": [
+                "Introduction to automation reporting",
+                "Importance of test reports",
+                "Understanding TestNG reports",
+                "Capturing test execution status",
+                "Recording passed and failed test cases",
+                "Capturing screenshots for failures",
+                "Logging fundamentals",
+                "Understanding logging levels",
+                "Integrating logging into automation scripts",
+                "Reporting framework concepts",
+                "Extent Reports fundamentals, where included",
+                "Attaching screenshots to reports",
+                "Reporting test execution details",
+                "Analyzing failed test cases",
+                "Preparing test summary reports"
+            ]
+        },
+        {
+            "module": "Module 15",
+            "title": "Git, CI/CD & Continuous Testing Fundamentals",
+            "topics": [
+                "Introduction to version control",
+                "Git fundamentals",
+                "Understanding repositories",
+                "Creating and cloning repositories",
+                "Adding and committing changes",
+                "Branching fundamentals",
+                "Pushing and pulling changes",
+                "Understanding merge conflicts",
+                "Managing automation code",
+                "Introduction to continuous integration",
+                "CI/CD fundamentals",
+                "Introduction to Jenkins",
+                "Understanding build pipelines",
+                "Configuring automation execution concepts",
+                "Running Selenium tests through a CI pipeline",
+                "Scheduling automated test execution",
+                "Understanding build and test reports",
+                "Continuous testing concepts",
+                "Common CI automation challenges"
+            ]
+        },
+        {
+            "module": "Module 16",
+            "title": "Selenium Grid & Cross-Browser Testing",
+            "topics": [
+                "Introduction to cross-browser testing",
+                "Importance of browser compatibility testing",
+                "Understanding browser differences",
+                "Cross-browser testing strategies",
+                "Browser and operating system combinations",
+                "Introduction to Selenium Grid",
+                "Selenium Grid architecture",
+                "Hub and node concepts in applicable Grid versions",
+                "Remote WebDriver fundamentals",
+                "Remote browser execution",
+                "Parallel testing concepts",
+                "Distributed test execution",
+                "Browser configuration",
+                "Test execution across browser environments",
+                "Analyzing browser-specific failures",
+                "Selenium Grid use cases and limitations"
+            ]
+        },
+        {
+            "module": "Module 17",
+            "title": "Real-Time Selenium Automation Testing Project",
+            "topics": [
+                "Requirement analysis & automation test scenario identification",
+                "Preparing test cases & selecting suitable automation candidates",
+                "Creating Selenium WebDriver project & browser environment configuration",
+                "Identifying web elements & developing reusable automation methods",
+                "Automating login, registration, search, cart, and navigation workflows",
+                "Handling dropdowns, alerts, frames, windows & web tables",
+                "Implementing synchronization strategies & explicit waits",
+                "Validating expected results using TestNG assertions",
+                "Integrating TestNG, data-driven parameterization & DataProviders",
+                "Implementing Page Object Model (POM) design pattern",
+                "Executing regression test suites & capturing screenshots/logs",
+                "Generating Extent Reports, debugging failures & project documentation",
+                "Explaining project architecture & automation approach in interviews"
+            ]
+        }
+    ],
+    "handsOnTraining": [
+        "Creating Selenium WebDriver scripts",
+        "Launching and controlling browsers",
+        "Identifying web elements using XPath and CSS selectors",
+        "Automating forms and user interactions",
+        "Handling dropdowns, alerts, frames, and windows",
+        "Working with dynamic web elements",
+        "Implementing implicit and explicit waits",
+        "Handling common Selenium exceptions",
+        "Automating web application workflows",
+        "Creating and executing TestNG test cases",
+        "Managing test data",
+        "Developing reusable automation methods",
+        "Understanding Page Object Model",
+        "Integrating Selenium with Maven",
+        "Generating test execution reports",
+        "Debugging failed automation scripts",
+        "Practicing cross-browser testing concepts",
+        "Working on practical automation project scenarios"
+    ],
+    "projectScenarios": [
+        {
+            "title": "Project 1: E-Commerce Web Application Testing",
+            "desc": "Automate user registration, login, product search, filtering, selection, cart management, wishlist, checkout, address/payment validation, order summary, and order confirmation. Uses XPath/CSS locators, TestNG assertions, DataProviders, screenshots for failure, and Extent Reports."
+        },
+        {
+            "title": "Project 2: Banking Web Application Testing",
+            "desc": "Automate authentication, account details display, transaction history, beneficiary management, fund transfer workflows, form validation, session timeouts, and error message validation in a sandbox environment."
+        },
+        {
+            "title": "Project 3: Employee Management System",
+            "desc": "Automate employee login, record creation, updates, search/filtering, department selection, form validation, role-based navigation, web tables, and apply Page Object Model (POM) with TestNG test suites."
+        }
+    ],
+    "learningRoadmap": [
+        {
+            "step": "Step 1",
+            "title": "Understand Software Testing Fundamentals",
+            "desc": "Learn software testing principles, test cases, test scenarios, defect management, and the software testing lifecycle."
+        },
+        {
+            "step": "Step 2",
+            "title": "Learn Java Programming Fundamentals",
+            "desc": "Develop a foundation in Java syntax, variables, operators, conditions, loops, methods, classes, objects, and exception handling."
+        },
+        {
+            "step": "Step 3",
+            "title": "Learn Selenium WebDriver",
+            "desc": "Understand Selenium architecture, browser automation, WebDriver commands, and browser session management."
+        },
+        {
+            "step": "Step 4",
+            "title": "Master Web Element Identification",
+            "desc": "Practice XPath, CSS selectors, element attributes, and dynamic element identification."
+        },
+        {
+            "step": "Step 5",
+            "title": "Develop Automation Scripting Skills",
+            "desc": "Automate forms, navigation, dropdowns, alerts, frames, windows, and other web application interactions."
+        },
+        {
+            "step": "Step 6",
+            "title": "Learn Synchronization Techniques",
+            "desc": "Understand implicit waits, explicit waits, fluent waits, and approaches to handling dynamic web elements."
+        },
+        {
+            "step": "Step 7",
+            "title": "Work with TestNG and Maven",
+            "desc": "Learn test execution, assertions, annotations, parameterization, project dependencies, and build management."
+        },
+        {
+            "step": "Step 8",
+            "title": "Understand Automation Frameworks",
+            "desc": "Explore reusable components, data-driven testing, Page Object Model, configuration management, and reporting."
+        },
+        {
+            "step": "Step 9",
+            "title": "Practice Real-World Projects",
+            "desc": "Apply Selenium concepts to practical web application workflows and develop project documentation."
+        },
+        {
+            "step": "Step 10",
+            "title": "Explore CI/CD and Cross-Browser Testing",
+            "desc": "Understand version control (Git), continuous integration (Jenkins), Selenium Grid concepts, and cross-browser automation."
+        },
+        {
+            "step": "Step 11",
+            "title": "Prepare for Interviews",
+            "desc": "Practice Selenium interview questions, Java concepts, framework discussions, debugging scenarios, and project explanations."
+        }
+    ],
+    "targetAudience": [
+        {
+            "title": "Freshers",
+            "desc": "Graduates entering software QA with a structured path into test automation."
+        },
+        {
+            "title": "Manual Testers",
+            "desc": "Testers expanding their skills into Java, Selenium WebDriver, and automation frameworks."
+        },
+        {
+            "title": "Software Test Engineers & QA Engineers",
+            "desc": "QA professionals wanting to build maintainable POM & data-driven automation suites."
+        },
+        {
+            "title": "Automation Testers & Test Analysts",
+            "desc": "Testers enhancing their framework, Maven, TestNG, CI/CD, and Grid capabilities."
+        },
+        {
+            "title": "IT Professionals & Career Switchers",
+            "desc": "Professionals transitioning into high-demand SDET and Automation QA roles."
+        }
+    ],
+    "prerequisites": [
+        "Basic computer operations",
+        "Understanding of websites and web applications",
+        "Basic software testing concepts",
+        "Familiarity with manual testing",
+        "Basic programming knowledge (Java fundamentals included in course)"
+    ],
+    "skillsDeveloped": [
+        "Software Testing Fundamentals",
+        "Automation Testing Fundamentals",
+        "Java Programming for Selenium",
+        "Selenium WebDriver",
+        "Browser Automation",
+        "XPath & CSS Selectors",
+        "Web Element Identification",
+        "Dynamic Element Handling",
+        "Dropdown Handling",
+        "Alert Handling",
+        "Frame and Window Handling",
+        "Mouse and Keyboard Actions",
+        "Synchronization Techniques",
+        "TestNG",
+        "Maven",
+        "Data-Driven Testing",
+        "Page Object Model (POM)",
+        "Automation Framework Fundamentals",
+        "Test Execution and Reporting",
+        "Logging and Debugging",
+        "Git Fundamentals",
+        "CI/CD Fundamentals (Jenkins)",
+        "Selenium Grid Concepts",
+        "Cross-Browser Testing",
+        "Regression Testing",
+        "Automation Project Development"
+    ],
+    "careerOpportunities": [
+        {
+            "role": "Selenium Automation Tester",
+            "desc": "Build and maintain automated browser test suites using Selenium WebDriver and Java."
+        },
+        {
+            "role": "Automation Test Engineer",
+            "desc": "Design automation framework components, execute regression tests, and report defects."
+        },
+        {
+            "role": "Software Test Engineer",
+            "desc": "Execute manual and automated test cases across web applications."
+        },
+        {
+            "role": "QA Automation Engineer",
+            "desc": "Integrate test suites with TestNG, Maven, Git, and Jenkins CI/CD pipelines."
+        },
+        {
+            "role": "Web Application Tester",
+            "desc": "Perform cross-browser testing and web element interaction automation."
+        },
+        {
+            "role": "SDET – Software Development Engineer in Test",
+            "desc": "Develop robust, scalable testing tools, frameworks, and continuous delivery pipelines."
+        }
+    ],
+    "interviewPrep": [
+        "Selenium WebDriver architecture & browser drivers",
+        "Java OOPs (Inheritance, Polymorphism, Abstraction, Interfaces, Collections, Exception handling)",
+        "Locators: Absolute vs Relative XPath, XPath axes, CSS selectors, findElement vs findElements",
+        "Handling dynamic elements, Web tables, Dropdowns (Select class), Alerts, Frames & Windows",
+        "Synchronization: Implicit, Explicit, Fluent Waits, handling StaleElementReferenceException",
+        "TestNG annotations, assertions, DataProvider parameterization, testng.xml, parallel execution",
+        "Maven dependency management, pom.xml, surefire plugin & build commands",
+        "Page Object Model (POM) & @FindBy PageFactory design pattern",
+        "Automation Framework architecture: Data-Driven, Hybrid, Base Class, Reusable Utilities, Extent Reports",
+        "Git commands & Jenkins CI/CD automation pipeline execution",
+        "Selenium Grid hub-node architecture & cross-browser testing setup",
+        "Project walk-throughs & step-by-step debugging of failing test scenarios"
+    ],
+    "pdfFaqs": [
+        {
+            "q": "What is a Selenium Certification Course?",
+            "a": "A Selenium Certification Course is a training program designed to help learners develop browser automation testing skills using Selenium WebDriver and related technologies. TECHMASTER's course covers Selenium fundamentals, Java programming, test execution, automation frameworks, practical exercises, and project-based learning."
+        },
+        {
+            "q": "What is Selenium used for?",
+            "a": "Selenium is used to automate web browsers and perform browser-based testing activities. Selenium WebDriver enables automated interactions with web applications, including clicking elements, entering data, navigating pages, and validating application behavior."
+        },
+        {
+            "q": "Is Selenium suitable for beginners?",
+            "a": "Yes. Beginners can start with software testing and Java programming fundamentals before progressing into Selenium WebDriver and automation framework concepts."
+        },
+        {
+            "q": "Do I need Java knowledge to learn Selenium?",
+            "a": "Java knowledge is useful for Java-based Selenium automation. The course includes Java fundamentals to help learners understand the programming concepts required to write automation scripts."
+        },
+        {
+            "q": "Can manual testers learn Selenium?",
+            "a": "Yes. Manual testers can build on their existing testing knowledge by learning automation scripting, WebDriver commands, locators, synchronization, and framework development."
+        },
+        {
+            "q": "What is Selenium WebDriver?",
+            "a": "Selenium WebDriver is a tool that allows automated scripts to control supported web browsers and interact with web applications."
+        },
+        {
+            "q": "What is TestNG in Selenium?",
+            "a": "TestNG is a testing framework that helps organize and execute automated tests. It provides features such as annotations, assertions, grouping, parameterization, and test reporting."
+        },
+        {
+            "q": "What is Maven used for in Selenium?",
+            "a": "Maven is a build and dependency management tool. It can help manage Selenium project dependencies and support automated test execution."
+        },
+        {
+            "q": "What is Page Object Model?",
+            "a": "Page Object Model is a design pattern used to organize automation code by separating web page elements and interactions from test logic. It can improve code reuse and maintainability."
+        },
+        {
+            "q": "Will I learn automation framework development?",
+            "a": "The curriculum covers automation framework fundamentals, reusable methods, configuration management, data-driven testing, Page Object Model, test execution, and reporting."
+        },
+        {
+            "q": "Will I work on a practical Selenium project?",
+            "a": "The course includes practical project scenarios involving web application workflows, test case automation, WebDriver interactions, TestNG, framework concepts, and test reporting."
+        },
+        {
+            "q": "Can Selenium be used for mobile application testing?",
+            "a": "Selenium WebDriver primarily focuses on web browser automation. Mobile browser and application testing may require additional tools and platform-specific approaches. Appium, for example, is commonly used for mobile application automation."
+        },
+        {
+            "q": "What career opportunities are available after Selenium training?",
+            "a": "Relevant roles may include Selenium Automation Tester, Automation Test Engineer, QA Automation Engineer, Software Test Engineer, and SDET. Actual opportunities depend on skills, experience, employer requirements, and available openings."
+        },
+        {
+            "q": "Does completing this course provide an official Selenium certification?",
+            "a": "Course completion and external certification are separate. Any third-party certification depends on the relevant certification provider's current offerings, examination requirements, and eligibility criteria."
+        },
+        {
+            "q": "Is Selenium training available online?",
+            "a": "The course can be delivered in an online training format, with instructor-led learning, practical demonstrations, automation exercises, project activities, and interview preparation, according to the confirmed batch schedule."
+        }
     ]
-  },
+},
   {
     "id": "loadrunner-course",
     "category": "testing",
-    "title": "Best LoadRunner Course",
-    "subtitle": "Micro Focus LoadRunner | VuGen | Controller | Analysis",
+    "title": "Best LoadRunner Course – Performance Testing Training",
+    "subtitle": "Master Performance Testing with LoadRunner | VuGen | Controller | Analysis",
     "iconName": "CheckSquare",
     "iconBg": "bg-purple-50 text-purple-600",
-    "description": "Master performance testing with LoadRunner: Virtual User Generator (VuGen) C-scripting, scenario setup in Controller, and bottleneck analysis.",
+    "description": "Looking for the best LoadRunner course to develop your performance testing skills? TECHMASTER offers practical, career-focused LoadRunner training designed to help learners understand performance testing concepts, create test scripts, execute load tests, and analyse application performance. Our LoadRunner course focuses on building practical knowledge of performance testing workflows, including scripting, workload modelling, test execution, monitoring, and result analysis. Through guided exercises and project-based learning, learners can develop the skills required to work with performance testing scenarios in real-world environments. Whether you are a fresher, manual tester, automation tester, or working IT professional, this course can help you build a foundation in performance testing using LoadRunner.",
     "techBadges": [
-      "LoadRunner",
-      "VuGen",
-      "Performance Testing"
+        "LoadRunner Architecture",
+        "VuGen Scripting",
+        "Correlation & Parameterization",
+        "Controller Scenario Design",
+        "Workload Modelling",
+        "Load Generators",
+        "Performance Monitoring",
+        "LoadRunner Analysis",
+        "Bottleneck Analysis",
+        "C-Language Scripting",
+        "SLA & Response Time Validation"
     ],
-    "duration": "8 Months",
-    "rating": 4.94,
-    "reviewsCount": 1250,
-    "studentsEnrolled": "3,600+",
-    "avgSalary": "\u20b97.0 - \u20b917 LPA",
-    "batchType": "Next Cohort: 07th Sep - 13th Sep 2026",
-    "level": "Intermediate",
-    "emi": "\u20b94,499/mo",
+    "duration": "2-3 Months",
+    "rating": 4.93,
+    "reviewsCount": 1650,
+    "studentsEnrolled": "5,100+",
+    "avgSalary": "₹6.0 - ₹14 LPA",
+    "batchType": "Next Cohort: Online & Flexible Batches",
+    "level": "Beginner to Advanced",
+    "emi": "₹3,499/mo",
     "featured": true,
     "jobGuarantee": true,
+    "whatIsPegaDetails": {
+        "heading": "Master Performance Testing with LoadRunner",
+        "description": "LoadRunner is an industry-standard performance testing tool used to evaluate how applications behave under workloads and to help identify performance-related bottlenecks before deployment into production.",
+        "keyComponents": [
+            {
+                "title": "Virtual User Generator (VuGen)",
+                "desc": "Record user journeys, enhance scripts with dynamic correlation, parameterization, transactions, and think time."
+            },
+            {
+                "title": "LoadRunner Controller",
+                "desc": "Design workload scenarios, configure virtual user profiles, ramp-up/ramp-down schedules, and manage load generators."
+            },
+            {
+                "title": "LoadRunner Analysis",
+                "desc": "Analyse performance graphs, transaction response times, throughput, hits per second, errors, and system resource utilisation."
+            },
+            {
+                "title": "Performance Test Types",
+                "desc": "Execute load testing, stress testing, endurance (soak) testing, and spike testing scenarios."
+            },
+            {
+                "title": "System Monitoring & Metrics",
+                "desc": "Monitor server CPU, memory, database connection pools, network latency, and application bottlenecks."
+            },
+            {
+                "title": "Enterprise Workflow Modelling",
+                "desc": "Simulate realistic user behaviour, pacing, rendezvous points, and business-critical transactions."
+            }
+        ]
+    },
+    "whyLearnPega": {
+        "heading": "Why Choose TECHMASTER for LoadRunner Training?",
+        "description": "TECHMASTER provides a career-focused learning environment designed to take you from performance testing fundamentals to real-world LoadRunner project implementation.",
+        "keyAreas": [
+            {
+                "title": "Structured LoadRunner Curriculum",
+                "desc": "Step-by-step training from performance testing basics to advanced scripting, Controller scenarios, and Analysis reporting."
+            },
+            {
+                "title": "Practical, Hands-On Learning",
+                "desc": "Focus on real-world performance testing concepts, script recording, correlation, parameterization, and workload modelling."
+            },
+            {
+                "title": "Scripting & Load Generation",
+                "desc": "Learn VuGen script enhancement, correlation rules, data parameterization, transactions, and load generator configuration."
+            },
+            {
+                "title": "Performance Analysis & Bottlenecks",
+                "desc": "Interpret response time graphs, throughput, server CPU/memory usage, and communicate findings to development teams."
+            },
+            {
+                "title": "Suitable for Freshers & Pros",
+                "desc": "Structured pathway for freshers, manual testers, automation engineers, and QA leads stepping into performance engineering."
+            },
+            {
+                "title": "Flexible Online Options & Mentorship",
+                "desc": "Interactive online batches, trainer guidance, resume reviews, interview preparation, and placement assistance."
+            }
+        ]
+    },
+    "courseHighlights": [
+        {
+            "title": "Practical LoadRunner Workflow",
+            "desc": "Learn performance testing workflows including VuGen scripting, Controller scenarios, and Analysis reporting."
+        },
+        {
+            "title": "VuGen Scripting & Protocol Support",
+            "desc": "Master recording options, script structures, transaction points, checkpoints, and custom C-functions."
+        },
+        {
+            "title": "Dynamic Value Correlation",
+            "desc": "Learn manual and automatic correlation techniques to handle dynamic session tokens and server responses."
+        },
+        {
+            "title": "Data Parameterization",
+            "desc": "Parameterize scripts with external data sources to simulate unique user inputs and realistic test data."
+        },
+        {
+            "title": "Controller Scenario Design",
+            "desc": "Configure virtual users, load generators, ramp-up, ramp-down, think time, pacing, and workload profiles."
+        },
+        {
+            "title": "Resource Monitoring & Metrics",
+            "desc": "Monitor CPU, memory, transaction rates, throughput, hits/sec, and identify application bottlenecks."
+        },
+        {
+            "title": "LoadRunner Analysis",
+            "desc": "Analyze transaction response times, compare test runs, merge performance graphs, and generate summary reports."
+        },
+        {
+            "title": "Troubleshooting & Script Debugging",
+            "desc": "Investigate correlation failures, execution errors, virtual user logs, and load generator issues."
+        },
+        {
+            "title": "Real-World Project Scenarios",
+            "desc": "Practice performance testing on E-Commerce, Banking, and Enterprise Web application workflows."
+        },
+        {
+            "title": "Interview & Resume Guidance",
+            "desc": "Prepare for performance test engineer interviews, resume structuring, and technical scenario questions."
+        }
+    ],
     "syllabus": [
-      {
-        "module": "Module 1",
-        "title": "Best LoadRunner Course - Fundamentals & Environment Setup"
-      },
-      {
-        "module": "Module 2",
-        "title": "Best LoadRunner Course - Core Concepts & Architecture Breakdown"
-      },
-      {
-        "module": "Module 3",
-        "title": "Best LoadRunner Course - Hands-On Lab Work & Real-Time Implementation"
-      },
-      {
-        "module": "Module 4",
-        "title": "Best LoadRunner Course - Advanced Workflows, Security & Optimization"
-      },
-      {
-        "module": "Module 5",
-        "title": "Best LoadRunner Course - Live Enterprise Capstone Project & Certification Prep"
-      }
+        {
+            "module": "Module 1",
+            "title": "Introduction to Performance Testing",
+            "topics": [
+                "Introduction to software performance testing",
+                "Importance of performance testing in software development",
+                "Functional testing vs. performance testing",
+                "Types of performance testing",
+                "Load, stress, endurance, and spike testing",
+                "Performance testing life cycle",
+                "Introduction to LoadRunner and its role in performance testing"
+            ]
+        },
+        {
+            "module": "Module 2",
+            "title": "LoadRunner Architecture and Components",
+            "topics": [
+                "Overview of LoadRunner architecture",
+                "Introduction to VuGen",
+                "Introduction to Controller and test execution components",
+                "Load generators and their purpose",
+                "Analysis tools and performance reports",
+                "Understanding the performance testing workflow",
+                "Overview of test scenarios and virtual users"
+            ]
+        },
+        {
+            "module": "Module 3",
+            "title": "Virtual User Generator (VuGen)",
+            "topics": [
+                "Introduction to VuGen",
+                "Creating and managing scripts",
+                "Understanding script structure",
+                "Recording user actions",
+                "Introduction to supported application protocols",
+                "Understanding generated script code",
+                "Running and validating scripts",
+                "Common scripting issues and troubleshooting"
+            ]
+        },
+        {
+            "module": "Module 4",
+            "title": "Recording and Script Development",
+            "topics": [
+                "Recording application workflows",
+                "Understanding recording options",
+                "Identifying important user transactions",
+                "Working with recorded scripts",
+                "Editing and enhancing scripts",
+                "Managing script sections and functions",
+                "Validating scripts through replay",
+                "Debugging common script errors"
+            ]
+        },
+        {
+            "module": "Module 5",
+            "title": "Correlation and Parameterization",
+            "topics": [
+                "Introduction to correlation",
+                "Understanding dynamic values in application responses",
+                "Identifying values that require correlation",
+                "Manual correlation concepts",
+                "Automatic correlation overview",
+                "Introduction to parameterization",
+                "Using parameters to create realistic test data",
+                "Working with parameter files and data sources",
+                "Improving script reusability"
+            ]
+        },
+        {
+            "module": "Module 6",
+            "title": "Transactions, Rendezvous, and Think Time",
+            "topics": [
+                "Introduction to transactions",
+                "Adding transaction start and end points",
+                "Measuring transaction response time",
+                "Understanding rendezvous points",
+                "Using think time in scripts",
+                "Managing pacing between iterations",
+                "Creating realistic user behaviour",
+                "Validating transaction measurements"
+            ]
+        },
+        {
+            "module": "Module 7",
+            "title": "Advanced Scripting Concepts",
+            "topics": [
+                "Working with script functions",
+                "Conditional statements and loops",
+                "Managing script execution flow",
+                "Handling dynamic application behaviour",
+                "Working with checkpoints and validations",
+                "Managing errors and script failures",
+                "Script debugging techniques",
+                "Improving script maintainability"
+            ]
+        },
+        {
+            "module": "Module 8",
+            "title": "LoadRunner Controller and Scenario Design",
+            "topics": [
+                "Introduction to Controller",
+                "Creating performance test scenarios",
+                "Adding virtual users and scripts",
+                "Configuring load generators",
+                "Defining workload distribution",
+                "Scheduling scenario execution",
+                "Configuring ramp-up and ramp-down",
+                "Understanding scenario run settings",
+                "Executing and monitoring test scenarios"
+            ]
+        },
+        {
+            "module": "Module 9",
+            "title": "Workload Modelling and Load Profiles",
+            "topics": [
+                "Understanding workload modelling",
+                "Designing user load profiles",
+                "Defining virtual user groups",
+                "Configuring user distribution",
+                "Understanding concurrent users",
+                "Creating realistic business workloads",
+                "Establishing test objectives and workload assumptions",
+                "Preparing scenarios for different performance test types"
+            ]
+        },
+        {
+            "module": "Module 10",
+            "title": "Performance Test Execution",
+            "topics": [
+                "Preparing scripts for execution",
+                "Validating test scenarios",
+                "Running load tests",
+                "Monitoring virtual user activity",
+                "Understanding execution status",
+                "Identifying errors during test runs",
+                "Managing test execution issues",
+                "Maintaining test execution records"
+            ]
+        },
+        {
+            "module": "Module 11",
+            "title": "Monitoring and Performance Metrics",
+            "topics": [
+                "Introduction to performance monitoring",
+                "Understanding response time",
+                "Throughput and transaction rate",
+                "Hits per second and related measurements",
+                "CPU and memory utilisation",
+                "Monitoring application and system resources",
+                "Identifying performance bottlenecks",
+                "Understanding the relationship between workload and system behaviour"
+            ]
+        },
+        {
+            "module": "Module 12",
+            "title": "LoadRunner Analysis",
+            "topics": [
+                "Introduction to Analysis",
+                "Opening and reviewing test results",
+                "Understanding performance graphs",
+                "Analysing transaction response times",
+                "Reviewing throughput and hit-rate graphs",
+                "Identifying errors and failed transactions",
+                "Comparing performance test results",
+                "Preparing performance test reports",
+                "Communicating findings and recommendations"
+            ]
+        },
+        {
+            "module": "Module 13",
+            "title": "Performance Testing Best Practices",
+            "topics": [
+                "Defining performance testing objectives",
+                "Preparing test data and environments",
+                "Designing realistic workloads",
+                "Validating scripts before execution",
+                "Identifying bottlenecks systematically",
+                "Maintaining repeatable test conditions",
+                "Documenting test results",
+                "Communicating performance issues to development teams"
+            ]
+        },
+        {
+            "module": "Module 14",
+            "title": "Troubleshooting and Common Issues",
+            "topics": [
+                "Common VuGen scripting issues",
+                "Correlation-related failures",
+                "Parameter and test-data issues",
+                "Virtual user execution errors",
+                "Load generator connectivity issues",
+                "Scenario configuration problems",
+                "Understanding failed transactions",
+                "Approaches to investigating performance test failures"
+            ]
+        },
+        {
+            "module": "Module 15",
+            "title": "Real-Time Project and Practical Exercises",
+            "topics": [
+                "Understanding application performance requirements",
+                "Identifying business-critical user journeys",
+                "Recording and enhancing scripts",
+                "Preparing test data and workload profiles",
+                "Designing and executing load test scenarios",
+                "Monitoring test execution",
+                "Analysing results and identifying bottlenecks",
+                "Preparing a performance testing summary report"
+            ]
+        }
+    ],
+    "handsOnTraining": [
+        "Recording and enhancing scripts",
+        "Working with correlation and parameterization",
+        "Creating transactions and managing think time",
+        "Designing scenarios using virtual users",
+        "Configuring workloads and test schedules",
+        "Executing load tests and monitoring results",
+        "Analysing performance metrics and reports",
+        "Investigating common scripting and execution issues"
+    ],
+    "projectScenarios": [
+        {
+            "title": "E-Commerce Application",
+            "desc": "Simulating users browsing products, testing search and selection workflows, modelling concurrent users during checkout, and reviewing response times under load."
+        },
+        {
+            "title": "Banking Application",
+            "desc": "Modelling common user transactions, simulating concurrent access to application functions, monitoring transaction performance, and reviewing error logs."
+        },
+        {
+            "title": "Enterprise Web Application",
+            "desc": "Recording frequently used business workflows, preparing realistic workload profiles, executing performance tests, and analysing bottleneck observations."
+        }
+    ],
+    "learningRoadmap": [
+        {
+            "step": "Step 1",
+            "title": "Understand Performance Testing Fundamentals",
+            "desc": "Learn performance concepts, load/stress/endurance testing types, and the performance testing life cycle."
+        },
+        {
+            "step": "Step 2",
+            "title": "Learn LoadRunner Architecture",
+            "desc": "Understand VuGen, Controller, Load Generators, and Analysis components."
+        },
+        {
+            "step": "Step 3",
+            "title": "Master VuGen Scripting & Recording",
+            "desc": "Record user workflows, understand protocol structures, and validate C-based scripts."
+        },
+        {
+            "step": "Step 4",
+            "title": "Implement Correlation & Parameterization",
+            "desc": "Handle dynamic session IDs with manual/auto correlation and parameterize test data."
+        },
+        {
+            "step": "Step 5",
+            "title": "Configure Transactions, Pacing & Think Time",
+            "desc": "Add transaction timers, rendezvous points, think times, and pacing for realistic user profiles."
+        },
+        {
+            "step": "Step 6",
+            "title": "Design Scenarios in LoadRunner Controller",
+            "desc": "Configure virtual users, load generators, ramp-up, ramp-down, and workload profiles."
+        },
+        {
+            "step": "Step 7",
+            "title": "Execute Load Tests & Monitor Metrics",
+            "desc": "Run test scenarios while monitoring server CPU, memory, transaction rates, hits/sec, and throughput."
+        },
+        {
+            "step": "Step 8",
+            "title": "Analyze Results with LoadRunner Analysis",
+            "desc": "Interpret response time graphs, merge metrics, isolate performance bottlenecks, and build test reports."
+        },
+        {
+            "step": "Step 9",
+            "title": "Complete Real-World Capstone Project",
+            "desc": "Apply performance testing workflows to E-Commerce, Banking, or Enterprise Web apps and document summary findings."
+        },
+        {
+            "step": "Step 10",
+            "title": "Prepare for Performance Testing Interviews",
+            "desc": "Practice scenario questions, bottleneck investigation walk-throughs, resume polishing, and career guidance."
+        }
+    ],
+    "targetAudience": [
+        {
+            "title": "Freshers",
+            "desc": "Beginners in software testing building a strong foundation in performance engineering."
+        },
+        {
+            "title": "Manual Testers",
+            "desc": "QA professionals expanding their skill set from functional into non-functional testing."
+        },
+        {
+            "title": "Automation Testers",
+            "desc": "Automation engineers adding LoadRunner performance & load testing to their expertise."
+        },
+        {
+            "title": "QA Engineers & Leads",
+            "desc": "Quality assurance professionals designing workload models and bottleneck diagnostics."
+        },
+        {
+            "title": "IT Professionals",
+            "desc": "Tech professionals transitioning into performance testing and engineering roles."
+        }
+    ],
+    "prerequisites": [
+        "Basic understanding of software testing",
+        "Familiarity with web applications and client-server concepts",
+        "Basic computer operations",
+        "Programming knowledge is helpful for VuGen scripting (C-language fundamentals covered in training)"
+    ],
+    "skillsDeveloped": [
+        "Performance testing fundamentals",
+        "LoadRunner scripting with VuGen",
+        "Correlation and parameterization",
+        "Transaction and workload configuration",
+        "Load test scenario creation",
+        "Performance test execution",
+        "Monitoring and metrics interpretation",
+        "Performance result analysis",
+        "Troubleshooting and reporting",
+        "SLA and response time analysis",
+        "Bottleneck identification"
+    ],
+    "careerOpportunities": [
+        {
+            "role": "Performance Test Engineer",
+            "desc": "Create VuGen scripts, design Controller scenarios, run load tests, and analyze bottleneck reports."
+        },
+        {
+            "role": "Load Testing Engineer",
+            "desc": "Focus on load, stress, and soak testing scenarios across web and enterprise systems."
+        },
+        {
+            "role": "Performance Testing Analyst",
+            "desc": "Analyze transaction response times, system resource utilization, and recommend optimizations."
+        },
+        {
+            "role": "QA Engineer – Performance Testing",
+            "desc": "Integrate non-functional testing into overall software quality assurance cycles."
+        },
+        {
+            "role": "Software Test Engineer",
+            "desc": "Execute combined functional, automation, and performance testing workflows."
+        },
+        {
+            "role": "Non-Functional Testing Engineer",
+            "desc": "Evaluate system scalability, reliability, throughput, and resource limits under heavy traffic."
+        }
+    ],
+    "interviewPrep": [
+        "Performance testing fundamentals, types (load, stress, endurance, spike), and testing life cycle",
+        "LoadRunner architecture: VuGen, Controller, Load Generator, Analysis role & communication",
+        "VuGen recording options, protocol selection, script structure (vuser_init, action, vuser_end)",
+        "Correlation: Manual vs Automatic correlation, web_reg_save_param functions, dynamic session tokens",
+        "Parameterization: Data sources, parameter types, update methods (Each occurrence, Each iteration, Once)",
+        "Transactions: lr_start_transaction, lr_end_transaction, think time, pacing, rendezvous points",
+        "Controller: Scenario types (Goal-oriented vs Manual), workload modelling, ramp-up/ramp-down",
+        "Metrics & Analysis: Response time, Throughput, Hits/sec, CPU/Memory monitoring, diagnosing bottlenecks",
+        "Troubleshooting script errors, virtual user execution errors, and load generator connectivity failures",
+        "Real-world project walk-throughs & performance test summary report presentation"
+    ],
+    "pdfFaqs": [
+        {
+            "q": "What is LoadRunner?",
+            "a": "LoadRunner is a performance testing tool used to evaluate how applications behave under workloads and to help identify performance-related issues."
+        },
+        {
+            "q": "Who can learn LoadRunner?",
+            "a": "Freshers, manual testers, automation testers, QA engineers, and other IT professionals interested in performance testing can consider learning LoadRunner."
+        },
+        {
+            "q": "Is programming knowledge required?",
+            "a": "Programming knowledge can be helpful, particularly for scripting and script enhancement. The level of programming required depends on the protocols and course topics covered."
+        },
+        {
+            "q": "What will I learn in the LoadRunner course?",
+            "a": "Topics include performance testing fundamentals, VuGen scripting, correlation, parameterization, Controller scenarios, workload modelling, test execution, monitoring, and Analysis."
+        },
+        {
+            "q": "Does the course include practical training?",
+            "a": "The training plan includes guided exercises and project-based practice covering real-world application scenarios."
+        },
+        {
+            "q": "Can freshers join the course?",
+            "a": "Yes. Beginners can start with performance testing fundamentals and progress to LoadRunner concepts and practical exercises."
+        },
+        {
+            "q": "Does TECHMASTER provide certification?",
+            "a": "Course-completion documentation is provided according to TECHMASTER’s training process. External vendor certification, where applicable, is subject to the certification provider’s requirements."
+        },
+        {
+            "q": "Is placement assistance available?",
+            "a": "Career guidance and placement assistance are available, subject to relevant openings, eligibility, and the organization's placement-support process."
+        },
+        {
+            "q": "Can working professionals attend?",
+            "a": "Flexible training options and schedules are available for working professionals."
+        },
+        {
+            "q": "How do I enrol?",
+            "a": "Contact TECHMASTER to enquire about the current batch schedule, course duration, fees, training mode, and enrolment process."
+        }
     ]
-  },
+},
   {
     "id": "jmeter-course",
     "category": "testing",
