@@ -312,20 +312,41 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <Sparkles className="w-6 h-6 text-brand-teal" />
-                <span>{activeCourse.introductionOverview.heading}</span>
+                <span>
+                  {typeof activeCourse.introductionOverview === 'object' && !Array.isArray(activeCourse.introductionOverview) && activeCourse.introductionOverview.heading
+                    ? activeCourse.introductionOverview.heading
+                    : 'Course Overview'}
+                </span>
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                {activeCourse.introductionOverview.description}
-              </p>
-              {activeCourse.introductionOverview.keyPoints && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                  {activeCourse.introductionOverview.keyPoints.map((pt, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs text-slate-700 font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-brand-teal shrink-0 mt-0.5" />
-                      <span>{typeof pt === 'string' ? pt : (pt.title || pt.desc)}</span>
-                    </div>
+
+              {Array.isArray(activeCourse.introductionOverview) ? (
+                <div className="space-y-3">
+                  {activeCourse.introductionOverview.map((item, idx) => (
+                    <p key={idx} className="text-slate-600 text-sm leading-relaxed font-medium">
+                      {typeof item === 'string' ? item : (item.desc || item.title || JSON.stringify(item))}
+                    </p>
                   ))}
                 </div>
+              ) : typeof activeCourse.introductionOverview === 'object' ? (
+                <>
+                  {activeCourse.introductionOverview.description && (
+                    <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                      {activeCourse.introductionOverview.description}
+                    </p>
+                  )}
+                  {activeCourse.introductionOverview.keyPoints && Array.isArray(activeCourse.introductionOverview.keyPoints) && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                      {activeCourse.introductionOverview.keyPoints.map((pt, idx) => (
+                        <div key={idx} className="flex items-start gap-2.5 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs text-slate-700 font-medium">
+                          <CheckCircle2 className="w-4 h-4 text-brand-teal shrink-0 mt-0.5" />
+                          <span>{typeof pt === 'string' ? pt : (pt.title || pt.desc || JSON.stringify(pt))}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <p className="text-slate-600 text-sm leading-relaxed font-medium">{String(activeCourse.introductionOverview)}</p>
               )}
             </section>
           )}
@@ -335,21 +356,23 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <Sparkles className="w-6 h-6 text-brand-teal" />
-                <span>{activeCourse.whatIsPegaDetails.heading}</span>
+                <span>{activeCourse.whatIsPegaDetails.heading || 'About This Technology'}</span>
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                {activeCourse.whatIsPegaDetails.description}
-              </p>
+              {activeCourse.whatIsPegaDetails.description && (
+                <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                  {activeCourse.whatIsPegaDetails.description}
+                </p>
+              )}
 
-              {activeCourse.whatIsPegaDetails.keyComponents && (
+              {activeCourse.whatIsPegaDetails.keyComponents && Array.isArray(activeCourse.whatIsPegaDetails.keyComponents) && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                   {activeCourse.whatIsPegaDetails.keyComponents.map((item, idx) => (
                     <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1.5">
                       <h4 className="font-black text-sm text-brand-navy flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-brand-teal"></span>
-                        {item.title}
+                        {typeof item === 'string' ? item : item.title}
                       </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>
+                      {item.desc && <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>}
                     </div>
                   ))}
                 </div>
@@ -362,18 +385,20 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <TrendingUp className="w-6 h-6 text-brand-teal" />
-                <span>{activeCourse.whyLearnPega.heading}</span>
+                <span>{activeCourse.whyLearnPega.heading || 'Why Learn This Course'}</span>
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                {activeCourse.whyLearnPega.description}
-              </p>
+              {activeCourse.whyLearnPega.description && (
+                <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                  {activeCourse.whyLearnPega.description}
+                </p>
+              )}
 
-              {activeCourse.whyLearnPega.keyAreas && (
+              {activeCourse.whyLearnPega.keyAreas && Array.isArray(activeCourse.whyLearnPega.keyAreas) && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                   {activeCourse.whyLearnPega.keyAreas.map((item, idx) => (
                     <div key={idx} className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 space-y-1">
-                      <h4 className="font-extrabold text-xs text-blue-950 uppercase tracking-wider">{item.title}</h4>
-                      <p className="text-xs text-slate-600 font-medium">{item.desc}</p>
+                      <h4 className="font-extrabold text-xs text-blue-950 uppercase tracking-wider">{typeof item === 'string' ? item : item.title}</h4>
+                      {item.desc && <p className="text-xs text-slate-600 font-medium">{item.desc}</p>}
                     </div>
                   ))}
                 </div>
@@ -386,23 +411,45 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <Briefcase className="w-6 h-6 text-brand-teal" />
-                <span>{activeCourse.handsOnTraining.heading}</span>
+                <span>
+                  {typeof activeCourse.handsOnTraining === 'object' && !Array.isArray(activeCourse.handsOnTraining) && activeCourse.handsOnTraining.heading
+                    ? activeCourse.handsOnTraining.heading
+                    : 'Practical Hands-On Training'}
+                </span>
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                {activeCourse.handsOnTraining.description}
-              </p>
-              {activeCourse.handsOnTraining.highlights && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  {activeCourse.handsOnTraining.highlights.map((item, idx) => (
-                    <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1.5">
-                      <h4 className="font-black text-sm text-brand-navy flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-brand-teal"></span>
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>
+
+              {typeof activeCourse.handsOnTraining === 'object' && !Array.isArray(activeCourse.handsOnTraining) ? (
+                <>
+                  {activeCourse.handsOnTraining.description && (
+                    <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                      {activeCourse.handsOnTraining.description}
+                    </p>
+                  )}
+                  {activeCourse.handsOnTraining.highlights && Array.isArray(activeCourse.handsOnTraining.highlights) && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                      {activeCourse.handsOnTraining.highlights.map((item, idx) => (
+                        <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1.5">
+                          <h4 className="font-black text-sm text-brand-navy flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-brand-teal"></span>
+                            {typeof item === 'string' ? item : item.title}
+                          </h4>
+                          {item.desc && <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : Array.isArray(activeCourse.handsOnTraining) ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                  {activeCourse.handsOnTraining.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs text-slate-700 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-brand-teal shrink-0 mt-0.5" />
+                      <span>{typeof item === 'string' ? item : (item.title || item.desc)}</span>
                     </div>
                   ))}
                 </div>
+              ) : (
+                <p className="text-slate-600 text-sm leading-relaxed font-medium">{String(activeCourse.handsOnTraining)}</p>
               )}
             </section>
           )}
@@ -414,61 +461,128 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                 <div className="space-y-4">
                   <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                     <BookOpen className="w-6 h-6 text-brand-teal" />
-                    <span>5-Stage Learning Methodology</span>
+                    <span>
+                      {typeof activeCourse.learningMethodology === 'object' && !Array.isArray(activeCourse.learningMethodology) && activeCourse.learningMethodology.title
+                        ? activeCourse.learningMethodology.title
+                        : 'Learning Methodology'}
+                    </span>
                   </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {activeCourse.learningMethodology.map((m, idx) => (
-                      <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
-                        <span className="text-[10px] font-black uppercase text-brand-teal tracking-wider">{m.stage}</span>
-                        <h4 className="font-extrabold text-sm text-brand-navy">{m.title}</h4>
-                        <p className="text-xs text-slate-500 font-medium leading-relaxed">{m.desc}</p>
+
+                  {typeof activeCourse.learningMethodology === 'object' && !Array.isArray(activeCourse.learningMethodology) && (
+                    <>
+                      {activeCourse.learningMethodology.intro && (
+                        <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                          {activeCourse.learningMethodology.intro}
+                        </p>
+                      )}
+                      {activeCourse.learningMethodology.path && (
+                        <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-3 text-xs font-bold text-blue-900 flex items-center gap-2">
+                          <Sparkles className="w-4 h-4 text-brand-teal shrink-0" />
+                          <span>Learning Pathway: {activeCourse.learningMethodology.path}</span>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {(() => {
+                    const list = Array.isArray(activeCourse.learningMethodology)
+                      ? activeCourse.learningMethodology
+                      : (activeCourse.learningMethodology.steps || activeCourse.learningMethodology.stages || activeCourse.learningMethodology.items || activeCourse.learningMethodology.points || []);
+                    
+                    if (!list || list.length === 0) return null;
+
+                    return (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        {list.map((m, idx) => {
+                          if (typeof m === 'string') {
+                            return (
+                              <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
+                                <span className="text-[10px] font-black uppercase text-brand-teal tracking-wider">Step {idx + 1}</span>
+                                <p className="text-xs text-slate-700 font-medium leading-relaxed">{m}</p>
+                              </div>
+                            );
+                          }
+                          return (
+                            <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
+                              <span className="text-[10px] font-black uppercase text-brand-teal tracking-wider">{m.stage || `Stage ${idx + 1}`}</span>
+                              <h4 className="font-extrabold text-sm text-brand-navy">{m.title || m.name}</h4>
+                              {m.desc && <p className="text-xs text-slate-500 font-medium leading-relaxed">{m.desc}</p>}
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))}
-                  </div>
+                    );
+                  })()}
                 </div>
               )}
 
               {activeCourse.courseHighlights && (
                 <div className="pt-4 border-t border-slate-100 space-y-3">
-                  <h3 className="font-black text-sm text-brand-navy uppercase tracking-wider">Key Course Highlights</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {activeCourse.courseHighlights.map((h, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <div>
-                          <span className="font-extrabold text-xs text-slate-900 block">{h.title}</span>
-                          <span className="text-xs text-slate-500 font-medium">{h.desc}</span>
-                        </div>
+                  <h3 className="font-black text-sm text-brand-navy uppercase tracking-wider">
+                    {typeof activeCourse.courseHighlights === 'object' && !Array.isArray(activeCourse.courseHighlights) && activeCourse.courseHighlights.title
+                      ? activeCourse.courseHighlights.title
+                      : 'Key Course Highlights'}
+                  </h3>
+                  {(() => {
+                    const list = Array.isArray(activeCourse.courseHighlights)
+                      ? activeCourse.courseHighlights
+                      : (activeCourse.courseHighlights.highlights || activeCourse.courseHighlights.list || activeCourse.courseHighlights.items || activeCourse.courseHighlights.points || []);
+                    
+                    if (!list || list.length === 0) return null;
+
+                    return (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {list.map((h, idx) => {
+                          if (typeof h === 'string') {
+                            return (
+                              <div key={idx} className="flex items-start gap-2.5">
+                                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                <span className="font-extrabold text-xs text-slate-900">{h}</span>
+                              </div>
+                            );
+                          }
+                          return (
+                            <div key={idx} className="flex items-start gap-2.5">
+                              <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                              <div>
+                                <span className="font-extrabold text-xs text-slate-900 block">{h.title || h.heading}</span>
+                                {(h.desc || h.description) && <span className="text-xs text-slate-500 font-medium">{h.desc || h.description}</span>}
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))}
-                  </div>
+                    );
+                  })()}
                 </div>
               )}
             </section>
           )}
 
           {/* Tools & Technologies Covered */}
-          <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
-            <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
-              <Layers className="w-6 h-6 text-brand-teal" />
-              <span>Technologies & Tools Covered</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium">
-              Get extensive hands-on experience using industry-standard tools, libraries, and frameworks:
-            </p>
+          {activeCourse.techBadges && activeCourse.techBadges.length > 0 && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Layers className="w-6 h-6 text-brand-teal" />
+                <span>Technologies & Tools Covered</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">
+                Get extensive hands-on experience using industry-standard tools, libraries, and frameworks:
+              </p>
 
-            <div className="flex flex-wrap gap-2.5 pt-2">
-              {activeCourse.techBadges?.map((tech, idx) => (
-                <span 
-                  key={idx}
-                  className="bg-blue-50 border border-blue-200 text-blue-800 font-bold text-xs sm:text-sm px-4 py-2 rounded-xl shadow-xs flex items-center gap-1.5"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-blue-600" />
-                  <span>{tech}</span>
-                </span>
-              ))}
-            </div>
-          </section>
+              <div className="flex flex-wrap gap-2.5 pt-2">
+                {activeCourse.techBadges.map((tech, idx) => (
+                  <span 
+                    key={idx}
+                    className="bg-blue-50 border border-blue-200 text-blue-800 font-bold text-xs sm:text-sm px-4 py-2 rounded-xl shadow-xs flex items-center gap-1.5"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <span>{tech}</span>
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Detailed Course Syllabus Section */}
           <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
@@ -582,66 +696,182 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
           </section>
 
           {/* Real-World Project Scenarios */}
-          {activeCourse.projectScenarios && activeCourse.projectScenarios.length > 0 && (
+          {activeCourse.projectScenarios && (
             <section className="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
               <div className="space-y-1 border-b border-white/10 pb-4">
                 <span className="text-xs font-black text-amber-300 uppercase tracking-wider">HANDS-ON PORTFOLIO</span>
                 <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
                   <Briefcase className="w-6 h-6 text-amber-400" />
-                  <span>Real-World Project Scenarios</span>
+                  <span>
+                    {typeof activeCourse.projectScenarios === 'object' && !Array.isArray(activeCourse.projectScenarios) && activeCourse.projectScenarios.title
+                      ? activeCourse.projectScenarios.title
+                      : 'Real-World Project Scenarios'}
+                  </span>
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-300 font-medium">
-                  Work on end-to-end practical application design scenarios modeled on real enterprise business processes:
+                  {typeof activeCourse.projectScenarios === 'object' && !Array.isArray(activeCourse.projectScenarios) && activeCourse.projectScenarios.intro
+                    ? activeCourse.projectScenarios.intro
+                    : 'Work on end-to-end practical application design scenarios modeled on real enterprise business processes:'}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-4">
-                {activeCourse.projectScenarios.map((proj, idx) => (
-                  <div key={idx} className="bg-white/10 border border-white/15 rounded-2xl p-4 sm:p-5 space-y-2 backdrop-blur-md">
-                    <div className="flex items-center gap-3">
-                      <span className="w-7 h-7 bg-amber-400 text-slate-950 rounded-lg flex items-center justify-center font-black text-xs shrink-0">
-                        P{idx + 1}
-                      </span>
-                      <h4 className="font-extrabold text-sm text-white">{proj.title}</h4>
+              {Array.isArray(activeCourse.projectScenarios) ? (
+                <div className="grid grid-cols-1 gap-4">
+                  {activeCourse.projectScenarios.map((proj, idx) => (
+                    <div key={idx} className="bg-white/10 border border-white/15 rounded-2xl p-4 sm:p-5 space-y-2 backdrop-blur-md">
+                      <div className="flex items-center gap-3">
+                        <span className="w-7 h-7 bg-amber-400 text-slate-950 rounded-lg flex items-center justify-center font-black text-xs shrink-0">
+                          P{idx + 1}
+                        </span>
+                        <h4 className="font-extrabold text-sm text-white">{typeof proj === 'string' ? proj : (proj.title || `Scenario ${idx + 1}`)}</h4>
+                      </div>
+                      {proj.desc && <p className="text-xs text-slate-300 leading-relaxed font-medium pl-10">{proj.desc}</p>}
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed font-medium pl-10">{proj.desc}</p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : typeof activeCourse.projectScenarios === 'object' ? (
+                <div className="space-y-6">
+                  {/* If categories exist */}
+                  {activeCourse.projectScenarios.categories && Array.isArray(activeCourse.projectScenarios.categories) && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {activeCourse.projectScenarios.categories.map((cat, cIdx) => (
+                        <div key={cIdx} className="bg-white/10 border border-white/15 rounded-2xl p-4 space-y-3 backdrop-blur-md">
+                          <h4 className="font-extrabold text-sm text-amber-300 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                            {cat.title}
+                          </h4>
+                          {cat.items && Array.isArray(cat.items) && (
+                            <ul className="space-y-1.5 pl-4">
+                              {cat.items.map((item, iIdx) => (
+                                <li key={iIdx} className="text-xs text-slate-300 list-disc leading-snug font-medium">
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* If projects array exists */}
+                  {activeCourse.projectScenarios.projects && Array.isArray(activeCourse.projectScenarios.projects) && (
+                    <div className="grid grid-cols-1 gap-4">
+                      {activeCourse.projectScenarios.projects.map((proj, pIdx) => (
+                        <div key={pIdx} className="bg-white/10 border border-white/15 rounded-2xl p-5 space-y-3 backdrop-blur-md">
+                          <div className="flex items-center gap-3">
+                            <span className="w-7 h-7 bg-amber-400 text-slate-950 rounded-lg flex items-center justify-center font-black text-xs shrink-0">
+                              P{pIdx + 1}
+                            </span>
+                            <h4 className="font-extrabold text-base text-white">{proj.title}</h4>
+                          </div>
+
+                          {proj.functionalAreas && (
+                            <div className="pl-10 space-y-1">
+                              <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">Functional Test Areas:</span>
+                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                                {proj.functionalAreas.map((fa, fIdx) => (
+                                  <li key={fIdx} className="text-xs text-slate-300 flex items-center gap-1.5 font-medium">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                                    <span>{fa}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {proj.automationActivities && (
+                            <div className="pl-10 space-y-1 pt-2">
+                              <span className="text-[11px] font-bold text-teal-300 uppercase tracking-wider block">Automation Activities:</span>
+                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                                {proj.automationActivities.map((aa, aIdx) => (
+                                  <li key={aIdx} className="text-xs text-slate-200 flex items-center gap-1.5 font-medium">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+                                    <span>{aa}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {proj.activities && (
+                            <div className="pl-10 space-y-1">
+                              <ul className="space-y-1">
+                                {proj.activities.map((act, aIdx) => (
+                                  <li key={aIdx} className="text-xs text-slate-300 flex items-center gap-1.5 font-medium">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                                    <span>{act}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {proj.notice && (
+                            <p className="text-xs text-amber-200 italic pl-10 border-t border-white/10 pt-2 font-medium">
+                              Note: {proj.notice}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {activeCourse.projectScenarios.outro && (
+                    <p className="text-xs text-slate-400 font-medium italic pt-2">
+                      {activeCourse.projectScenarios.outro}
+                    </p>
+                  )}
+                </div>
+              ) : null}
             </section>
           )}
 
           {/* Structured Learning & Career Roadmap */}
-          {activeCourse.learningRoadmap && activeCourse.learningRoadmap.length > 0 && (
+          {activeCourse.learningRoadmap && (
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <Calendar className="w-6 h-6 text-brand-teal" />
-                <span>Complete Career Learning Roadmap</span>
+                <span>
+                  {typeof activeCourse.learningRoadmap === 'object' && !Array.isArray(activeCourse.learningRoadmap) && activeCourse.learningRoadmap.title
+                    ? activeCourse.learningRoadmap.title
+                    : 'Complete Career Learning Roadmap'}
+                </span>
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 font-medium">
                 Step-by-step progression path designed to build complete technical expertise from foundations to advanced architecture:
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {activeCourse.learningRoadmap.map((step, idx) => {
-                  const isObj = typeof step === 'object' && step !== null;
-                  const stepLabel = isObj ? (step.step || `Step ${idx + 1}`) : `Step ${idx + 1}`;
-                  const title = isObj ? (step.title || step.desc) : step;
-                  const desc = isObj ? step.desc : null;
+              {(() => {
+                const steps = Array.isArray(activeCourse.learningRoadmap)
+                  ? activeCourse.learningRoadmap
+                  : (activeCourse.learningRoadmap.steps || activeCourse.learningRoadmap.stages || activeCourse.learningRoadmap.items || []);
 
-                  return (
-                    <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="bg-brand-teal/10 text-brand-teal font-black text-[10px] px-2 py-0.5 rounded-md uppercase tracking-wider shrink-0">
-                          {stepLabel}
-                        </span>
-                        <span className="text-xs font-extrabold text-slate-900 leading-tight">{title}</span>
-                      </div>
-                      {desc && <p className="text-[11px] text-slate-500 font-medium pt-1">{desc}</p>}
-                    </div>
-                  );
-                })}
-              </div>
+                if (!steps || steps.length === 0) return null;
+
+                return (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {steps.map((step, idx) => {
+                      const isObj = typeof step === 'object' && step !== null;
+                      const stepLabel = isObj ? (step.step || `Step ${idx + 1}`) : `Step ${idx + 1}`;
+                      const title = isObj ? (step.title || step.desc) : step;
+                      const desc = isObj ? step.desc : null;
+
+                      return (
+                        <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
+                          <div className="flex items-center gap-2">
+                            <span className="bg-brand-teal/10 text-brand-teal font-black text-[10px] px-2 py-0.5 rounded-md uppercase tracking-wider shrink-0">
+                              {stepLabel}
+                            </span>
+                            <span className="text-xs font-extrabold text-slate-900 leading-tight">{title}</span>
+                          </div>
+                          {desc && <p className="text-[11px] text-slate-500 font-medium pt-1">{desc}</p>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
             </section>
           )}
 
@@ -650,22 +880,42 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <TrendingUp className="w-6 h-6 text-brand-teal" />
-                <span>{activeCourse.careerOpportunities.heading || 'Career Opportunities'}</span>
+                <span>
+                  {typeof activeCourse.careerOpportunities === 'object' && !Array.isArray(activeCourse.careerOpportunities) && (activeCourse.careerOpportunities.title || activeCourse.careerOpportunities.heading)
+                    ? (activeCourse.careerOpportunities.title || activeCourse.careerOpportunities.heading)
+                    : 'Career Opportunities'}
+                </span>
               </h2>
-              {activeCourse.careerOpportunities.description && (
+
+              {typeof activeCourse.careerOpportunities === 'object' && !Array.isArray(activeCourse.careerOpportunities) && (activeCourse.careerOpportunities.description || activeCourse.careerOpportunities.intro) && (
                 <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                  {activeCourse.careerOpportunities.description}
+                  {activeCourse.careerOpportunities.description || activeCourse.careerOpportunities.intro}
                 </p>
               )}
-              {activeCourse.careerOpportunities.roles && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  {activeCourse.careerOpportunities.roles.map((r, idx) => (
-                    <div key={idx} className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 space-y-1">
-                      <h4 className="font-extrabold text-sm text-blue-950">{typeof r === 'string' ? r : r.role}</h4>
-                      {r.desc && <p className="text-xs text-slate-600 font-medium">{r.desc}</p>}
-                    </div>
-                  ))}
-                </div>
+
+              {(() => {
+                const roles = Array.isArray(activeCourse.careerOpportunities)
+                  ? activeCourse.careerOpportunities
+                  : (activeCourse.careerOpportunities.roles || activeCourse.careerOpportunities.opportunities || []);
+
+                if (!roles || roles.length === 0) return null;
+
+                return (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    {roles.map((r, idx) => (
+                      <div key={idx} className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 space-y-1">
+                        <h4 className="font-extrabold text-sm text-blue-950">{typeof r === 'string' ? r : (r.role || r.title)}</h4>
+                        {r.desc && <p className="text-xs text-slate-600 font-medium">{r.desc}</p>}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+
+              {typeof activeCourse.careerOpportunities === 'object' && !Array.isArray(activeCourse.careerOpportunities) && activeCourse.careerOpportunities.outro && (
+                <p className="text-xs text-slate-500 font-medium italic pt-2">
+                  {activeCourse.careerOpportunities.outro}
+                </p>
               )}
             </section>
           )}
@@ -681,7 +931,7 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                 {activeCourse.skillsDeveloped.map((skill, idx) => (
                   <span key={idx} className="bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>{skill}</span>
+                    <span>{typeof skill === 'string' ? skill : (skill.title || skill.name)}</span>
                   </span>
                 ))}
               </div>
@@ -689,22 +939,37 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
           )}
 
           {/* Technical Interview Preparation */}
-          {activeCourse.interviewPrep && activeCourse.interviewPrep.length > 0 && (
+          {activeCourse.interviewPrep && (
             <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
               <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
                 <HelpCircle className="w-6 h-6 text-brand-teal" />
-                <span>Technical Interview Preparation</span>
+                <span>
+                  {typeof activeCourse.interviewPrep === 'object' && !Array.isArray(activeCourse.interviewPrep) && activeCourse.interviewPrep.title
+                    ? activeCourse.interviewPrep.title
+                    : 'Technical Interview Preparation'}
+                </span>
               </h2>
-              <div className="space-y-2.5 pt-1">
-                {activeCourse.interviewPrep.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs sm:text-sm text-slate-700 font-medium">
-                    <span className="w-6 h-6 rounded-lg bg-brand-teal text-white font-black text-xs flex items-center justify-center shrink-0">
-                      {idx + 1}
-                    </span>
-                    <span className="pt-0.5">{item}</span>
+
+              {(() => {
+                const prepList = Array.isArray(activeCourse.interviewPrep)
+                  ? activeCourse.interviewPrep
+                  : (activeCourse.interviewPrep.questions || activeCourse.interviewPrep.topics || activeCourse.interviewPrep.items || []);
+
+                if (!prepList || prepList.length === 0) return null;
+
+                return (
+                  <div className="space-y-2.5 pt-1">
+                    {prepList.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-3 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs sm:text-sm text-slate-700 font-medium">
+                        <span className="w-6 h-6 rounded-lg bg-brand-teal text-white font-black text-xs flex items-center justify-center shrink-0">
+                          {idx + 1}
+                        </span>
+                        <span className="pt-0.5">{typeof item === 'string' ? item : (item.q || item.question || item.title)}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                );
+              })()}
             </section>
           )}
 
@@ -719,15 +984,44 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                 {activeCourse.whoCanLearn && (
                   <div className="md:col-span-7 space-y-3">
-                    <h3 className="font-extrabold text-sm text-brand-navy uppercase tracking-wider">Who Can Learn This Course?</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {activeCourse.whoCanLearn.map((person, idx) => (
-                        <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 space-y-1">
-                          <span className="font-extrabold text-xs text-brand-navy block">{person.title}</span>
-                          <span className="text-[11px] text-slate-500 font-medium block">{person.desc}</span>
+                    <h3 className="font-extrabold text-sm text-brand-navy uppercase tracking-wider">
+                      {typeof activeCourse.whoCanLearn === 'object' && !Array.isArray(activeCourse.whoCanLearn) && activeCourse.whoCanLearn.title
+                        ? activeCourse.whoCanLearn.title
+                        : 'Who Can Learn This Course?'}
+                    </h3>
+
+                    {typeof activeCourse.whoCanLearn === 'object' && !Array.isArray(activeCourse.whoCanLearn) && activeCourse.whoCanLearn.intro && (
+                      <p className="text-xs text-slate-600 font-medium">{activeCourse.whoCanLearn.intro}</p>
+                    )}
+
+                    {(() => {
+                      const audience = Array.isArray(activeCourse.whoCanLearn)
+                        ? activeCourse.whoCanLearn
+                        : (activeCourse.whoCanLearn.audience || activeCourse.whoCanLearn.audienceList || activeCourse.whoCanLearn.whoCanJoin || []);
+
+                      if (!audience || audience.length === 0) return null;
+
+                      return (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {audience.map((person, idx) => {
+                            if (typeof person === 'string') {
+                              return (
+                                <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex items-center gap-2 text-xs font-bold text-slate-800">
+                                  <CheckCircle2 className="w-4 h-4 text-brand-teal shrink-0" />
+                                  <span>{person}</span>
+                                </div>
+                              );
+                            }
+                            return (
+                              <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 space-y-1">
+                                <span className="font-extrabold text-xs text-brand-navy block">{person.title || person.name}</span>
+                                {person.desc && <span className="text-[11px] text-slate-500 font-medium block">{person.desc}</span>}
+                              </div>
+                            );
+                          })}
                         </div>
-                      ))}
-                    </div>
+                      );
+                    })()}
                   </div>
                 )}
 
@@ -735,16 +1029,45 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                   <div className="md:col-span-5 bg-teal-50/60 border border-teal-100 rounded-2xl p-5 space-y-3">
                     <h3 className="font-extrabold text-sm text-teal-950 uppercase tracking-wider flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-brand-teal" />
-                      <span>Course Prerequisites</span>
+                      <span>
+                        {typeof activeCourse.prerequisites === 'object' && !Array.isArray(activeCourse.prerequisites) && activeCourse.prerequisites.title
+                          ? activeCourse.prerequisites.title
+                          : 'Course Prerequisites'}
+                      </span>
                     </h3>
-                    <ul className="space-y-2">
-                      {activeCourse.prerequisites.map((pre, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0 mt-1.5"></span>
-                          <span>{pre}</span>
-                        </li>
-                      ))}
-                    </ul>
+
+                    {typeof activeCourse.prerequisites === 'object' && !Array.isArray(activeCourse.prerequisites) && activeCourse.prerequisites.paragraphs && (
+                      <div className="space-y-1.5 text-xs text-slate-600 font-medium">
+                        {activeCourse.prerequisites.paragraphs.map((para, pIdx) => (
+                          <p key={pIdx}>{para}</p>
+                        ))}
+                      </div>
+                    )}
+
+                    {(() => {
+                      const reqs = Array.isArray(activeCourse.prerequisites)
+                        ? activeCourse.prerequisites
+                        : (activeCourse.prerequisites.items || activeCourse.prerequisites.requirements || []);
+
+                      if (!reqs || reqs.length === 0) return null;
+
+                      return (
+                        <ul className="space-y-2">
+                          {reqs.map((pre, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
+                              <span className="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0 mt-1.5"></span>
+                              <span>{typeof pre === 'string' ? pre : (pre.title || pre.desc || JSON.stringify(pre))}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    })()}
+
+                    {typeof activeCourse.prerequisites === 'object' && !Array.isArray(activeCourse.prerequisites) && activeCourse.prerequisites.outro && (
+                      <p className="text-[11px] text-teal-900 font-medium italic border-t border-teal-200/60 pt-2">
+                        {activeCourse.prerequisites.outro}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
@@ -766,11 +1089,11 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                 </div>
               )}
 
-              {activeCourse.potentialRoles && activeCourse.potentialRoles.length > 0 && (
+              {activeCourse.potentialRoles && (
                 <div className="space-y-3">
                   <h3 className="font-extrabold text-sm text-brand-navy uppercase tracking-wider">Potential Career Roles</h3>
                   <div className="flex flex-wrap gap-2">
-                    {activeCourse.potentialRoles.map((role, idx) => (
+                    {(Array.isArray(activeCourse.potentialRoles) ? activeCourse.potentialRoles : []).map((role, idx) => (
                       <span key={idx} className="bg-slate-100 text-slate-800 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-200/60">
                         {typeof role === 'string' ? role : (role.role || role.title)}
                       </span>
