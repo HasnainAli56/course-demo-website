@@ -89,11 +89,18 @@ export default function App() {
   };
 
   const handleSelectCourse = (course) => {
-    setSelectedCourse(course);
-    setCurrentPage('course-detail');
-    window.history.pushState({ courseId: course.id }, '', `#/course/${course.id}`);
-    window.scrollTo(0, 0);
+    if (!course) return;
+    const courseObj = typeof course === 'string' 
+      ? COURSES.find(c => c.id === course || c.id === decodeURIComponent(course))
+      : course;
+    const courseId = courseObj ? courseObj.id : (typeof course === 'string' ? course : null);
+
+    if (courseId) {
+      const courseUrl = `${window.location.origin}${window.location.pathname}#/course/${courseId}`;
+      window.open(courseUrl, '_blank', 'noopener,noreferrer');
+    }
   };
+
 
   const handleNavigate = (view, targetId = null) => {
     setCurrentPage(view);

@@ -483,15 +483,19 @@ export default function ChatbotWidget({ onSelectCourse, onOpenEnquire }) {
                                 {c.duration} • Avg: {c.avgSalary}
                               </p>
                             </div>
-                            <button
-                              onClick={() => {
+                            <a
+                              href={`#/course/${c.id}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => {
+                                e.preventDefault();
                                 onSelectCourse(c);
                                 setIsOpen(false);
                               }}
-                              className="bg-teal-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shrink-0 hover:bg-teal-700"
+                              className="bg-teal-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shrink-0 hover:bg-teal-700 inline-block no-underline"
                             >
                               View
-                            </button>
+                            </a>
                           </div>
                         ))}
                       </div>

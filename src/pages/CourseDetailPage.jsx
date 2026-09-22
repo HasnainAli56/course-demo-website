@@ -165,7 +165,7 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base font-medium leading-relaxed max-w-3xl">
-              {activeCourse.subtitle} Master real-world industry skills with 100% practical lab training, live project mentorship, and dedicated career placement support.
+              {activeCourse.subtitle}
             </p>
 
             {/* Key Meta Stats */}
@@ -282,7 +282,7 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
               <span>Course Overview</span>
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-              {activeCourse.description} This comprehensive curriculum is meticulously engineered by senior industry architects to transform beginners into job-ready professionals equipped with high-demand tech skills.
+              {activeCourse.description}
             </p>
 
             {/* Core Highlights Cards */}
@@ -306,6 +306,29 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
               </div>
             </div>
           </section>
+
+          {/* Introduction Overview Section */}
+          {activeCourse.introductionOverview && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Sparkles className="w-6 h-6 text-brand-teal" />
+                <span>{activeCourse.introductionOverview.heading}</span>
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                {activeCourse.introductionOverview.description}
+              </p>
+              {activeCourse.introductionOverview.keyPoints && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                  {activeCourse.introductionOverview.keyPoints.map((pt, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs text-slate-700 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-brand-teal shrink-0 mt-0.5" />
+                      <span>{typeof pt === 'string' ? pt : (pt.title || pt.desc)}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
 
           {/* What Is Pega Section */}
           {activeCourse.whatIsPegaDetails && (
@@ -351,6 +374,32 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                     <div key={idx} className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 space-y-1">
                       <h4 className="font-extrabold text-xs text-blue-950 uppercase tracking-wider">{item.title}</h4>
                       <p className="text-xs text-slate-600 font-medium">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Hands-On Training Section */}
+          {activeCourse.handsOnTraining && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Briefcase className="w-6 h-6 text-brand-teal" />
+                <span>{activeCourse.handsOnTraining.heading}</span>
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                {activeCourse.handsOnTraining.description}
+              </p>
+              {activeCourse.handsOnTraining.highlights && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                  {activeCourse.handsOnTraining.highlights.map((item, idx) => (
+                    <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1.5">
+                      <h4 className="font-black text-sm text-brand-navy flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-brand-teal"></span>
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -574,12 +623,85 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {activeCourse.learningRoadmap.map((step, idx) => (
-                  <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-teal/10 text-brand-teal font-black text-xs flex items-center justify-center shrink-0">
+                {activeCourse.learningRoadmap.map((step, idx) => {
+                  const isObj = typeof step === 'object' && step !== null;
+                  const stepLabel = isObj ? (step.step || `Step ${idx + 1}`) : `Step ${idx + 1}`;
+                  const title = isObj ? (step.title || step.desc) : step;
+                  const desc = isObj ? step.desc : null;
+
+                  return (
+                    <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="bg-brand-teal/10 text-brand-teal font-black text-[10px] px-2 py-0.5 rounded-md uppercase tracking-wider shrink-0">
+                          {stepLabel}
+                        </span>
+                        <span className="text-xs font-extrabold text-slate-900 leading-tight">{title}</span>
+                      </div>
+                      {desc && <p className="text-[11px] text-slate-500 font-medium pt-1">{desc}</p>}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          )}
+
+          {/* Career Opportunities Section */}
+          {activeCourse.careerOpportunities && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <TrendingUp className="w-6 h-6 text-brand-teal" />
+                <span>{activeCourse.careerOpportunities.heading || 'Career Opportunities'}</span>
+              </h2>
+              {activeCourse.careerOpportunities.description && (
+                <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                  {activeCourse.careerOpportunities.description}
+                </p>
+              )}
+              {activeCourse.careerOpportunities.roles && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                  {activeCourse.careerOpportunities.roles.map((r, idx) => (
+                    <div key={idx} className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 space-y-1">
+                      <h4 className="font-extrabold text-sm text-blue-950">{typeof r === 'string' ? r : r.role}</h4>
+                      {r.desc && <p className="text-xs text-slate-600 font-medium">{r.desc}</p>}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Key Skills Developed */}
+          {activeCourse.skillsDeveloped && activeCourse.skillsDeveloped.length > 0 && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <Target className="w-6 h-6 text-brand-teal" />
+                <span>Key Skills Developed</span>
+              </h2>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {activeCourse.skillsDeveloped.map((skill, idx) => (
+                  <span key={idx} className="bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>{skill}</span>
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Technical Interview Preparation */}
+          {activeCourse.interviewPrep && activeCourse.interviewPrep.length > 0 && (
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-navy flex items-center gap-2">
+                <HelpCircle className="w-6 h-6 text-brand-teal" />
+                <span>Technical Interview Preparation</span>
+              </h2>
+              <div className="space-y-2.5 pt-1">
+                {activeCourse.interviewPrep.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs sm:text-sm text-slate-700 font-medium">
+                    <span className="w-6 h-6 rounded-lg bg-brand-teal text-white font-black text-xs flex items-center justify-center shrink-0">
                       {idx + 1}
                     </span>
-                    <span className="text-xs font-extrabold text-slate-800 leading-tight">{step}</span>
+                    <span className="pt-0.5">{item}</span>
                   </div>
                 ))}
               </div>
@@ -650,7 +772,7 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                   <div className="flex flex-wrap gap-2">
                     {activeCourse.potentialRoles.map((role, idx) => (
                       <span key={idx} className="bg-slate-100 text-slate-800 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-200/60">
-                        {role}
+                        {typeof role === 'string' ? role : (role.role || role.title)}
                       </span>
                     ))}
                   </div>
@@ -819,10 +941,16 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedCourses.map((rCourse) => (
-              <div
+              <a
                 key={rCourse.id}
-                onClick={() => onSelectCourse(rCourse)}
-                className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between group"
+                href={`#/course/${rCourse.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectCourse(rCourse);
+                }}
+                className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between group block text-left no-underline"
               >
                 <div className="space-y-3">
                   <span className="bg-blue-50 text-blue-700 text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">
@@ -840,7 +968,7 @@ export default function CourseDetailPage({ course, onSelectCourse, onOpenEnquire
                   <span>{rCourse.duration}</span>
                   <span className="text-brand-teal group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>

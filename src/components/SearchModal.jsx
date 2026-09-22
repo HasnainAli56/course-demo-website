@@ -45,13 +45,17 @@ export default function SearchModal({ isOpen, onClose, onSelectCourse }) {
             </div>
           ) : (
             results.map((c) => (
-              <div
+              <a
                 key={c.id}
-                onClick={() => {
+                href={`#/course/${c.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
                   onClose();
                   onSelectCourse(c);
                 }}
-                className="p-3.5 rounded-2xl hover:bg-brand-mint/40 border border-transparent hover:border-brand-mint-border transition-all flex items-center justify-between cursor-pointer group"
+                className="p-3.5 rounded-2xl hover:bg-brand-mint/40 border border-transparent hover:border-brand-mint-border transition-all flex items-center justify-between cursor-pointer group block text-left no-underline"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand-teal text-white flex items-center justify-center font-bold text-sm shrink-0">
@@ -70,7 +74,7 @@ export default function SearchModal({ isOpen, onClose, onSelectCourse }) {
                 <div className="w-8 h-8 rounded-full bg-white text-brand-teal flex items-center justify-center shadow-sm group-hover:bg-brand-teal group-hover:text-white transition-colors">
                   <ArrowRight className="w-4 h-4" />
                 </div>
-              </div>
+              </a>
             ))
           )}
         </div>

@@ -215,10 +215,16 @@ export default function CourseGrid({ onSelectCourse, searchTerm: externalSearchT
               const IconComponent = ICON_MAP[course.iconName] || Code2;
 
               return (
-                <div
+                <a
                   key={course.id}
-                  onClick={() => onSelectCourse(course)}
-                  className="bg-white border border-slate-200/90 hover:border-brand-teal/60 rounded-3xl p-6 shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden"
+                  href={`#/course/${course.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onSelectCourse(course);
+                  }}
+                  className="bg-white border border-slate-200/90 hover:border-brand-teal/60 rounded-3xl p-6 shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden block text-left no-underline"
                 >
                   {/* Top Decorative Accent Bar */}
                   <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-teal via-teal-500 to-emerald-400 opacity-90 group-hover:opacity-100 transition-opacity" />
@@ -298,20 +304,16 @@ export default function CourseGrid({ onSelectCourse, searchTerm: externalSearchT
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onSelectCourse(course);
-                        }}
+                      <span
                         className="bg-brand-teal text-white hover:bg-teal-800 font-extrabold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md shadow-brand-teal/20 flex items-center gap-1.5 group-hover:scale-105"
                       >
                         <span>Know More</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </button>
+                      </span>
                     </div>
                   </div>
 
-                </div>
+                </a>
               );
             })}
           </div>

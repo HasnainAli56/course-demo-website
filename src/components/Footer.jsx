@@ -82,12 +82,12 @@ export default function Footer() {
               Popular Courses
             </h4>
             <ul className="space-y-2 text-xs font-medium text-teal-100">
-              <li><a href="#courses" className="hover:text-white transition-colors">SAP (Functional & Technical)</a></li>
-              <li><a href="#courses" className="hover:text-white transition-colors">Data Analytics (Python / SQL)</a></li>
-              <li><a href="#courses" className="hover:text-white transition-colors">Full Stack Development</a></li>
-              <li><a href="#courses" className="hover:text-white transition-colors">Software Testing Tools</a></li>
-              <li><a href="#courses" className="hover:text-white transition-colors">Cloud Computing (AWS / Azure)</a></li>
-              <li><a href="#courses" className="hover:text-white transition-colors">IT Service Management</a></li>
+              <li><a href="#/course/sap-fico" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">SAP (Functional & Technical)</a></li>
+              <li><a href="#/course/best-data-analytics-course" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Data Analytics (Python / SQL)</a></li>
+              <li><a href="#/course/fullstack-python" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Full Stack Development</a></li>
+              <li><a href="#/course/mobile-app-testing" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Software Testing Tools</a></li>
+              <li><a href="#/course/aws-gcp-azure-training" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Cloud Computing (AWS / Azure)</a></li>
+              <li><a href="#/course/servicenow-training" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">IT Service Management</a></li>
             </ul>
           </div>
 
