@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HiringPartners from './components/HiringPartners';
-import FloatingTechCloud from './components/FloatingTechCloud';
 import CourseGrid from './components/CourseGrid';
 import CareerPath from './components/CareerPath';
 import WhyChooseUs from './components/WhyChooseUs';
@@ -143,10 +142,6 @@ export default function App() {
             />
 
             <HiringPartners />
-
-            <FloatingTechCloud
-              onOpenEnquire={(title) => handleOpenEnquire(title)}
-            />
 
             <CourseGrid
               onSelectCourse={handleSelectCourse}
