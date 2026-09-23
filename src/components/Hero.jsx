@@ -61,8 +61,8 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
     let rx = -10;
     let ry = 0;
     let vrx = 0;
-    let vry = 0.07;
-    let dragging = false;
+    let vry = 0.08;
+    let isDragging = false;
     let lastX = 0;
     let lastY = 0;
     let animationFrameId;
@@ -95,14 +95,14 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
     }
 
     function frame() {
-      if (!dragging) {
+      if (!isDragging) {
         ry += vry;
         rx += vrx;
         vrx *= 0.95;
         if (Math.abs(vrx) < 0.01) vrx = 0;
-        if (Math.abs(vry) < 0.07) vry += (vry >= 0 ? 1 : -1) * 0.0003;
+        if (Math.abs(vry) < 0.08) vry += (vry >= 0 ? 1 : -1) * 0.0003;
       }
-      rx = Math.max(-70, Math.min(70, rx));
+      rx = Math.max(-75, Math.min(75, rx));
       layout();
       animationFrameId = requestAnimationFrame(frame);
     }
@@ -112,50 +112,73 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
     const handleResize = () => layout();
     window.addEventListener('resize', handleResize);
 
-    const handlePointerDown = (e) => {
-      dragging = true;
+    // Mouse & Touch Drag Handlers
+    const getPos = (e) => {
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+      return { x: e.clientX, y: e.clientY };
+    };
+
+    const onMove = (e) => {
+      if (!isDragging) return;
+      if (e.cancelable && e.type === 'touchmove') {
+        e.preventDefault();
+      }
+      const pos = getPos(e);
+      const dx = pos.x - lastX;
+      const dy = pos.y - lastY;
+
+      ry += dx * 0.4;
+      rx -= dy * 0.4;
+      vry = dx * 0.4;
+      vrx = -dy * 0.4;
+
+      lastX = pos.x;
+      lastY = pos.y;
+    };
+
+    const onEnd = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      setIsDraggingState(false);
+      if (Math.abs(vry) < 0.08) vry = vry >= 0 ? 0.08 : -0.08;
+
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('mouseup', onEnd);
+      window.removeEventListener('touchend', onEnd);
+    };
+
+    const onStart = (e) => {
+      isDragging = true;
       setIsDraggingState(true);
-      lastX = e.clientX;
-      lastY = e.clientY;
+      const pos = getPos(e);
+      lastX = pos.x;
+      lastY = pos.y;
       vrx = 0;
       vry = 0;
-      if (viewport.setPointerCapture) {
-        try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
-      }
+
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('mouseup', onEnd);
+      window.addEventListener('touchend', onEnd);
     };
 
-    const handlePointerMove = (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX;
-      const dy = e.clientY - lastY;
-      ry += dx * 0.35;
-      rx -= dy * 0.35;
-      vry = dx * 0.35;
-      vrx = -dy * 0.35;
-      lastX = e.clientX;
-      lastY = e.clientY;
-    };
-
-    const handlePointerRelease = () => {
-      dragging = false;
-      setIsDraggingState(false);
-      if (Math.abs(vry) < 0.07) vry = vry >= 0 ? 0.07 : -0.07;
-    };
-
-    viewport.addEventListener('pointerdown', handlePointerDown);
-    viewport.addEventListener('pointermove', handlePointerMove);
-    viewport.addEventListener('pointerup', handlePointerRelease);
-    viewport.addEventListener('pointerleave', handlePointerRelease);
+    viewport.addEventListener('mousedown', onStart);
+    viewport.addEventListener('touchstart', onStart, { passive: false });
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
       if (viewport) {
-        viewport.removeEventListener('pointerdown', handlePointerDown);
-        viewport.removeEventListener('pointermove', handlePointerMove);
-        viewport.removeEventListener('pointerup', handlePointerRelease);
-        viewport.removeEventListener('pointerleave', handlePointerRelease);
+        viewport.removeEventListener('mousedown', onStart);
+        viewport.removeEventListener('touchstart', onStart);
       }
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('mouseup', onEnd);
+      window.removeEventListener('touchend', onEnd);
     };
   }, []);
 
@@ -269,14 +292,8 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
               className={`relative w-full h-[460px] sm:h-[520px] flex items-center justify-center overflow-hidden select-none touch-none ${isDraggingState ? 'cursor-grabbing' : 'cursor-grab'}`}
               style={{ perspective: '1300px' }}
             >
-              {/* Drag Hint Top Badge */}
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-30 bg-white/85 backdrop-blur-md border border-slate-200 text-slate-600 text-[10px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-xs pointer-events-none flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-ping"></span>
-                <span>Drag 3D Globe to Rotate</span>
-              </div>
-
               {/* Center Student Photo Circle */}
-              <div className="absolute z-15 w-[230px] sm:w-[280px] h-[230px] sm:h-[280px] rounded-full bg-gradient-to-tr from-brand-teal/30 via-brand-mint to-brand-peach/60 p-3 shadow-2xl transition-all duration-300 pointer-events-auto">
+              <div className="absolute z-15 w-[230px] sm:w-[280px] h-[230px] sm:h-[280px] rounded-full bg-gradient-to-tr from-brand-teal/30 via-brand-mint to-brand-peach/60 p-3 shadow-2xl transition-all duration-300 pointer-events-none">
                 <div className="w-full h-full rounded-full bg-white relative overflow-hidden flex items-end justify-center shadow-inner">
                   <img
                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
@@ -286,7 +303,7 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
                 </div>
 
                 {/* Quote Bubble */}
-                <div className="absolute -top-3 -right-3 sm:top-0 sm:-right-4 bg-brand-teal text-white px-3.5 py-2 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 border-2 border-white z-40">
+                <div className="absolute -top-3 -right-3 sm:top-0 sm:-right-4 bg-brand-teal text-white px-3.5 py-2 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 border-2 border-white z-40 pointer-events-none">
                   <p className="font-script text-lg sm:text-2xl font-bold leading-tight tracking-wide text-brand-peach">
                     {hoveredTech ? (
                       <span className="flex items-center gap-1.5 text-white text-xs sm:text-sm font-sans font-black">
