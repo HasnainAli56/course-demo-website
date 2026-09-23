@@ -30,93 +30,131 @@ const BRANDS = [
 ];
 
 export default function Hero({ onOpenEnquire, onExploreCourses }) {
-  const stageRef = useRef(null);
+  const viewportRef = useRef(null);
+  const globeRef = useRef(null);
   const [hoveredTech, setHoveredTech] = useState(null);
+  const [isDraggingState, setIsDraggingState] = useState(false);
 
   useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
+    const viewport = viewportRef.current;
+    const globe = globeRef.current;
+    if (!viewport || !globe) return;
 
-    const icons = Array.from(stage.querySelectorAll('.hero-tech-icon'));
+    const icons = Array.from(globe.querySelectorAll('.hero-3d-icon'));
     const n = BRANDS.length;
-    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 
+    // Unit sphere distribution (Fibonacci sphere algorithm matching floating-icons (2).html)
     const iconData = icons.map((el, i) => {
-      const size = 38 + (i % 5) * 6;
+      const y = 1 - (i / (n - 1)) * 2;
+      const radiusAtY = Math.sqrt(Math.max(0, 1 - y * y));
+      const theta = Math.PI * (3 - Math.sqrt(5)) * i;
+      const size = 36 + (i % 5) * 5;
       return {
         el,
         size,
-        ring: Math.sqrt(i + 1),
-        angle: i * goldenAngle,
-        phase: Math.random() * Math.PI * 2,
-        speed: 0.6 + Math.random() * 0.6,
-        amp: 5 + Math.random() * 6
+        ux: Math.cos(theta) * radiusAtY,
+        uy: y,
+        uz: Math.sin(theta) * radiusAtY
       };
     });
 
+    let rx = -10;
+    let ry = 0;
+    let vrx = 0;
+    let vry = 0.07;
+    let dragging = false;
+    let lastX = 0;
+    let lastY = 0;
     let animationFrameId;
-    let t = 0;
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
 
-    const handleMouseMove = (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      targetX = (x / rect.width) * 25;
-      targetY = (y / rect.height) * 25;
-    };
+    function sphereRadius() {
+      if (!viewport) return 190;
+      return Math.min(viewport.clientWidth, viewport.clientHeight) * 0.44;
+    }
 
-    const handleMouseLeave = () => {
-      targetX = 0;
-      targetY = 0;
-    };
-
-    stage.addEventListener('mousemove', handleMouseMove);
-    stage.addEventListener('mouseleave', handleMouseLeave);
-
-    function step() {
-      if (!stage) return;
-      const w = stage.clientWidth;
-      const h = stage.clientHeight;
-      if (w === 0 || h === 0) return;
-
-      mouseX += (targetX - mouseX) * 0.05;
-      mouseY += (targetY - mouseY) * 0.05;
-
-      const cx = w / 2 + mouseX;
-      const cy = h / 2 + mouseY;
-
-      const minR = Math.min(w, h) * 0.28;
-      const maxR = Math.min(w, h) * 0.48;
-      const maxRing = Math.sqrt(n);
-
-      t += 0.016;
+    function layout() {
+      if (!viewport || !globe) return;
+      const R = sphereRadius();
 
       for (const p of iconData) {
         if (p.el.dataset.isHovered === 'true') continue;
 
-        const r = minR + (maxR - minR) * (p.ring / maxRing);
-        const homeX = cx + r * Math.cos(p.angle) - p.size / 2;
-        const homeY = cy + r * Math.sin(p.angle) - p.size / 2;
-        const x = homeX + Math.sin(t * p.speed + p.phase) * p.amp;
-        const y = homeY + Math.cos(t * p.speed * 1.3 + p.phase) * p.amp;
+        const x = p.ux * R;
+        const y = p.uy * R;
+        const z = p.uz * R;
 
-        p.el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        const depthScale = (z + R) / (2 * R); // 0 (back) to 1 (front)
+        const opacity = 0.4 + depthScale * 0.6;
+
+        p.el.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${-ry}deg) rotateX(${-rx}deg)`;
+        p.el.style.opacity = opacity;
+        p.el.style.zIndex = Math.round((z + R) * 10);
       }
 
-      animationFrameId = requestAnimationFrame(step);
+      globe.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
     }
 
-    animationFrameId = requestAnimationFrame(step);
+    function frame() {
+      if (!dragging) {
+        ry += vry;
+        rx += vrx;
+        vrx *= 0.95;
+        if (Math.abs(vrx) < 0.01) vrx = 0;
+        if (Math.abs(vry) < 0.07) vry += (vry >= 0 ? 1 : -1) * 0.0003;
+      }
+      rx = Math.max(-70, Math.min(70, rx));
+      layout();
+      animationFrameId = requestAnimationFrame(frame);
+    }
+
+    animationFrameId = requestAnimationFrame(frame);
+
+    const handleResize = () => layout();
+    window.addEventListener('resize', handleResize);
+
+    const handlePointerDown = (e) => {
+      dragging = true;
+      setIsDraggingState(true);
+      lastX = e.clientX;
+      lastY = e.clientY;
+      vrx = 0;
+      vry = 0;
+      if (viewport.setPointerCapture) {
+        try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+    };
+
+    const handlePointerMove = (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      ry += dx * 0.35;
+      rx -= dy * 0.35;
+      vry = dx * 0.35;
+      vrx = -dy * 0.35;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    };
+
+    const handlePointerRelease = () => {
+      dragging = false;
+      setIsDraggingState(false);
+      if (Math.abs(vry) < 0.07) vry = vry >= 0 ? 0.07 : -0.07;
+    };
+
+    viewport.addEventListener('pointerdown', handlePointerDown);
+    viewport.addEventListener('pointermove', handlePointerMove);
+    viewport.addEventListener('pointerup', handlePointerRelease);
+    viewport.addEventListener('pointerleave', handlePointerRelease);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      if (stage) {
-        stage.removeEventListener('mousemove', handleMouseMove);
-        stage.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', handleResize);
+      if (viewport) {
+        viewport.removeEventListener('pointerdown', handlePointerDown);
+        viewport.removeEventListener('pointermove', handlePointerMove);
+        viewport.removeEventListener('pointerup', handlePointerRelease);
+        viewport.removeEventListener('pointerleave', handlePointerRelease);
       }
     };
   }, []);
@@ -222,14 +260,23 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
 
           </div>
 
-          {/* Right Hero Visual: Floating Tech Icons Cloud + Student Photo Center */}
-          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[460px] sm:min-h-[500px]">
+          {/* Right Hero Visual: 3D Tech Icon Globe + Student Photo in Center */}
+          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[460px] sm:min-h-[520px]">
             
-            {/* Interactive Floating Icons Stage Container */}
-            <div ref={stageRef} className="relative w-full h-[460px] sm:h-[500px] flex items-center justify-center overflow-hidden select-none">
-              
-              {/* Central Hero Circle Image */}
-              <div className="relative z-10 w-[240px] sm:w-[300px] h-[240px] sm:h-[300px] rounded-full bg-gradient-to-tr from-brand-teal/30 via-brand-mint to-brand-peach/60 p-3 shadow-2xl transition-all duration-300 transform hover:scale-105">
+            {/* Viewport for 3D Globe with Drag & Perspective */}
+            <div 
+              ref={viewportRef}
+              className={`relative w-full h-[460px] sm:h-[520px] flex items-center justify-center overflow-hidden select-none touch-none ${isDraggingState ? 'cursor-grabbing' : 'cursor-grab'}`}
+              style={{ perspective: '1300px' }}
+            >
+              {/* Drag Hint Top Badge */}
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-30 bg-white/85 backdrop-blur-md border border-slate-200 text-slate-600 text-[10px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-xs pointer-events-none flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-ping"></span>
+                <span>Drag 3D Globe to Rotate</span>
+              </div>
+
+              {/* Center Student Photo Circle */}
+              <div className="absolute z-15 w-[230px] sm:w-[280px] h-[230px] sm:h-[280px] rounded-full bg-gradient-to-tr from-brand-teal/30 via-brand-mint to-brand-peach/60 p-3 shadow-2xl transition-all duration-300 pointer-events-auto">
                 <div className="w-full h-full rounded-full bg-white relative overflow-hidden flex items-end justify-center shadow-inner">
                   <img
                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
@@ -239,10 +286,10 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
                 </div>
 
                 {/* Quote Bubble */}
-                <div className="absolute -top-4 -right-4 sm:top-0 sm:-right-4 bg-brand-teal text-white px-4 py-2.5 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 border-2 border-white">
-                  <p className="font-script text-xl sm:text-2xl font-bold leading-tight tracking-wide text-brand-peach">
+                <div className="absolute -top-3 -right-3 sm:top-0 sm:-right-4 bg-brand-teal text-white px-3.5 py-2 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 border-2 border-white z-40">
+                  <p className="font-script text-lg sm:text-2xl font-bold leading-tight tracking-wide text-brand-peach">
                     {hoveredTech ? (
-                      <span className="flex items-center gap-1.5 text-white text-sm font-sans font-black">
+                      <span className="flex items-center gap-1.5 text-white text-xs sm:text-sm font-sans font-black">
                         <i className={`fa-brands fa-${hoveredTech.name}`} style={{ color: hoveredTech.color }}></i>
                         <span>{hoveredTech.label}</span>
                       </span>
@@ -253,56 +300,64 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
                 </div>
               </div>
 
-              {/* Floating Icons Loop */}
-              {BRANDS.map((brandObj, index) => {
-                const bName = brandObj.name;
-                const bColor = brandObj.color;
-                const bLabel = brandObj.label;
-                const size = 38 + (index % 5) * 6;
+              {/* 3D Rotating Globe Container */}
+              <div 
+                ref={globeRef}
+                className="relative w-0 h-0"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                {BRANDS.map((brandObj, index) => {
+                  const bName = brandObj.name;
+                  const bColor = brandObj.color;
+                  const bLabel = brandObj.label;
+                  const size = 36 + (index % 5) * 5;
 
-                return (
-                  <div
-                    key={bName + index}
-                    className="hero-tech-icon absolute top-0 left-0 flex items-center justify-center rounded-full cursor-pointer transition-all duration-300 group z-20"
-                    style={{
-                      width: `${size}px`,
-                      height: `${size}px`,
-                      backgroundColor: 'rgba(255, 255, 255, 0.85)',
-                      backdropFilter: 'blur(6px)',
-                      boxShadow: `0 6px 20px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.06)`,
-                      willChange: 'transform'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.dataset.isHovered = 'true';
-                      e.currentTarget.style.transform += ' scale(1.4)';
-                      e.currentTarget.style.zIndex = '50';
-                      e.currentTarget.style.boxShadow = `0 10px 25px ${bColor}88, inset 0 0 0 2px ${bColor}`;
-                      e.currentTarget.style.backgroundColor = '#ffffff';
-                      setHoveredTech(brandObj);
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.dataset.isHovered = 'false';
-                      e.currentTarget.style.zIndex = '20';
-                      e.currentTarget.style.boxShadow = `0 6px 20px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.06)`;
-                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
-                      setHoveredTech(null);
-                    }}
-                  >
-                    <i 
-                      className={`fa-brands fa-${bName} transition-colors duration-300`}
+                  return (
+                    <div
+                      key={bName + index}
+                      className="hero-3d-icon absolute left-0 top-0 flex items-center justify-center rounded-full cursor-pointer transition-transform duration-200 group"
                       style={{
-                        fontSize: `${size * 0.55}px`,
-                        color: bColor
+                        width: `${size}px`,
+                        height: `${size}px`,
+                        marginLeft: `${-size / 2}px`,
+                        marginTop: `${-size / 2}px`,
+                        backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                        backdropFilter: 'blur(6px)',
+                        boxShadow: `0 6px 18px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(0,0,0,0.08)`,
+                        willChange: 'transform'
                       }}
-                    />
+                      onMouseEnter={(e) => {
+                        e.currentTarget.dataset.isHovered = 'true';
+                        e.currentTarget.style.transform += ' scale(1.4)';
+                        e.currentTarget.style.zIndex = '100';
+                        e.currentTarget.style.opacity = '1';
+                        e.currentTarget.style.boxShadow = `0 10px 25px ${bColor}99, inset 0 0 0 2px ${bColor}`;
+                        e.currentTarget.style.backgroundColor = '#ffffff';
+                        setHoveredTech(brandObj);
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.dataset.isHovered = 'false';
+                        e.currentTarget.style.boxShadow = `0 6px 18px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(0,0,0,0.08)`;
+                        e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.92)';
+                        setHoveredTech(null);
+                      }}
+                    >
+                      <i 
+                        className={`fa-brands fa-${bName} transition-colors duration-300 pointer-events-none`}
+                        style={{
+                          fontSize: `${size * 0.55}px`,
+                          color: bColor
+                        }}
+                      />
 
-                    {/* Tooltip Label */}
-                    <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none bg-slate-900 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-md shadow-lg border border-white/20 whitespace-nowrap z-50">
-                      {bLabel}
-                    </span>
-                  </div>
-                );
-              })}
+                      {/* Tooltip Label */}
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none bg-slate-950 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-md shadow-lg border border-white/20 whitespace-nowrap z-50">
+                        {bLabel}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
 
             </div>
 

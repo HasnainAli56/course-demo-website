@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>3D Tech Icon Globe</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+<style>
+  html,body{
+    height:100%;
+    margin:0;
+    background: transparent;
+    overflow:hidden;
+    font-family: -apple-system, Segoe UI, sans-serif;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  #viewport{
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    perspective: 1300px;
+    touch-action: none;
+    cursor: grab;
+  }
+  #viewport.dragging{ cursor: grabbing; }
+  #globe{
+    position:relative;
+    width:0;
+    height:0;
+    transform-style: preserve-3d;
+  }
+  .icon{
+    position:absolute;
+    left:0; top:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background: rgba(0,0,0,0.03);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.05);
+    will-change: transform;
+  }
+  .icon i{ pointer-events:none; }
+  .hint{
+    position:absolute;
+    top: calc(12px + env(safe-area-inset-top,0px));
+    left:50%;
+    transform: translateX(-50%);
+    color: rgba(0,0,0,0.35);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+<div class="hint">drag to rotate</div>
+<div id="viewport">
+  <div id="globe"></div>
+</div>
+
+<script>
+const brands = [
+  ["react","#61dafb"],["html5","#e34f26"],["css3-alt","#264de4"],["js","#f7df1e"],
+  ["php","#787cb5"],["python","#3776ab"],["docker","#2496ed"],["git-alt","#f05032"],
+  ["github","#181717"],["npm","#cb3837"],["node-js","#5fa04e"],["aws","#ff9900"],
+  ["figma","#a259ff"],["sass","#cc6699"],["vuejs","#42b883"],["angular","#dd0031"],
+  ["swift","#f05138"],["android","#3ddc84"],["apple","#111111"],["linux","#fcc624"],
+  ["gitlab","#fc6d26"],["wordpress","#21759b"],["laravel","#ff2d20"],["trello","#0079bf"],
+  ["slack","#e01e5a"]
+];
+
+const viewport = document.getElementById('viewport');
+const globe = document.getElementById('globe');
+const n = brands.length;
+
+function sphereRadius(){
+  return Math.min(viewport.clientWidth, viewport.clientHeight) * 0.44;
+}
+
+const icons = brands.map(([name, color], i) => {
+  const size = 34 + (i % 5) * 5;
+  const el = document.createElement('div');
+  el.className = 'icon';
+  el.style.width = size+'px';
+  el.style.height = size+'px';
+  el.style.marginLeft = (-size/2)+'px';
+  el.style.marginTop = (-size/2)+'px';
+  el.innerHTML = `<i class="fa-brands fa-${name}" style="font-size:${size*0.55}px;color:${color};"></i>`;
+  globe.appendChild(el);
+
+  const y = 1 - (i / (n - 1)) * 2;
+  const radiusAtY = Math.sqrt(Math.max(0, 1 - y * y));
+  const theta = Math.PI * (3 - Math.sqrt(5)) * i;
+  return {
+    el,
+    ux: Math.cos(theta) * radiusAtY,
+    uy: y,
+    uz: Math.sin(theta) * radiusAtY
+  };
+});
+
+let rx = -10, ry = 0;
+let vrx = 0, vry = 0.07;
+let dragging = false;
+let lastX = 0, lastY = 0;
+
+function layout(){
+  const R = sphereRadius();
+  for(const p of icons){
+    const x = p.ux * R;
+    const y = p.uy * R;
+    const z = p.uz * R;
+    p.el.style.transform =
+      `translate3d(${x}px, ${y}px, ${z}px) rotateY(${-ry}deg) rotateX(${-rx}deg)`;
+  }
+  globe.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+}
+
+function frame(){
+  if(!dragging){
+    ry += vry;
+    rx += vrx;
+    vrx *= 0.95;
+    if(Math.abs(vrx) < 0.01) vrx = 0;
+    if(Math.abs(vry) < 0.07) vry += (vry >= 0 ? 1 : -1) * 0.0003;
+  }
+  rx = Math.max(-70, Math.min(70, rx));
+  layout();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.addEventListener('resize', layout);
+
+viewport.addEventListener('pointerdown', (e) => {
+  dragging = true;
+  viewport.classList.add('dragging');
+  lastX = e.clientX; lastY = e.clientY;
+  vrx = 0; vry = 0;
+  viewport.setPointerCapture(e.pointerId);
+});
+viewport.addEventListener('pointermove', (e) => {
+  if(!dragging) return;
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+  ry += dx * 0.35;
+  rx -= dy * 0.35;
+  vry = dx * 0.35;
+  vrx = -dy * 0.35;
+  lastX = e.clientX; lastY = e.clientY;
+});
+function release(){
+  dragging = false;
+  viewport.classList.remove('dragging');
+  if(Math.abs(vry) < 0.07) vry = vry >= 0 ? 0.07 : -0.07;
+}
+viewport.addEventListener('pointerup', release);
+viewport.addEventListener('pointerleave', release);
+</script>
+</body>
+</html>
