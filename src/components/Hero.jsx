@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, MessageSquare, Award, Laptop, Users, GraduationCap, Sparkles } from 'lucide-react';
+import heroStudentImg from '../assets/hero-student.png';
 
 const BRANDS = [
   { name: 'react', label: 'React.js', color: '#61dafb' },
@@ -296,7 +297,7 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
               <div className="absolute z-15 w-[230px] sm:w-[280px] h-[230px] sm:h-[280px] rounded-full bg-gradient-to-tr from-brand-teal/30 via-brand-mint to-brand-peach/60 p-3 shadow-2xl transition-all duration-300 pointer-events-none">
                 <div className="w-full h-full rounded-full bg-white relative overflow-hidden flex items-end justify-center shadow-inner">
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
+                    src={heroStudentImg}
                     alt="Student holding books"
                     className="w-full h-full object-cover object-top scale-105 hover:scale-110 transition-transform duration-500"
                   />
