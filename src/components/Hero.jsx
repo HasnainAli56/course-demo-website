@@ -295,16 +295,16 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
             >
               {/* Center Student Photo Circle */}
               <div className="absolute z-15 w-[230px] sm:w-[280px] h-[230px] sm:h-[280px] rounded-full bg-gradient-to-tr from-brand-teal/30 via-brand-mint to-brand-peach/60 p-3 shadow-2xl transition-all duration-300 pointer-events-none">
-                <div className="w-full h-full rounded-full bg-white relative overflow-hidden flex items-end justify-center shadow-inner">
+                <div className="w-full h-full rounded-full bg-white relative overflow-hidden flex items-end justify-center shadow-inner pt-6">
                   <img
                     src={heroStudentImg}
                     alt="Student holding books"
-                    className="w-full h-full object-cover object-top scale-100 hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain object-bottom scale-95 translate-y-1 hover:scale-100 transition-transform duration-500"
                   />
                 </div>
 
                 {/* Quote Bubble */}
-                <div className="absolute -top-8 -left-4 sm:-top-10 sm:-left-8 bg-brand-teal text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl rounded-br-none shadow-xl transform -rotate-3 border-2 border-white z-40 pointer-events-none">
+                <div className="absolute -top-12 -left-10 sm:-top-16 sm:-left-16 bg-brand-teal text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl rounded-br-none shadow-xl transform -rotate-3 border-2 border-white z-40 pointer-events-none whitespace-nowrap">
                   <p className="font-script text-lg sm:text-2xl font-bold leading-tight tracking-wide text-brand-peach">
                     {hoveredTech ? (
                       <span className="flex items-center gap-1.5 text-white text-xs sm:text-sm font-sans font-black">
