@@ -299,12 +299,12 @@ export default function Hero({ onOpenEnquire, onExploreCourses }) {
                   <img
                     src={heroStudentImg}
                     alt="Student holding books"
-                    className="w-full h-full object-cover object-top scale-105 hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top scale-100 hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
                 {/* Quote Bubble */}
-                <div className="absolute -top-3 -right-3 sm:top-0 sm:-right-4 bg-brand-teal text-white px-3.5 py-2 rounded-2xl rounded-bl-none shadow-xl transform rotate-3 border-2 border-white z-40 pointer-events-none">
+                <div className="absolute -top-8 -left-4 sm:-top-10 sm:-left-8 bg-brand-teal text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl rounded-br-none shadow-xl transform -rotate-3 border-2 border-white z-40 pointer-events-none">
                   <p className="font-script text-lg sm:text-2xl font-bold leading-tight tracking-wide text-brand-peach">
                     {hoveredTech ? (
                       <span className="flex items-center gap-1.5 text-white text-xs sm:text-sm font-sans font-black">
